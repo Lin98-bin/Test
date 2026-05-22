@@ -1,0 +1,24 @@
+2026-05-20 23:50:48,668 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/users
+2026-05-20 23:50:48,668 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'username', 'password': 'password'}
+2026-05-20 23:50:48,668 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11'}
+2026-05-20 23:50:49,300 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"code":202,"error":"username 'username' already taken."}
+2026-05-20 23:50:49,304 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/users
+2026-05-20 23:50:49,305 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'username', 'password': 'password'}
+2026-05-20 23:50:49,305 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11'}
+2026-05-20 23:50:49,360 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"code":202,"error":"username 'username' already taken."}
+2026-05-20 23:50:49,362 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/users
+2026-05-20 23:50:49,362 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'username', 'password': 'password'}
+2026-05-20 23:50:49,362 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11'}
+2026-05-20 23:50:49,420 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"code":202,"error":"username 'username' already taken."}
+2026-05-20 23:50:49,423 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/users
+2026-05-20 23:50:49,423 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'username', 'password': 'password'}
+2026-05-20 23:50:49,423 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11'}
+2026-05-20 23:50:49,479 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"code":202,"error":"username 'username' already taken."}
+2026-05-20 23:50:49,481 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/users
+2026-05-20 23:50:49,481 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'username', 'password': 'password'}
+2026-05-20 23:50:49,482 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11'}
+2026-05-20 23:50:49,538 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"code":202,"error":"username 'username' already taken."}
+2026-05-20 23:50:49,540 - INFO - api_client.py - 【接口请求】post | URL: https://api.bmobcloud.com/1/login
+2026-05-20 23:50:49,540 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_auto0001', 'password': '123456'}
+2026-05-20 23:50:49,540 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json', 'X-Bmob-Application-Id': '38a82d7890d53d3c5b50397c2da6d246', 'X-Bmob-REST-API-Key': 'bcb514cd55c369d728a41b60b9e62b11', 'sessionToken': ''}
+2026-05-20 23:50:49,596 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {"createdAt":"2026-05-19 19:19:38","objectId":"9ee6a369af","sessionToken":"0674920640cc33c280598cc1ea7d4c2e","updatedAt":"2026-05-19 19:19:38","username":"test_auto0001"}

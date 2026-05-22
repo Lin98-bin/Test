@@ -1,0 +1,4 @@
+INFO     test_apiauto_logger:api_client.py:36 【接口请求】post | URL: http://127.0.0.1:5000/register
+INFO     test_apiauto_logger:api_client.py:37 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+INFO     test_apiauto_logger:api_client.py:38 【请求头】headers: {'Accept': 'application/json'}
+INFO     test_apiauto_logger:api_client.py:52 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
