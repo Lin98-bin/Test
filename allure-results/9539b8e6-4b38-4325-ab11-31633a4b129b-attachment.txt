@@ -1,0 +1,4 @@
+2026-05-22 06:10:11,578 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-22 06:10:11,578 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-05-22 06:10:11,578 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-22 06:10:11,608 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}

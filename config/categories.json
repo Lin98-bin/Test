@@ -1,0 +1,12 @@
+[
+  {
+    "statuses": ["passed"],
+    "name": "用例通过"
+  },
+
+    {
+    "statuses": ["failed"],
+    "name": "用例失败"
+  }
+
+]
