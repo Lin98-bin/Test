@@ -18,7 +18,7 @@ files_to_copy = [
 for file in files_to_copy:
     if os.path.exists(file):
         shutil.copy(file, "allure-results/")
-        print(f"✅ 已复制 {file}")
+        print(f" 已复制 {file}")
 
 # ======================
 # 【关键】只生成静态 HTML 报告，不打开、不弹窗！
@@ -26,4 +26,4 @@ for file in files_to_copy:
 print("===== 生成静态 Allure HTML 报告 =====")
 os.system("allure generate allure-results -o allure-report --clean")
 
-print("\n🎉 全部完成！报告已生成在 allure-report 文件夹")
+print("\n全部完成！报告已生成在 allure-report 文件夹")
