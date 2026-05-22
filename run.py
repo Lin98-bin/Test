@@ -36,4 +36,4 @@ for file in files_to_copy:
 
 # 第二步：直接打开 Allure 报告
 print("===== 启动 Allure 报告服务 =====")
-#os.system("allure serve allure-results")
+os.system("allure serve allure-results")
