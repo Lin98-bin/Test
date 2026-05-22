@@ -24,11 +24,11 @@ for file in files_to_copy:
     if os.path.exists(file):
         #把三个文件复制到"allure-results/"目录里面
         shutil.copy(file, "allure-results/")
-<<<<<<< HEAD
+
         print(f" 已复制 {file}")
-=======
+
         print(f"✅ 已复制 {file}")
->>>>>>> a406cc076b16d27ee3c6e1f879f2200071e861d2
+
 
 # ======================
 # 你原来的打开报告
