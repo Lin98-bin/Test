@@ -33,7 +33,7 @@ def main():
     print("http://localhost:5050")
     print("注意：不要关闭此窗口，关闭则服务停止")
     print("="*60)
-    os.system(f"allure serve {result_dir} -p 5050")
+    os.system("allure generate allure-results -o allure-report --clean")
 
 
 if __name__ == '__main__':
