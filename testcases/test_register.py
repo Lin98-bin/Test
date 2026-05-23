@@ -32,7 +32,6 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 
 @allure.parent_suite("注册接口测试套-自己练习")
 @allure.suite("smoke")# 这行是顶层！
-@allure.suite("测试接口")
 @allure.epic("用户模块")           # 一级大模块
 @allure.feature("注册接口")        # 二级功能
 @allure.story("用户注册")          # 三级场景

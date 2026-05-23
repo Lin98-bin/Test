@@ -28,7 +28,6 @@ import pymysql
 import allure
 @allure.parent_suite("注册接口测试套-自己练习")
 @allure.suite("master")
-@allure.suite("测试接口")
 @allure.epic("商品模块")
 @allure.feature("商品查询接口")
 @allure.story("获取商品列表")
