@@ -31,7 +31,7 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 # 登录函数
 # ====================== 在这里加 Allure 装饰器 ======================
 @allure.parent_suite("注册接口测试套-自己练习")
-@allure.suite("beta") # 这行是顶层！
+@allure.suite("beta核心用例") # 这行是顶层！
 @allure.epic("用户模块")
 @allure.feature("登录接口")
 @allure.story("用户登录")

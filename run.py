@@ -4,8 +4,10 @@ import sys
 import pytest
 
 def main():
-    result_dir = "allure-results"
-    config_dir = "config"
+    root_path = os.path.dirname(os.path.abspath(__file__))
+    result_dir = os.path.join(root_path, "allure-results")
+    config_dir = os.path.join(root_path, "config")
+    # 获取当前脚本所在的根目录
 
     # 清理历史数据
     if os.path.exists(result_dir):
@@ -33,6 +35,6 @@ def main():
     print("="*60)
     os.system(f"allure serve {result_dir} -p 5050")
 
+
 if __name__ == '__main__':
-    # 核心：必须加 --alluredir=allure-results，标签才能写入报告
-    pytest.main(["-v", "testcases/", "--alluredir=allure-results"])
+    main()

@@ -1,6 +1,6 @@
 {
-  "name": "本地执行器",
-  "type": "local",
+  "name": "Jenkins",
+  "type": "jenkins",
   "buildName": "用户接口自动化测试",
   "reportName": "接口自动化测试报告"
 }
