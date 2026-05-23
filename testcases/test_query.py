@@ -26,6 +26,7 @@ import pytest
 import pymysql
 #导入allure，生成allure报告
 import allure
+@allure.tag("master")
 @allure.parent_suite("商品接口测试套-自己练习")
 @allure.suite("测试接口")
 @allure.epic("商品模块")
@@ -40,7 +41,7 @@ import allure
 @pytest.mark.full  # 测试环境全量用例
 # ==================================================================
 @pytest.mark.prod_run  # 专属标记：只有prod环境执行
-@allure.tag("master")
+
 def test_query_goods():
     with allure.step("1. 初始化请求"):
         test_check = RequestsClient()

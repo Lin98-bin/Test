@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+import pytest
 
 def main():
     result_dir = "allure-results"
@@ -33,4 +34,5 @@ def main():
     os.system(f"allure serve {result_dir} -p 5050")
 
 if __name__ == '__main__':
-    main()
+    # 核心：必须加 --alluredir=allure-results，标签才能写入报告
+    pytest.main(["-vs", ".", "--alluredir=allure-results"])

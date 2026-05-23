@@ -30,6 +30,7 @@ import allure
 test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 # 登录函数
 # ====================== 在这里加 Allure 装饰器 ======================
+@allure.tag("beta")
 @allure.parent_suite("注册接口测试套-自己练习")  # 这行是顶层！
 @allure.suite("测试接口")
 @allure.epic("用户模块")
@@ -38,7 +39,7 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 @allure.title("登录用例：{casename}")
 @allure.severity(allure.severity_level.CRITICAL)
 # ==================================================================
-@allure.tag("beta")
+
 @pytest.mark.beta_run  # 专属标记：只有beta环境执行
 @pytest.mark.parametrize("casename,username,password,code,msg", test_data)
 def test_login(casename, username, password, code, msg):
