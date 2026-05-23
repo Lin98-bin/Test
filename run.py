@@ -35,4 +35,4 @@ def main():
 
 if __name__ == '__main__':
     # 核心：必须加 --alluredir=allure-results，标签才能写入报告
-    pytest.main(["-vs", ".", "--alluredir=allure-results"])
+    pytest.main(["-v", "testcases/", "--alluredir=allure-results"])
