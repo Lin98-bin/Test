@@ -27,7 +27,7 @@ import pymysql
 #导入allure，生成allure报告
 import allure
 @allure.tag("master")
-@allure.parent_suite("商品接口测试套-自己练习")
+@allure.parent_suite("注册接口测试套-自己练习")
 @allure.suite("测试接口")
 @allure.epic("商品模块")
 @allure.feature("商品查询接口")
