@@ -30,7 +30,7 @@ import allure
 test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 # 登录函数
 # ====================== 在这里加 Allure 装饰器 ======================
-@allure.tag("beta")
+@allure.suite("beta")
 @allure.parent_suite("注册接口测试套-自己练习")  # 这行是顶层！
 @allure.suite("测试接口")
 @allure.epic("用户模块")
