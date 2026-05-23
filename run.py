@@ -27,13 +27,7 @@ def main():
     pytest_cmd = f'"{sys.executable}" -m pytest testcases/ -v -s --alluredir={result_dir}'
     os.system(pytest_cmd)
 
-    # 启动 Allure 动态服务（阻塞运行，不关闭则一直可用）
-    print("="*60)
-    print("Allure 服务已启动，访问以下地址查看报告：")
-    print("http://localhost:5050")
-    print("注意：不要关闭此窗口，关闭则服务停止")
-    print("="*60)
-    os.system("allure generate allure-results -o allure-report --clean")
+
 
 
 if __name__ == '__main__':
