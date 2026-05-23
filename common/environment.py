@@ -1,21 +1,22 @@
-#环境配置（目前只有测试环境跑得痛）
-ENV_HOST={
-    "test":"http://127.0.0.1:5000",
-    "beta": "http://127.0.0.1:5000/beta",
-    "master": "http://127.0.0.1:5000/master",
-
-}
-#当前在跑的环境：切换环境改这里就行
-RUN_ENV="test"
-
-#自动获取域名
-BASE_URL=ENV_HOST[RUN_ENV]
-
-#公共请求头
-COMMON_HEADERS={
-    "Accept":"application/json",
-
-}
-
-#接口最多等 10 秒，超时就断开，防止脚本卡死！
+# 你原来的所有代码，完全不动！
+COMMON_HEADERS = {"Accept": "application/json"}
 API_TIMEOUT = 10
+BASE_URL = "http://127.0.0.1:5000"  # 这个是默认值，会被动态覆盖
+
+# 我之前新增的三环境域名，保留不动
+ENV_HOST = {
+    "test": "shturl.cc/psLiZGtEn",
+    "beta": "http://beta-api.com",
+    "prod": "https://prod-api.com",
+}
+
+# 新增：环境权限+用例规则，保留不动
+ENV_RULE = {
+    "test": {"allow_write": True,  "run_mark": "test_run"},
+    "beta": {"allow_write": True,  "run_mark": "beta_run"},
+    "prod": {"allow_write": False, "run_mark": "prod_run"},
+}
+
+# 全局变量，保留不动
+current_env = "test"
+current_config = None

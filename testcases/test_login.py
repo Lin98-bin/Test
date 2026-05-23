@@ -38,6 +38,8 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 @allure.title("登录用例：{casename}")
 @allure.severity(allure.severity_level.CRITICAL)
 # ==================================================================
+@allure.tag("beta")
+@pytest.mark.beta_run  # 专属标记：只有beta环境执行
 @pytest.mark.parametrize("casename,username,password,code,msg", test_data)
 def test_login(casename, username, password, code, msg):
     with allure.step("步骤1：构造登录请求"):

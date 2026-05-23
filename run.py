@@ -1,29 +1,36 @@
 import os
 import shutil
+import sys
 
-# 第一步：执行用例 + 生成allure结果
-print("===== 开始执行用例，生成 Allure 结果 =====")
-os.system("pytest testcases/test_register.py testcases/test_login.py -v --alluredir=allure-results --clean-alluredir")
+def main():
+    result_dir = "allure-results"
+    config_dir = "config"
 
-# ======================
-# 自动复制 3 个配置文件（保留你要的功能）
-# ======================
-print("===== 自动复制环境配置文件到 allure-results =====")
-files_to_copy = [
-    "config/environment.properties",
-    "config/categories.json",
-    "config/executor.json"
-]
+    # 清理历史数据
+    if os.path.exists(result_dir):
+        shutil.rmtree(result_dir)
+    os.makedirs(result_dir, exist_ok=True)
 
-for file in files_to_copy:
-    if os.path.exists(file):
-        shutil.copy(file, "allure-results/")
-        print(f" 已复制 {file}")
+    # 复制 Allure 配置文件（环境、分类信息）
+    config_files = ["categories.json", "environment.properties", "executor.json"]
+    for file in config_files:
+        src = os.path.join(config_dir, file)
+        dst = os.path.join(result_dir, file)
+        if os.path.exists(src):
+            shutil.copy(src, dst)
 
-# ======================
-# 【关键】只生成静态 HTML 报告，不打开、不弹窗！
-# ======================
-print("===== 生成静态 Allure HTML 报告 =====")
-os.system("allure generate allure-results -o allure-report --clean")
+    # 执行测试用例
+    print("开始执行测试用例...")
+    pytest_cmd = f'"{sys.executable}" -m pytest testcases/ -v -s --alluredir={result_dir}'
+    os.system(pytest_cmd)
 
-print("\n全部完成！报告已生成在 allure-report 文件夹")
+    # 启动 Allure 动态服务（阻塞运行，不关闭则一直可用）
+    print("="*60)
+    print("Allure 服务已启动，访问以下地址查看报告：")
+    print("http://localhost:5050")
+    print("注意：不要关闭此窗口，关闭则服务停止")
+    print("="*60)
+    os.system(f"allure serve {result_dir} -p 5050")
+
+if __name__ == '__main__':
+    main()

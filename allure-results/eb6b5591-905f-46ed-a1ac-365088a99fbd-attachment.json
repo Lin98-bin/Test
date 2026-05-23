@@ -1,0 +1,24 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "name": "iPhone 15",
+      "price": 5999,
+      "stock": 100
+    },
+    {
+      "id": 2,
+      "name": "MacBook Pro",
+      "price": 14999,
+      "stock": 50
+    },
+    {
+      "id": 3,
+      "name": "AirPods Pro",
+      "price": 1899,
+      "stock": 200
+    }
+  ],
+  "msg": "\u67e5\u8be2\u6210\u529f"
+}

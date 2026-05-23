@@ -39,6 +39,8 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 
 # ==================================================================
 #注册函数
+@allure.tag("冒烟")
+@pytest.mark.test_run  # 专属标记：只有test环境执行
 @pytest.mark.parametrize("casename,username,password,code,msg", test_data)
 def test_register(casename, username, password, code, msg):
     with allure.step("步骤1：构造请求"):

@@ -72,5 +72,30 @@ def login():
     except:
         return jsonify({"code": 500, "error": "服务器异常"})
 
+
+# 新增：商品查询接口（GET方法，只读，适合生产环境巡检）
+# 新增：商品查询接口
+@app.route('/1/classes/Goods', methods=['GET'])
+def get_goods():
+    try:
+        goods_list = [
+            {"id": 1, "name": "iPhone 15", "price": 5999, "stock": 100},
+            {"id": 2, "name": "MacBook Pro", "price": 14999, "stock": 50},
+            {"id": 3, "name": "AirPods Pro", "price": 1899, "stock": 200}
+        ]
+
+        return jsonify({
+            "code": 200,
+            "msg": "查询成功",
+            "data": goods_list
+        })
+
+    except Exception as e:
+        return jsonify({
+            "code": 500,
+            "error": "查询商品失败",
+            "detail": str(e)
+        })
+
 if __name__ == '__main__':
     app.run(debug=True)

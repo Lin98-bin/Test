@@ -1,40 +1,44 @@
-2026-05-23 00:38:06,188 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
-2026-05-23 00:38:06,188 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
-2026-05-23 00:38:06,189 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
-2026-05-23 00:38:06,232 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
-2026-05-23 00:38:06,604 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
-2026-05-23 00:38:06,605 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
-2026-05-23 00:38:06,605 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
-2026-05-23 00:38:06,622 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
-2026-05-23 00:38:06,675 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
-2026-05-23 00:38:06,675 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
-2026-05-23 00:38:06,675 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
-2026-05-23 00:38:06,715 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
-2026-05-23 00:38:06,772 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
-2026-05-23 00:38:06,772 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
-2026-05-23 00:38:06,772 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
-2026-05-23 00:38:06,778 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
-2026-05-23 00:38:06,838 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
-2026-05-23 00:38:06,838 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
-2026-05-23 00:38:06,838 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
-2026-05-23 00:38:06,844 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
-2026-05-23 00:38:06,901 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
-2026-05-23 00:38:06,902 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
-2026-05-23 00:38:06,902 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
-2026-05-23 00:38:06,907 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
-2026-05-23 00:38:06,943 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
-2026-05-23 00:38:06,943 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
-2026-05-23 00:38:06,943 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
-2026-05-23 00:38:06,948 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
-2026-05-23 00:38:06,981 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
-2026-05-23 00:38:06,981 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
-2026-05-23 00:38:06,982 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
-2026-05-23 00:38:06,987 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
-2026-05-23 00:38:07,017 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
-2026-05-23 00:38:07,017 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
-2026-05-23 00:38:07,017 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
-2026-05-23 00:38:07,022 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
-2026-05-23 00:38:07,059 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
-2026-05-23 00:38:07,059 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
-2026-05-23 00:38:07,060 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
-2026-05-23 00:38:07,066 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:04,672 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-23 12:54:04,672 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-05-23 12:54:04,673 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-23 12:54:04,709 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:05,086 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-23 12:54:05,086 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-05-23 12:54:05,086 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-23 12:54:05,115 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:05,145 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-23 12:54:05,145 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-05-23 12:54:05,146 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-23 12:54:05,177 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:05,207 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-23 12:54:05,207 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-05-23 12:54:05,207 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-23 12:54:05,212 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:05,243 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-23 12:54:05,243 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-05-23 12:54:05,243 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-23 12:54:05,248 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '登录成功'}
+2026-05-23 12:54:05,277 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/1/classes/Goods
+2026-05-23 12:54:05,277 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-05-23 12:54:05,277 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,279 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'id': 1, 'name': 'iPhone 15', 'price': 5999, 'stock': 100}, {'id': 2, 'name': 'MacBook Pro', 'price': 14999, 'stock': 50}, {'id': 3, 'name': 'AirPods Pro', 'price': 1899, 'stock': 200}], 'msg': '查询成功'}
+2026-05-23 12:54:05,283 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-23 12:54:05,283 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-05-23 12:54:05,283 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,304 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
+2026-05-23 12:54:05,376 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-23 12:54:05,376 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-05-23 12:54:05,376 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,396 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
+2026-05-23 12:54:05,454 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-23 12:54:05,454 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-05-23 12:54:05,454 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,490 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
+2026-05-23 12:54:05,549 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-23 12:54:05,549 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-05-23 12:54:05,549 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,583 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
+2026-05-23 12:54:05,640 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-05-23 12:54:05,640 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-05-23 12:54:05,641 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-05-23 12:54:05,675 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '注册成功！'}
