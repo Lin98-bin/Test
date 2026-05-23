@@ -1,0 +1,17 @@
+[
+  {
+    "name": "冒烟用例",
+    "description": "核心功能冒烟测试",
+    "tags": ["冒烟"]
+  },
+  {
+    "name": "Beta环境用例",
+    "description": "测试环境用例",
+    "tags": ["beta"]
+  },
+  {
+    "name": "Master环境用例",
+    "description": "生产环境用例",
+    "tags": ["master"]
+  }
+]

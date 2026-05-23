@@ -36,9 +36,6 @@ import allure
 @allure.severity(allure.severity_level.NORMAL)
 # ====================== 环境标记（关键！） ======================
 # 查询接口是只读的，所以三个环境都可以跑
-@pytest.mark.smoke  # 生产环境巡检用例
-@pytest.mark.core  # Beta环境核心用例
-@pytest.mark.full  # 测试环境全量用例
 # ==================================================================
 @pytest.mark.prod_run  # 专属标记：只有prod环境执行
 
