@@ -42,9 +42,13 @@ class RequestsClient():
                 url=self.url,
                 headers=self.headers,
                 method=self.method,
+                #查询参数
                 params=self.params,
+                #表单参数
                 data=self.data,
+                #json参数
                 json=self.json,
+                #文件
                 files=self.files,
                 #超时
                 timeout=self.timeout)
