@@ -1,0 +1,32 @@
+# 默认配置（开发环境）
+environment: test
+
+# 服务器配置
+server:
+  host: "127.0.0.1"
+  port: 5000
+  base_url: "http://127.0.0.1:5000"
+
+# 数据库配置
+database:
+  host: "127.0.0.1"
+  port: 3306
+  name: "pycharm_test"
+  user: "root"
+  password: "root"
+  charset: "utf8"
+
+# JWT 配置
+jwt:
+  secret: "your-secret-key-here"
+  expire_days: 7
+
+# 测试用户配置
+test_users:
+  default_username: "test_0006"
+  default_password: "123456"
+
+# 日志配置
+log:
+  level: "INFO"
+  path: "./log"

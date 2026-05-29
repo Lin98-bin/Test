@@ -4,10 +4,42 @@ import requests
 #增加重试机制
 from tenacity import retry,stop_after_attempt,wait_exponential
 from .logger import *
-#token赋值为空
-#声明token会全局变量，谁都可以调用
+
+# token赋值为空
+# 声明token为全局变量，谁都可以调用
 global sessionToken
-sessionToken=""
+sessionToken = ""
+
+
+# 新增：全局上下文存储类
+class GlobalContext:
+    """全局上下文存储器，支持多用户场景和变量传递"""
+    _variables = {}
+
+    @classmethod
+    def set(cls, key, value):
+        cls._variables[key] = value
+
+    @classmethod
+    def get(cls, key, default=None):
+        return cls._variables.get(key, default)
+
+    @classmethod
+    def clear(cls):
+        cls._variables.clear()
+
+# 保持向后兼容（面试时可以提到这种平滑过渡的处理）
+class TokenStore(GlobalContext):
+    @classmethod
+    def set_token(cls, user, token):
+        cls.set(f"token_{user}", token)
+
+    @classmethod
+    def get_token(cls, user="default"):
+        return cls.get(f"token_{user}", "")
+
+# 保持向后兼容
+sessionToken = ""
 class RequestsClient():
     session = requests.Session()
     def __init__(self):

@@ -1,12 +1,16 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","3","商品接口测试套-自己练习","测试接口","","","","查询商品列表用例",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","29","注册接口测试套-自己练习","测试接口","","","","登录用例：用户10",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","71","注册接口测试套-自己练习","测试接口","","","","注册用例：用户7",""
-"passed","Sat May 23 12:44:03 CST 2026","Sat May 23 12:44:04 CST 2026","404","注册接口测试套-自己练习","测试接口","","","","登录用例：用户6",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","32","注册接口测试套-自己练习","测试接口","","","","登录用例：用户8",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","34","注册接口测试套-自己练习","测试接口","","","","登录用例：用户7",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","35","注册接口测试套-自己练习","测试接口","","","","登录用例：用户9",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","59","注册接口测试套-自己练习","测试接口","","","","注册用例：用户8",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","59","注册接口测试套-自己练习","测试接口","","","","注册用例：用户6",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","107","注册接口测试套-自己练习","测试接口","","","","注册用例：用户10",""
-"passed","Sat May 23 12:44:04 CST 2026","Sat May 23 12:44:04 CST 2026","57","注册接口测试套-自己练习","测试接口","","","","注册用例：用户9",""
+"passed","Thu May 28 19:04:06 CST 2026","Thu May 28 19:04:06 CST 2026","34","testcases","test_login_yaml","","","","test_login_yaml[case3]","
+    使用 YAML 数据驱动的登录测试
+    "
+"passed","Thu May 28 19:04:06 CST 2026","Thu May 28 19:04:06 CST 2026","67","testcases","test_login_yaml","","","","test_login_yaml[case2]","
+    使用 YAML 数据驱动的登录测试
+    "
+"passed","Thu May 28 19:04:06 CST 2026","Thu May 28 19:04:06 CST 2026","66","testcases","test_login_yaml","","","","test_login_yaml[case1]","
+    使用 YAML 数据驱动的登录测试
+    "
+"passed","Thu May 28 19:04:06 CST 2026","Thu May 28 19:04:06 CST 2026","393","testcases","test_login_yaml","","","","test_login_yaml[case0]","
+    使用 YAML 数据驱动的登录测试
+    "
+"passed","Thu May 28 19:04:06 CST 2026","Thu May 28 19:04:06 CST 2026","56","testcases","test_login_yaml","","","","test_login_yaml[case4]","
+    使用 YAML 数据驱动的登录测试
+    "

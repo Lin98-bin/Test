@@ -1,0 +1,27 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "create_time": "Thu, 28 May 2026 18:51:35 GMT",
+      "id": 1,
+      "name": "iPhone 15",
+      "price": "5999.00",
+      "stock": 100
+    },
+    {
+      "create_time": "Thu, 28 May 2026 18:51:35 GMT",
+      "id": 2,
+      "name": "MacBook Pro",
+      "price": "14999.00",
+      "stock": 50
+    },
+    {
+      "create_time": "Thu, 28 May 2026 18:51:35 GMT",
+      "id": 3,
+      "name": "AirPods Pro",
+      "price": "1899.00",
+      "stock": 200
+    }
+  ],
+  "msg": "\u67e5\u8be2\u6210\u529f"
+}

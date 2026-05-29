@@ -1,54 +1,47 @@
-
 import pymysql
 from pymysql.cursors import DictCursor
+from .config_manager import config
+
+# 加载配置
+config.load_config()
+
+
 class DBHandler:
-    def __init__(self,host,port,database,user,password,charset="utf8"):
-        self.conn=pymysql.connect(
-            #地址
-            host=host,
-            #端口
-            port=port,
-            #数据库
-            database=database,
-            #用户名
-            user=user,
-            #密码
-            password=password,
-            #编码
-            charset=charset,
-            #数据库返回【字典】，而不是【元组】
+    def __init__(self, host=None, port=None, database=None, user=None, password=None, charset=None):
+        # 从配置文件读取默认值
+        self.host = host or config.get('database.host', '127.0.0.1')
+        self.port = port or config.get('database.port', 3306)
+        self.database = database or config.get('database.name', 'pycharm_test')
+        self.user = user or config.get('database.user', 'root')
+        self.password = password or config.get('database.password', 'root')
+        self.charset = charset or config.get('database.charset', 'utf8')
+
+        self.conn = pymysql.connect(
+            host=self.host,
+            port=self.port,
+            database=self.database,
+            user=self.user,
+            password=self.password,
+            charset=self.charset,
             cursorclass=DictCursor
         )
-        #创建一个游标对象
-        self.cursor=self.conn.cursor()
-    #查询类
-    def query(self,sql,args=None,one=True):
-        #用游标执行语句
-        self.cursor.execute(sql,args)
+        self.cursor = self.conn.cursor()
+
+    def query(self, sql, args=None, one=True):
+        self.cursor.execute(sql, args)
         if one:
-            #如果one=True，返回一条数据
             return self.cursor.fetchone()
         else:
-            #否则全部返回
             return self.cursor.fetchall()
-    #执行类：增删改
-    def execute(self,sql,args=None):
-    #游标执行语句
-        self.cursor.execute(sql,args)
-    #执行类语句需要确认提交
+
+    def execute(self, sql, args=None):
+        self.cursor.execute(sql, args)
         self.conn.commit()
 
     def close(self):
-        #执行完语句记得关闭
         self.cursor.close()
-        #记得断开连接
         self.conn.close()
 
-db=DBHandler(
-    host="localhost",
-    port=3306,
-    database="pycharm_test",
-    user="root",
-    password="root",
-    charset="utf8"
-)
+
+# 默认实例
+db = DBHandler()

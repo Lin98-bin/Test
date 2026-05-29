@@ -1,0 +1,4 @@
+
+【登录成功-用户0007】响应：{'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNyIsImV4cCI6MTc4MDU3MTA0NiwiaWF0IjoxNzc5OTY2MjQ2fQ.5FJ5Blt_20dDGscFxRiHIh_Avn2_F4cU1H-OdcqXy8g', 'user_id': 2, 'username': 'test_0007'}, 'msg': '登录成功'}
+Token提取成功：eyJhbGciOiJIUzI1NiIs...
+数据库验证成功：用户 test_0007 存在

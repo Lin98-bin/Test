@@ -1,0 +1,4 @@
+2026-05-28 19:04:06,611 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-05-28 19:04:06,611 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0008', 'password': '123456'}
+2026-05-28 19:04:06,611 - INFO - api_client.py - 【请求头】headers: {'sessionToken': ''}
+2026-05-28 19:04:06,618 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwOCIsImV4cCI6MTc4MDU3MTA0NiwiaWF0IjoxNzc5OTY2MjQ2fQ.Ar2WE00W8hEYpLiOd99C7v2IEiE2B2JD4ywayvq-Tt0', 'user_id': 3, 'username': 'test_0008'}, 'msg': '登录成功'}
