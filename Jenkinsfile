@@ -24,7 +24,7 @@ pipeline {
                 script {
                     echo '[INFO] Installing project dependencies...'
                     // Windows 环境使用 bat，Linux 环境使用 sh
-                    bat 'pip install -r requirements.txt'
+                    bat 'set PYTHONUTF8=1 && pip install -r requirements.txt'
                 }
             }
         }
