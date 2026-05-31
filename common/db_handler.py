@@ -1,46 +1,57 @@
 import pymysql
 from pymysql.cursors import DictCursor
-from .config_manager import config
-
-# 加载配置
-config.load_config()
-
+from common import setting
 
 class DBHandler:
-    def __init__(self, host=None, port=None, database=None, user=None, password=None, charset=None):
-        # 从配置文件读取默认值
-        self.host = host or config.get('database.host', '127.0.0.1')
-        self.port = port or config.get('database.port', 3306)
-        self.database = database or config.get('database.name', 'pycharm_test')
-        self.user = user or config.get('database.user', 'root')
-        self.password = password or config.get('database.password', 'root')
-        self.charset = charset or config.get('database.charset', 'utf8')
+    def __init__(self):
+        self._conn = None
+        self._cursor = None
 
-        self.conn = pymysql.connect(
-            host=self.host,
-            port=self.port,
-            database=self.database,
-            user=self.user,
-            password=self.password,
-            charset=self.charset,
+    def _get_connection(self):
+        """动态获取数据库连接，确保环境切换后配置生效"""
+        # 如果连接不存在，或者配置已经发生变化（通过 setting.change_env 改变）
+        # 注意：这里简化处理，每次查询前检查或重新获取配置
+        conf = setting.DB_CONF
+        
+        # 如果已经有连接，简单检查是否可用（实际开发中建议用连接池）
+        if self._conn:
+            try:
+                self._conn.ping(reconnect=True)
+                return self._conn
+            except:
+                pass
+
+        # 创建新连接
+        self._conn = pymysql.connect(
+            host=conf.get('host'),
+            port=conf.get('port', 3306),
+            database=conf.get('database'),
+            user=conf.get('user'),
+            password=conf.get('password'),
+            charset=conf.get('charset', 'utf8'),
             cursorclass=DictCursor
         )
-        self.cursor = self.conn.cursor()
+        return self._conn
 
     def query(self, sql, args=None, one=True):
-        self.cursor.execute(sql, args)
-        if one:
-            return self.cursor.fetchone()
-        else:
-            return self.cursor.fetchall()
+        conn = self._get_connection()
+        with conn.cursor() as cursor:
+            cursor.execute(sql, args)
+            if one:
+                return cursor.fetchone()
+            else:
+                return cursor.fetchall()
 
     def execute(self, sql, args=None):
-        self.cursor.execute(sql, args)
-        self.conn.commit()
+        conn = self._get_connection()
+        with conn.cursor() as cursor:
+            cursor.execute(sql, args)
+            conn.commit()
 
     def close(self):
-        self.cursor.close()
-        self.conn.close()
+        if self._conn:
+            self._conn.close()
+            self._conn = None
 
 
 # 默认实例

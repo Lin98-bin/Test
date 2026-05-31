@@ -1,0 +1,27 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# 测试报告与结果
+allure-results/
+allure-report/
+complete.html
+*.log
+log/
+
+# 环境变量与虚拟环境
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE 配置文件
+.idea/
+.vscode/
+
+# 操作系统临时文件
+.DS_Store
+Thumbs.db

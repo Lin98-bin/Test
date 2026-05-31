@@ -1,32 +1,38 @@
-# 默认配置（开发环境）
-environment: test
-
-# 服务器配置
-server:
-  host: "127.0.0.1"
-  port: 5000
+# 测试环境 (Test)
+test:
   base_url: "http://127.0.0.1:5000"
+  db:
+    host: "127.0.0.1"
+    port: 3306
+    user: "root"
+    password: "root"
+    database: "pycharm_test"
+    charset: "utf8"
 
-# 数据库配置
-database:
-  host: "127.0.0.1"
-  port: 3306
-  name: "pycharm_test"
-  user: "root"
-  password: "root"
-  charset: "utf8"
+# 预发布环境 (Beta)
+beta:
+  base_url: "http://beta-api.company.com"
+  db:
+    host: "10.0.0.2"
+    port: 3306
+    user: "beta_user"
+    password: "beta_password"
+    database: "beta_db"
+    charset: "utf8"
 
-# JWT 配置
-jwt:
-  secret: "your-secret-key-here"
-  expire_days: 7
+# 生产环境 (Prod/Master)
+prod:
+  base_url: "https://api.company.com"
+  db:
+    host: "10.0.0.3"
+    port: 3306
+    user: "prod_user"
+    password: "prod_password"
+    database: "prod_db"
+    charset: "utf8"
 
-# 测试用户配置
-test_users:
-  default_username: "test_0006"
-  default_password: "123456"
-
-# 日志配置
-log:
-  level: "INFO"
-  path: "./log"
+# 公共配置
+common:
+  log_level: "INFO"
+  log_path: "./log"
+  jwt_secret: "your-secret-key-here"

@@ -6,8 +6,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from common.api_client import RequestsClient, TokenStore
 from common.jsonpath_utils import JsonPathExtractor
-from common.environment import BASE_URL
-from common.config_manager import config
+from common import setting
 
 def pytest_addoption(parser):
     """增加命令行参数 --env"""
@@ -17,18 +16,9 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="session", autouse=True)
 def set_env(request):
-    """根据命令行参数设置全局环境配置"""
+    """根据命令行参数，调用 setting.py 的切换函数"""
     env = request.config.getoption("--env")
-    print(f"\n【配置】当前运行环境: {env}")
-    # 这里可以根据 env 动态修改 config 对象的属性
-    config.set("environment", env)
-    
-    # 动态调整 BASE_URL 等逻辑可以在这里实现
-    if env == "prod":
-        config.set("server.base_url", "https://prod-api.com")
-    elif env == "beta":
-        config.set("server.base_url", "http://beta-api.com")
-    
+    setting.change_env(env)
     return env
 
 @pytest.fixture(scope="session")
@@ -43,7 +33,7 @@ def login_token():
     print(f"\n【Fixture】正在登录获取Token...")
 
     client = RequestsClient()
-    client.url = BASE_URL + '/login'
+    client.url = setting.BASE_URL + '/login'
     client.method = "post"
     client.json = {
         "username": username,
