@@ -9,6 +9,7 @@ pipeline {
     environment {
         PYTHON_PATH = "python"
         PYTHONUTF8 = "1"
+        PYTHONIOENCODING = "UTF-8"
         // Email recipient
         EMAIL_RECIPIENT = "1029633859@qq.com" 
     }

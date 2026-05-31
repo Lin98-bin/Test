@@ -23,18 +23,18 @@ def run_tests():
     pytest_args = ['-s', '-v', 'testcases/', '--alluredir=./allure-results', f'--env={env}']
     pytest.main(pytest_args)
     
-    # --- 拷贝 Allure 配置文件以填充 Environment, Categories 等信息 ---
+    # --- Load Allure Metadata ---
     config_dir = './config'
     results_dir = './allure-results'
-    # 想要加载到 Allure 中的文件列表
+    # List of files to load into Allure
     allure_config_files = ['environment.properties', 'categories.json', 'executor.json']
     
-    print("\n 正在加载 Allure 配置元数据...")
+    print("\n[INFO] Loading Allure metadata...")
     for file_name in allure_config_files:
         src_file = os.path.join(config_dir, file_name)
         if os.path.exists(src_file):
             shutil.copy(src_file, results_dir)
-            print(f"  - 已加载: {file_name}")
+            print(f"  - Loaded: {file_name}")
     # ------------------------------------------------------------------
     
     # 3. 生成静态 HTML 报告目录
