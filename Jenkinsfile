@@ -1,13 +1,16 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(name: 'ENV', choices: ['test', 'beta', 'prod'], description: '选择运行环境')
+    // 1. 定时触发：每天凌晨 1 点自动执行
+    triggers {
+        cron('H 1 * * *')
     }
 
     environment {
         PYTHON_PATH = "python"
         PYTHONUTF8 = "1"
+        // 邮件接收人
+        EMAIL_RECIPIENT = "1029633859@qq.com" 
     }
 
     stages {
@@ -24,18 +27,35 @@ pipeline {
             steps {
                 script {
                     echo '[INFO] Installing project dependencies...'
-                    // Windows 环境使用 bat，Linux 环境使用 sh
                     bat 'pip install -r requirements.txt'
                 }
             }
         }
 
-        stage('Execute Tests') {
+        // 2. 阶梯执行：Test -> Beta -> Prod
+        stage('Test Environment') {
             steps {
                 script {
-                    echo "[INFO] Running automated tests (Env: ${params.ENV})..."
-                    // 执行测试并生成 allure-results
-                    bat "python run.py --env=${params.ENV}"
+                    echo "[INFO] Running tests in TEST environment..."
+                    bat "python run.py --env=test"
+                }
+            }
+        }
+
+        stage('Beta Environment') {
+            steps {
+                script {
+                    echo "[INFO] Running tests in BETA environment..."
+                    bat "python run.py --env=beta"
+                }
+            }
+        }
+
+        stage('Prod Environment') {
+            steps {
+                script {
+                    echo "[INFO] Running tests in PROD environment..."
+                    bat "python run.py --env=prod"
                 }
             }
         }
@@ -45,21 +65,31 @@ pipeline {
         always {
             script {
                 echo '[INFO] Collecting test results and generating Allure report...'
-                // 1. 调用 Jenkins Allure 插件展示原生报告
                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                 
-                // 2. 归档单体 HTML 报告（方便下载发送）
-                if (fileExists('allure-report/complete.html')) {
-                    archiveArtifacts artifacts: 'allure-report/complete.html', fingerprint: true
-                    echo '[SUCCESS] Single HTML report archived.'
-                }
+                // 3. 邮件发送逻辑
+                mail to: "${env.EMAIL_RECIPIENT}",
+                     subject: "Jenkins 自动化测试任务报告 - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                     body: """
+                     <html>
+                     <body>
+                        <h2>自动化测试执行完毕</h2>
+                        <p>项目名称：${env.JOB_NAME}</p>
+                        <p>构建编号：#${env.BUILD_NUMBER}</p>
+                        <p>执行状态：${currentBuild.currentResult}</p>
+                        <p>报告链接：<a href="${env.BUILD_URL}allure/">点击查看 Allure 详细报告</a></p>
+                        <p>提示：如果需要离线报告，请在 Jenkins 构建页面下载 complete.html 制品。</p>
+                     </body>
+                     </html>
+                     """,
+                     mimeType: 'text/html'
             }
         }
         success {
-            echo '[SUCCESS] All tests passed!'
+            echo '[SUCCESS] All environments passed!'
         }
         failure {
-            echo '[FAILURE] Some tests failed, please check the report.'
+            echo '[FAILURE] Pipeline stopped due to failure in one of the stages.'
         }
     }
 }
