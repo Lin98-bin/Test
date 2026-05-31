@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         PYTHON_PATH = "python"
+        PYTHONUTF8 = "1"
     }
 
     stages {
@@ -24,7 +25,7 @@ pipeline {
                 script {
                     echo '[INFO] Installing project dependencies...'
                     // Windows 环境使用 bat，Linux 环境使用 sh
-                    bat 'set PYTHONUTF8=1 && pip install -r requirements.txt'
+                    bat 'pip install -r requirements.txt'
                 }
             }
         }
