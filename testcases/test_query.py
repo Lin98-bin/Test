@@ -2,25 +2,25 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from api.goods_api import GoodsApi
+from service.goods_service import GoodsService
 import pytest
 import allure
 from pytest_assume.plugin import assume
 
-@allure.parent_suite("注册接口测试套-自己练习")
-@allure.suite("master巡检用例")
+@allure.parent_suite("接口自动化测试-自己练习")
+@allure.suite("master只读用例")
 @allure.epic("商品模块")
 @allure.feature("商品查询接口")
 @allure.story("获取商品列表")
+@allure.tag("test", "master")
+@pytest.mark.master
 @allure.title("查询商品列表用例")
-@allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.prod_run
 def test_query_goods(login_token):
-    goods_api = GoodsApi()
+    goods_service = GoodsService()
     
     with allure.step("1. 发送查询请求"):
-        # 统一使用 GoodsApi 封装的方法
-        resp = goods_api.get_list(token=login_token)
+        # 统一使用 GoodsService 封装的方法
+        resp = goods_service.get_list(token=login_token)
         resp_json = resp.json()
 
     with allure.step("2. 报告附加响应数据"):

@@ -7,7 +7,6 @@ from logging.handlers import TimedRotatingFileHandler
 
 #确定好log文件夹存放的目录
 log_path=os.path.join (os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"log")
-print(log_path)
 
 #如果当前目录没有log，就创建log
 if not os.path.exists(log_path):

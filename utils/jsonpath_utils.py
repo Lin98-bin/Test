@@ -19,7 +19,7 @@ class JsonPathExtractor:
         try:
             jsonpath_expr = parse(jsonpath_expr)
             result = jsonpath_expr.find(data)
-            if result:
+            if len(result) > 0:
                 return result[0].value
             return None
         except Exception as e:

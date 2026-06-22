@@ -4,23 +4,24 @@ import pytest
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from common.api_client import RequestsClient, TokenStore
-from common.jsonpath_utils import JsonPathExtractor
-from common import setting
+from core.api_client import RequestsClient
+from core.context import TokenStore
+from utils.jsonpath_utils import JsonPathExtractor
+from core import setting
 
 def pytest_addoption(parser):
     """增加命令行参数 --env"""
     parser.addoption(
         "--env", action="store", default="test", help="set test environment: test, beta or prod"
     )
-
+#前置：：环境切换
 @pytest.fixture(scope="session", autouse=True)
 def set_env(request):
     """根据命令行参数，调用 setting.py 的切换函数"""
     env = request.config.getoption("--env")
     setting.change_env(env)
     return env
-
+#前置：登录提取token并存入全局存储器
 @pytest.fixture(scope="session")
 def login_token():
     """

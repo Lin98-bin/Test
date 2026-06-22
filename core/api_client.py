@@ -1,51 +1,16 @@
-from.environment import API_TIMEOUT
+from .setting import API_TIMEOUT
 import time
 import requests
 import json
 #增加重试机制
 from tenacity import retry,stop_after_attempt,wait_exponential
-from .logger import *
+from utils.logger import *
 
 try:
     import allure
 except ImportError:
     allure = None
 
-# token赋值为空
-# 声明token为全局变量，谁都可以调用
-global sessionToken
-sessionToken = ""
-
-
-# 新增：全局上下文存储类
-class GlobalContext:
-    """全局上下文存储器，支持多用户场景和变量传递"""
-    _variables = {}
-
-    @classmethod
-    def set(cls, key, value):
-        cls._variables[key] = value
-
-    @classmethod
-    def get(cls, key, default=None):
-        return cls._variables.get(key, default)
-
-    @classmethod
-    def clear(cls):
-        cls._variables.clear()
-
-# 保持向后兼容（面试时可以提到这种平滑过渡的处理）
-class TokenStore(GlobalContext):
-    @classmethod
-    def set_token(cls, user, token):
-        cls.set(f"token_{user}", token)
-
-    @classmethod
-    def get_token(cls, user="default"):
-        return cls.get(f"token_{user}", "")
-
-# 保持向后兼容
-sessionToken = ""
 class RequestsClient():
     session = requests.Session()
     def __init__(self):
@@ -92,24 +57,36 @@ class RequestsClient():
                 timeout=self.timeout)
             
             # 自动添加 Allure 附件
-            if allure:
+            if allure is not None:
                 try:
                     # 1. 请求基本信息
                     req_info = f"URL: {self.url}\nMethod: {self.method}\nTimeout: {self.timeout}s"
                     allure.attach(req_info, name="Request Info", attachment_type=allure.attachment_type.TEXT)
                     
                     # 2. 请求头 (格式化 JSON)
-                    allure.attach(json.dumps(self.headers or {}, indent=2, ensure_ascii=False), 
+                    headers_data = self.headers if self.headers is not None else {}
+                    allure.attach(json.dumps(headers_data, indent=2, ensure_ascii=False), 
                                  name="Request Headers", attachment_type=allure.attachment_type.JSON)
                     
                     # 3. 请求体
-                    req_body = self.json or self.data or "No Body"
+                    if self.json is not None:
+                        req_body = self.json
+                    elif self.data is not None:
+                        req_body = self.data
+                    else:
+                        req_body = "No Body"
+
                     if isinstance(req_body, dict):
                         req_body = json.dumps(req_body, indent=2, ensure_ascii=False)
                     allure.attach(str(req_body), name="Request Body", attachment_type=allure.attachment_type.JSON)
                     
                     # 4. 响应体
-                    resp_content = self.resp.json() if 'application/json' in self.resp.headers.get('Content-Type', '') else self.resp.text
+                    content_type = self.resp.headers.get('Content-Type', '')
+                    if 'application/json' in content_type:
+                        resp_content = self.resp.json()
+                    else:
+                        resp_content = self.resp.text
+
                     if isinstance(resp_content, dict):
                         resp_content = json.dumps(resp_content, indent=2, ensure_ascii=False)
                     allure.attach(str(resp_content), name="Response Body", attachment_type=allure.attachment_type.JSON)

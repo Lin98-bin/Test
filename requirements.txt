@@ -9,14 +9,9 @@ tenacity==9.1.4
 # --- Test Runner ---
 pytest==9.0.3
 pytest-assume==2.2.0
-pytest-ordering==0.6
-pytest-rerunfailures==16.1
-pytest-xdist==3.8.0
-pytest-check==2.8.0
 
 # --- Reporting ---
 allure-pytest==2.16.0
-allure-combine==1.0.11
 
 # --- Data Parsing & Drivers ---
 PyYAML==6.0.3

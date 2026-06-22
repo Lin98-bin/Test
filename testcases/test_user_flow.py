@@ -2,21 +2,26 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from api.user_api import UserApi
-from api.goods_api import GoodsApi
-from common.api_client import GlobalContext, TokenStore
-from common.jsonpath_utils import JsonPathExtractor
+from service.user_service import UserService
+from service.goods_service import GoodsService
+from core.context import GlobalContext, TokenStore
+from utils.jsonpath_utils import JsonPathExtractor
 import pytest
 import allure
 from pytest_assume.plugin import assume
 import random
 
-@allure.feature("用户业务流程")
-@allure.story("完整流程：注册-登录-查询-退出")
+@allure.parent_suite("接口自动化测试-自己练习")
+@allure.suite("test全量用例")
+@allure.feature("业务流程")
+@allure.story("用户全流程测试")
+@allure.tag("test")
+@pytest.mark.test
+@allure.title("用户完整业务流程测试")
 def test_user_complete_flow():
     """测试完整用户业务流程"""
-    user_api = UserApi()
-    goods_api = GoodsApi()
+    user_service = UserService()
+    goods_service = GoodsService()
     extractor = JsonPathExtractor()
 
     # 生成随机用户名，避免重复
@@ -24,7 +29,7 @@ def test_user_complete_flow():
     password = "123456"
 
     with allure.step("步骤1：注册新用户"):
-        resp = user_api.register(username, password)
+        resp = user_service.register(username, password)
         resp_json = resp.json()
         print(f"注册响应：{resp_json}")
 
@@ -36,7 +41,7 @@ def test_user_complete_flow():
         allure.attach(username, name="注册用户名", attachment_type=allure.attachment_type.TEXT)
 
     with allure.step("步骤2：使用新用户登录"):
-        resp = user_api.login(username, password)
+        resp = user_service.login(username, password)
         resp_json = resp.json()
         print(f"登录响应：{resp_json}")
 
@@ -53,7 +58,7 @@ def test_user_complete_flow():
     with allure.step("步骤3：查询商品列表"):
         # 从全局上下文获取 Token
         current_token = TokenStore.get_token(username)
-        resp = goods_api.get_list(token=current_token)
+        resp = goods_service.get_list(token=current_token)
         resp_json = resp.json()
         print(f"商品查询响应：{resp_json}")
 
@@ -66,7 +71,7 @@ def test_user_complete_flow():
 
     with allure.step("步骤4：查询用户信息"):
         current_token = TokenStore.get_token(username)
-        resp = user_api.get_info(token=current_token)
+        resp = user_service.get_info(token=current_token)
         resp_json = resp.json()
         print(f"用户信息响应：{resp_json}")
 
@@ -77,7 +82,7 @@ def test_user_complete_flow():
 
     with allure.step("步骤5：退出登录"):
         current_token = TokenStore.get_token(username)
-        resp = user_api.logout(token=current_token)
+        resp = user_service.logout(token=current_token)
         resp_json = resp.json()
         print(f"退出登录响应：{resp_json}")
 

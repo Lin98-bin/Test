@@ -2,54 +2,36 @@ import os
 import pytest
 import shutil
 import argparse
+import subprocess
 
 def run_tests():
-    """执行测试并生成报告"""
-    # 1. 解析命令行参数
-    parser = argparse.ArgumentParser(description="接口自动化测试运行入口")
-    parser.addoption = parser.add_argument  # 兼容性处理
-    parser.add_argument("--env", default="test", help="输入运行环境: test, beta 或 prod")
+    # 1. 解析参数
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--env", default="test", help="环境: test/beta/prod")
+    parser.add_argument("--m", default=None, help="标记过滤")
     args = parser.parse_args()
     
-    env = args.env
-    print(f"[INFO] Start automated testing... Env: {env}")
+    # 2. 构造 Pytest 参数
+    # --clean-alluredir 会自动清理旧数据，无需手动删除文件夹
+    pytest_args = ['-s', '-v', 'testcases/', '--alluredir=allure-results', f'--env={args.env}', '-m', args.env]
+    if args.m:
+        pytest_args[-1] = f"{args.env} and {args.m}"
     
-    # 2. 清理旧的报告数据
-    if os.path.exists('allure-results'):
-        shutil.rmtree('allure-results')
-    
-    # 3. 执行 pytest
-    # 将 --env 参数传递给 pytest，由 conftest.py 接收
-    pytest_args = ['-s', '-v', 'testcases/', '--alluredir=./allure-results', f'--env={env}']
+    print(f"开始测试... 环境: {args.env}")
     pytest.main(pytest_args)
     
-    # --- Load Allure Metadata ---
-    config_dir = './config'
-    results_dir = './allure-results'
-    # List of files to load into Allure
-    allure_config_files = ['environment.properties', 'categories.json', 'executor.json']
+    # 3. 注入 Allure 配置
+    res_dir = 'allure-results'
+    os.makedirs(res_dir, exist_ok=True)
+    for f in ['environment.properties', 'categories.json', 'executor.json']:
+        src = os.path.join('config', f)
+        if os.path.exists(src):
+            shutil.copy(src, res_dir)
     
-    print("\n[INFO] Loading Allure metadata...")
-    for file_name in allure_config_files:
-        src_file = os.path.join(config_dir, file_name)
-        if os.path.exists(src_file):
-            shutil.copy(src_file, results_dir)
-            print(f"  - Loaded: {file_name}")
-    # ------------------------------------------------------------------
-    
-    # 3. 生成静态 HTML 报告目录
-    print("\n[INFO] Generating standard Allure report...")
-    os.system("allure generate ./allure-results -o ./allure-report --clean")
-    
-    # 4. 将报告压缩成单个可直接打开的静态 HTML 文件
-    print("\n[INFO] Combining into single static HTML report...")
-    try:
-        # 使用 allure-combine 工具
-        os.system("allure-combine ./allure-report")
-        print("[SUCCESS] Combined successfully! Check complete.html in allure-report directory.")
-        print("[TIP] You can double-click complete.html to view in browser.")
-    except Exception as e:
-        print(f"[ERROR] Combination failed: {e}")
+    # 4. 生成报告
+    print("生成报告中...")
+    subprocess.run("allure generate allure-results -o allure-report --clean --single-file", shell=True)
+    print(f"\n报告已生成: {os.path.abspath('allure-report/index.html')}")
 
 if __name__ == "__main__":
     run_tests()

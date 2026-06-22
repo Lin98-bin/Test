@@ -1,7 +1,7 @@
-from common.api_client import RequestsClient
-from common import setting
+from core.api_client import RequestsClient
+from core import setting
 
-class GoodsApi:
+class GoodsService:
     """商品相关接口封装"""
     
     def __init__(self):

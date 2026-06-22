@@ -10,6 +10,7 @@ with open(YAML_PATH, 'r', encoding='utf-8') as f:
     _all_config = yaml.safe_load(f)
 
 # 3. 定义全局变量（默认指向 test 环境）
+API_TIMEOUT = 10
 ENV = "test"
 BASE_URL = _all_config[ENV]['base_url']
 DB_CONF = _all_config[ENV].get('db', {})

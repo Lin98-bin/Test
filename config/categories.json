@@ -1,12 +1,17 @@
 [
   {
-    "statuses": ["passed"],
-    "name": "用例通过"
+    "name": "❌ 业务功能缺陷 (Product Defects)",
+    "matchedStatuses": ["failed"],
+    "description": "通常是接口断言失败（Actual != Expected）"
   },
-
-    {
-    "statuses": ["failed"],
-    "name": "用例失败"
+  {
+    "name": "⚠️ 测试脚本异常 (Test Defects)",
+    "matchedStatuses": ["broken"],
+    "description": "通常是代码报错、网络超时或环境不稳定导致的异常"
+  },
+  {
+    "name": "⚪ 跳过执行用例 (Skipped)",
+    "matchedStatuses": ["skipped"]
   }
-
+  
 ]

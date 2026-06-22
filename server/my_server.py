@@ -202,6 +202,55 @@ def logout():
     return jsonify({"code": 200, "msg": "退出成功"})
 
 
+# ============ 6. 订单相关接口 (内存存储演示) ============
+orders_db = {}
+
+@app.route('/api/order/create', methods=['POST'])
+@login_required
+def create_order():
+    data = request.get_json()
+    goods_id = data.get('goods_id')
+    num = data.get('num', 1)
+    
+    if not goods_id:
+        return jsonify({"code": 400, "error": "商品ID不能为空"})
+    
+    order_id = f"ORD{datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')}"
+    orders_db[order_id] = {
+        "order_id": order_id,
+        "goods_id": goods_id,
+        "num": num,
+        "status": "unpaid",
+        "username": request.current_user.get('username')
+    }
+    
+    return jsonify({
+        "code": 200, 
+        "msg": "订单创建成功", 
+        "data": {"order_id": order_id}
+    })
+
+@app.route('/api/order/pay', methods=['POST'])
+@login_required
+def pay_order():
+    data = request.get_json()
+    order_id = data.get('order_id')
+    
+    if not order_id or order_id not in orders_db:
+        return jsonify({"code": 404, "error": "订单不存在"})
+    
+    orders_db[order_id]['status'] = 'paid'
+    return jsonify({"code": 200, "msg": "支付成功", "data": {"order_id": order_id, "status": "paid"}})
+
+@app.route('/api/order/status/<order_id>', methods=['GET'])
+@login_required
+def get_order_status(order_id):
+    if order_id not in orders_db:
+        return jsonify({"code": 404, "error": "订单不存在"})
+    
+    return jsonify({"code": 200, "msg": "查询成功", "data": orders_db[order_id]})
+
+
 # ============ 健康检查 ============
 @app.route('/health', methods=['GET'])
 def health():
