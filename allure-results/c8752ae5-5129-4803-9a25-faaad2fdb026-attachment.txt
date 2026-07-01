@@ -1,0 +1,20 @@
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/register
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'username': 'test_flow_82429', 'password': '123456'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: None
+[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I', 'username': 'test_flow_82429'}, 'msg': '注册成功'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/login
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'username': 'test_flow_82429', 'password': '123456'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {}
+[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I', 'user_id': 881, 'username': 'test_flow_82429'}, 'msg': '登录成功'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: None
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】get | URL: http://127.0.0.1:5000/api/user/info
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'username': 'test_flow_82429', 'password': '123456'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'create_time': 'Mon, 08 Jun 2026 16:07:26 GMT', 'id': 881, 'status': 1, 'username': 'test_flow_82429'}, 'msg': '查询成功'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/api/logout
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'username': 'test_flow_82429', 'password': '123456'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '退出成功'}

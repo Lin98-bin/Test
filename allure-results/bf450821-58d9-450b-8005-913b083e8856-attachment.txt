@@ -1,0 +1,3 @@
+URL: http://127.0.0.1:5000/api/order/create
+Method: post
+Timeout: 10s

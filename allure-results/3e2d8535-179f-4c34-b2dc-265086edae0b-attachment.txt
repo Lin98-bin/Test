@@ -1,0 +1,81 @@
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDgzNiwiaWF0IjoxNzgwOTA2MDM2fQ.dvK8eiTxhXPuz9h-9KnoFM9jlot-SH22Y7JupCjdLHE'}
+[1m[31mERROR   [0m test_apiauto_logger:api_client.py:101 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDgzNiwiaWF0IjoxNzgwOTA2MDM2fQ.dvK8eiTxhXPuz9h-9KnoFM9jlot-SH22Y7JupCjdLHE'}
+[1m[31mERROR   [0m test_apiauto_logger:api_client.py:101 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDgzNiwiaWF0IjoxNzgwOTA2MDM2fQ.dvK8eiTxhXPuz9h-9KnoFM9jlot-SH22Y7JupCjdLHE'}
+[1m[31mERROR   [0m test_apiauto_logger:api_client.py:101 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

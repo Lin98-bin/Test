@@ -1,0 +1,8 @@
+{
+  "code": 200,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfcmVnXzAwMiIsImV4cCI6MTc4MTUxMDg0NSwiaWF0IjoxNzgwOTA2MDQ1fQ.7MomKB_hfVZYMfWMngIPIDhrJmAhYwHy0j5LBw3-Uqc",
+    "username": "test_reg_002"
+  },
+  "msg": "注册成功"
+}

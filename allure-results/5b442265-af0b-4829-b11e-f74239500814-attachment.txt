@@ -1,0 +1,3 @@
+URL: http://127.0.0.1:5000/api/order/status/ORD20260608160725778958
+Method: get
+Timeout: 10s

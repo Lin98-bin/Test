@@ -1,0 +1,9 @@
+{
+  "code": 200,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd184MjQyOSIsImV4cCI6MTc4MTUxMDg0NiwiaWF0IjoxNzgwOTA2MDQ2fQ.z-2ygL0ySqWdq7i2iSBJPEdolgH9JyZoNnuqaV71T7I",
+    "user_id": 881,
+    "username": "test_flow_82429"
+  },
+  "msg": "登录成功"
+}
