@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu May 21 21:42:57 CST 2026","Thu May 21 21:42:57 CST 2026","253","","test_apiauto","","","","test_login",""
-"passed","Thu May 21 21:42:56 CST 2026","Thu May 21 21:42:57 CST 2026","683","","test_apiauto","","","","test_register",""

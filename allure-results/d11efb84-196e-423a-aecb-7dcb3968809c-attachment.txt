@@ -1,4 +1,0 @@
-[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
-[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: None
-[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDgzNiwiaWF0IjoxNzgwOTA2MDM2fQ.dvK8eiTxhXPuz9h-9KnoFM9jlot-SH22Y7JupCjdLHE'}
-[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}

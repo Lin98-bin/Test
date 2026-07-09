@@ -1,9 +1,0 @@
-{
-  "code": 200,
-  "data": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDgzNiwiaWF0IjoxNzgwOTA2MDM2fQ.dvK8eiTxhXPuz9h-9KnoFM9jlot-SH22Y7JupCjdLHE",
-    "user_id": 1,
-    "username": "test_0006"
-  },
-  "msg": "登录成功"
-}

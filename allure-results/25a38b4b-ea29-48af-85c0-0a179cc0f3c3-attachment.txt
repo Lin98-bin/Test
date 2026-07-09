@@ -1,4 +1,0 @@
-INFO     test_apiauto_logger:api_client.py:36 【接口请求】get | URL: http://127.0.0.1:5000/1/classes/Goods
-INFO     test_apiauto_logger:api_client.py:37 【请求参数】params: None | data: None | json: None
-INFO     test_apiauto_logger:api_client.py:38 【请求头】headers: {'Accept': 'application/json'}
-INFO     test_apiauto_logger:api_client.py:52 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'id': 1, 'name': 'iPhone 15', 'price': 5999, 'stock': 100}, {'id': 2, 'name': 'MacBook Pro', 'price': 14999, 'stock': 50}, {'id': 3, 'name': 'AirPods Pro', 'price': 1899, 'stock': 200}], 'msg': '查询成功'}

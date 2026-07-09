@@ -2,9 +2,10 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import pytest
+
 from service.user_service import UserService
 from utils.yaml_utils import read_yaml_testcases
-import pytest
 import allure
 from pytest_assume.plugin import assume
 

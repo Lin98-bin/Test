@@ -3,6 +3,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
+
 import allure
 from service.order_service import OrderService
 from service.user_service import UserService
@@ -28,7 +29,7 @@ def test_create_order(login_token):
 
     with allure.step("步骤1：获取商品列表并选择第一个商品"):
         resp_goods = goods_service.get_list(token=login_token)
-        goods_id = resp_goods.json()["data"][0]["id"]
+        goods_id = resp_goods.json()["data"]["list"][0]["id"]
         allure.attach(str(goods_id), name="选择的商品ID")
 
     with allure.step("步骤2：使用 Token 提交下单请求"):
@@ -49,6 +50,9 @@ def test_add_shipping_address(login_token):
     验证需要 Token 的新增地址接口
     """
     user_service = UserService()
+    # 重新登录获取最新 token，防止被其他测试覆盖
+    resp = user_service.login("test_0006", "123456")
+    current_token = resp.json()["data"]["token"]
 
     with allure.step("步骤1：准备地址数据并发送请求"):
         # 这里直接使用了传入的 login_token 夹具
@@ -56,7 +60,7 @@ def test_add_shipping_address(login_token):
             address_detail="上海市浦东新区某某路123号",
             contact_name="林同学",
             contact_phone="13800138000",
-            token=login_token
+            token=current_token
         )
         resp_json = resp.json()
 

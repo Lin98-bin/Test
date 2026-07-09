@@ -1,7 +1,7 @@
-from core.api_client import RequestsClient
-from core import setting
+from common.api_client import RequestsClient
+from common import setting
 
-class GoodsService:
+class GoodsApi:
     """商品相关接口封装"""
     
     def __init__(self):
@@ -16,7 +16,7 @@ class GoodsService:
 
     def get_detail(self, goods_id, token=None):
         """获取商品详情"""
-        self.client.url = f"{setting.BASE_URL}/api/goods/detail/{goods_id}"
+        self.client.url = f"{setting.BASE_URL}/api/goods/{goods_id}"
         self.client.method = "get"
         self.client.headers = {"sessionToken": token} if token else {}
         return self.client.send()

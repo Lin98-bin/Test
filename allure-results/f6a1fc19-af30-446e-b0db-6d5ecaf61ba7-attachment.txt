@@ -1,4 +1,0 @@
-[32mINFO    [0m test_apiauto_logger:api_client.py:39 【接口请求】post | URL: http://127.0.0.1:5000/login
-[32mINFO    [0m test_apiauto_logger:api_client.py:40 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': 'wrong_password'}
-[32mINFO    [0m test_apiauto_logger:api_client.py:41 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTUxMDg0NSwiaWF0IjoxNzgwOTA2MDQ1fQ.WZVvwAcW9ll7CVqW8a6JPg6r0qM76UecXkHbxFoodr0'}
-[32mINFO    [0m test_apiauto_logger:api_client.py:97 【接口响应】状态码: 200 | 响应体: {'code': 401, 'error': '用户名或密码错误，或用户已被禁用'}

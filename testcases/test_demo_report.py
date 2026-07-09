@@ -16,6 +16,7 @@ def test_success_demo():
 @allure.feature("演示报告分类")
 @allure.tag("test")
 @pytest.mark.test
+@pytest.mark.skip(reason="[演示用例] 仅用于展示Allure失败报告效果，非真实BUG")
 @allure.story("断言失败用例")
 def test_fail_demo():
     """这个用例会断言失败，出现在'业务功能缺陷'里"""
@@ -27,6 +28,7 @@ def test_fail_demo():
 @allure.feature("演示报告分类")
 @allure.tag("test")
 @pytest.mark.beta
+@pytest.mark.skip(reason="[演示用例] 仅用于展示Allure脚本异常报告效果，非真实BUG")
 @allure.story("脚本报错用例")
 def test_broken_demo():
     """这个用例会抛出异常，出现在'测试脚本异常'里"""

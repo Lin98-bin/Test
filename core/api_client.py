@@ -93,8 +93,12 @@ class RequestsClient():
                 except Exception as attach_err:
                     logger.warning(f"Allure 附件添加失败: {attach_err}")
 
-            # 响应日志
-            logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+            # 响应日志（安全处理非JSON响应）
+            try:
+                resp_body = self.resp.json()
+            except Exception:
+                resp_body = self.resp.text[:200] if self.resp.text else "(空响应)"
+            logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {resp_body}")
             return self.resp
         # 异常捕获 + 打印日志
         except Exception as e:
