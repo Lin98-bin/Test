@@ -9,3 +9,5 @@ allure-report/
 *.egg-info/
 .idea/
 .vscode/
+log/
+*.log
