@@ -5,6 +5,7 @@
   expected:
     code: 200
     msg: "新增成功"
+    msg2: "ok"
 
 - name: "新增失败-手机号格式错误"
   address: "北京市朝阳区"
@@ -12,4 +13,4 @@
   phone: "123"
   expected:
     code: 400
-    error: "手机号格式不正确"
+    error: "invalid phone"

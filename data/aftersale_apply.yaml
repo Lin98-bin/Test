@@ -1,0 +1,15 @@
+testcases:
+  - name: "申请退款"
+    scenario: success
+    data: { atype: "refund", reason: "商品质量问题申请退款", amount: 1.00 }
+    expected: { code: 200 }
+
+  - name: "申请退货退款"
+    scenario: success
+    data: { atype: "return", reason: "商品与描述不符退货退款", amount: 1.00 }
+    expected: { code: 200 }
+
+  - name: "原因过短"
+    scenario: error
+    data: { atype: "refund", reason: "ab", amount: 1.00 }
+    expected: { code: 400 }

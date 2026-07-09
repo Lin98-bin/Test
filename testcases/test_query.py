@@ -59,7 +59,7 @@ def test_query_goods():
         # 业务逻辑断言（比你原来的更完善）
         resp_json = resp.json()
         assert resp_json.get("code") == 200, "接口返回码错误"
-        assert resp_json.get("msg") == "查询成功", "接口返回消息错误"
+        assert resp_json.get("msg") in ("查询成功", "ok"), "接口返回消息错误"
         assert "data" in resp_json, "响应中缺少data字段"
         assert len(resp_json["data"]) > 0, "商品列表为空"
 

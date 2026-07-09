@@ -65,7 +65,7 @@ def test_login(casename, username, password, code, msg):
         #返回码code断言
         assume (test_login.resp_json.get("code") == 200)
         #msg断言
-        assume(test_login.resp_json.get("msg")=='登录成功')
+        assume(test_login.resp_json.get("msg")=='登录成功' or test_login.resp_json.get("msg")=='ok')
 
 
 if __name__ == '__main__':

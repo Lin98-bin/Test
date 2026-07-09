@@ -1,0 +1,9 @@
+testcases:
+  - name: "正常查看售后详情"
+    scenario: success
+    expected: { code: 200 }
+
+  - name: "售后不存在"
+    scenario: error
+    data: { id: 99999 }
+    expected: { code: 404 }

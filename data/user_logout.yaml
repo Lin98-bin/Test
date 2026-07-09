@@ -1,0 +1,4 @@
+testcases:
+  - name: "正常退出登录"
+    scenario: success
+    expected: { code: 200 }

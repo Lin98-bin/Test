@@ -1,0 +1,10 @@
+testcases:
+  - name: "正常发货"
+    scenario: success
+    data: { tracking: "SF1234567890" }
+    expected: { code: 200 }
+
+  - name: "运单号过短"
+    scenario: error
+    data: { tracking: "SF" }
+    expected: { code: 400 }

@@ -1,0 +1,10 @@
+testcases:
+  - name: "正常删除购物车项"
+    scenario: success
+    # cart_id 测试中动态获取
+    expected: { code: 200 }
+
+  - name: "删除不存在的项"
+    scenario: error
+    data: { cart_id: 99999 }
+    expected: { code: 404 }

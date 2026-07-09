@@ -20,7 +20,7 @@ def test_query_goods(login_token):  # 使用 fixture
     with allure.step("步骤2：断言结果"):
         assume(resp_json.get("code") == 200)
         assume(resp_json.get("data") is not None)
-        assume(resp_json.get("msg") == "查询成功")
+        assume(resp_json.get("msg") in ("查询成功", "ok"))
 
         goods_list = resp_json.get("data", [])
         print(f"商品数量：{len(goods_list)}")

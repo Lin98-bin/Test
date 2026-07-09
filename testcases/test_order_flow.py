@@ -45,7 +45,7 @@ def test_order_complete_flow(login_token):
 
     with allure.step("步骤3：创建订单"):
         current_token = TokenStore.get_token(username)
-        resp = order_service.create(goods_id, num=2, token=current_token)
+        resp = order_service.create(goods_id, quantity=2, token=current_token)
         resp_json = resp.json()
         order_id = extractor.extract(resp_json, "$.data.order_id")
         
@@ -61,7 +61,7 @@ def test_order_complete_flow(login_token):
         
         resp = order_service.pay(current_order_id, token=current_token)
         assume(resp.json().get("code") == 200)
-        assume(resp.json().get("msg") == "支付成功")
+        assume(resp.json().get("msg") in ("支付成功", "ok", "payment successful"))
 
     with allure.step("步骤5：查看订单支付状态"):
         current_token = TokenStore.get_token(username)

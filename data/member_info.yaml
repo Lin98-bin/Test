@@ -1,0 +1,4 @@
+testcases:
+  - name: "正常获取会员信息"
+    scenario: success
+    expected: { code: 200 }

@@ -47,6 +47,10 @@ test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
 @pytest.mark.test_run  # 专属标记：只有test环境执行
 @pytest.mark.parametrize("casename,username,password,code,msg", test_data)
 def test_register(casename, username, password, code, msg):
+    import random, string
+    # 加随机后缀避免用户名重复
+    suffix = ''.join(random.choices(string.digits, k=4))
+    username = f"{username}_{suffix}"
     with allure.step("步骤1：构造请求"):
         test_register=RequestsClient()
         test_register.url=BASE_URL+'/register'
@@ -68,7 +72,7 @@ def test_register(casename, username, password, code, msg):
         #断言返回码
         assume (resp_json.get("code") == 200)
         #断言返回注册信息
-        assume (resp_json.get("msg") == '注册成功')
+        assume (resp_json.get("msg") == 'ok')
     with allure.step("步骤4：数据库断言"):
         #数据库断言
         #先查数据

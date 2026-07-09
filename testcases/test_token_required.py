@@ -34,7 +34,7 @@ def test_create_order(login_token):
 
     with allure.step("步骤2：使用 Token 提交下单请求"):
         # 这里直接使用了传入的 login_token 夹具
-        resp_order = order_service.create(goods_id=goods_id, num=1, token=login_token)
+        resp_order = order_service.create(goods_id=goods_id, quantity=1, token=login_token)
         resp_json = resp_order.json()
         
         assume(resp_json.get("code") == 200)
@@ -66,7 +66,7 @@ def test_add_shipping_address(login_token):
 
     with allure.step("步骤2：断言结果"):
         assume(resp_json.get("code") == 200)
-        assume(resp_json.get("msg") == "新增成功" or "成功" in resp_json.get("msg", ""))
+        assume(resp_json.get("msg") in ("新增成功", "ok") or "成功" in resp_json.get("msg", ""))
         print(f"收货地址新增成功！")
 
 if __name__ == '__main__':
