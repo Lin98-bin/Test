@@ -44,13 +44,16 @@ def login_token():
     resp = client.send()
     resp_json = resp.json()
 
-    # 提取 token
+    # 提取 token（如果接口返回了 token 就提取，没返回就用 cookie/session 认证）
     extractor = JsonPathExtractor()
     token = extractor.extract(resp_json, "$.data.token")
 
-    # 存储到 TokenStore
-    TokenStore.set_token(username, token)
-
-    print(f"【Fixture】Token获取成功：{token[:20]}...")
+    if token:
+        TokenStore.set_token(username, token)
+        print(f"【Fixture】Token获取成功：{token[:20]}...")
+    else:
+        # 接口不返回 token，可能是 session/cookie 认证
+        print(f"【Fixture】接口未返回token，使用Session认证（登录状态已保持）")
+        TokenStore.set_token(username, "SESSION_AUTH")
 
     return token

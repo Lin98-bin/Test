@@ -17,7 +17,9 @@ class DBHandler:
             #编码
             charset=charset,
             #数据库返回【字典】，而不是【元组】
-            cursorclass=DictCursor
+            cursorclass=DictCursor,
+            # 开启自动提交，否则 REPEATABLE-READ 隔离导致查不到其他连接写入的数据
+            autocommit=True
         )
         #创建一个游标对象
         self.cursor=self.conn.cursor()
@@ -45,7 +47,7 @@ class DBHandler:
         self.conn.close()
 
 db=DBHandler(
-    host="localhost",
+    host="127.0.0.1",
     port=3306,
     database="pycharm_test",
     user="root",

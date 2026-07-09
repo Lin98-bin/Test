@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 #导入请求封装里面的请求类，以及全局的token
-from common.api_client import RequestsClient, sessionToken
+from core.api_client import RequestsClient
 #导入数据驱动里面的读取excel的读取方法
 from common.data_driven import read_excel
 #导入pytest中的assume

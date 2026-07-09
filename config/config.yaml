@@ -1,0 +1,38 @@
+# 测试环境 (Test)
+test:
+  base_url: "http://127.0.0.1:5000"
+  db:
+    host: "127.0.0.1"
+    port: 3306
+    user: "root"
+    password: "root"
+    database: "pycharm_test"
+    charset: "utf8"
+
+# 预发布环境 (Beta)
+beta:
+  base_url: "http://beta-api.company.com"
+  db:
+    host: "10.0.0.2"
+    port: 3306
+    user: "beta_user"
+    password: "beta_password"
+    database: "beta_db"
+    charset: "utf8"
+
+# 生产环境 (Prod/Master)
+prod:
+  base_url: "https://api.company.com"
+  db:
+    host: "10.0.0.3"
+    port: 3306
+    user: "prod_user"
+    password: "prod_password"
+    database: "prod_db"
+    charset: "utf8"
+
+# 公共配置
+common:
+  log_level: "INFO"
+  log_path: "./log"
+  jwt_secret: "your-secret-key-here"
