@@ -7,15 +7,42 @@ class OrderService:
     def __init__(self):
         self.client = RequestsClient()
 
-    def create(self, goods_id, num=1, token=None):
+    def create(self, goods_id, quantity=1, token=None, address_id=None):
         """创建订单接口"""
         self.client.url = f"{setting.BASE_URL}/api/order/create"
         self.client.method = "post"
         self.client.headers = {"sessionToken": token} if token else {}
-        self.client.json = {
+        body = {
             "goods_id": goods_id,
-            "num": num
+            "quantity": quantity,
         }
+        if address_id:
+            body["address_id"] = address_id
+        # 如果没有传 address_id，先去查默认地址
+        else:
+            from core.api_client import RequestsClient
+            client = RequestsClient()
+            client.url = f"{setting.BASE_URL}/api/address/list"
+            client.method = "get"
+            client.headers = {"sessionToken": token}
+            resp = client.send()
+            addrs = resp.json().get("data", {}).get("list", [])
+            if not addrs:
+                # 自动创建地址
+                client.url = f"{setting.BASE_URL}/api/address/add"
+                client.method = "post"
+                client.headers = {"sessionToken": token}
+                client.json = {"address": "测试地址", "contact": "测试", "phone": "13800138000"}
+                client.send()
+                # 重新获取地址列表
+                client.url = f"{setting.BASE_URL}/api/address/list"
+                client.method = "get"
+                client.headers = {"sessionToken": token}
+                resp = client.send()
+                addrs = resp.json().get("data", {}).get("list", [])
+            default_addr = next((a for a in addrs if a.get("is_default")), addrs[0])
+            body["address_id"] = default_addr["id"]
+        self.client.json = body
         return self.client.send()
 
     def pay(self, order_id, token=None):

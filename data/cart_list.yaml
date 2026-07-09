@@ -1,0 +1,4 @@
+testcases:
+  - name: "正常获取购物车列表"
+    scenario: success
+    expected: { code: 200 }

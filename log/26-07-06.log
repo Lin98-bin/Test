@@ -1,0 +1,108 @@
+2026-07-06 17:51:31,367 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:31,367 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-07-06 17:51:31,367 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:31,378 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '3c9f814abab147a8893e918087ae88c7', 'user_id': 950, 'username': 'test_new_10091399'}, 'msg': '注册成功'}
+2026-07-06 17:51:31,767 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:31,767 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-07-06 17:51:31,768 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:31,778 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'cb45f4a148ea49adb4dd9ca76dc43307', 'user_id': 951, 'username': 'test_new_10091400'}, 'msg': '注册成功'}
+2026-07-06 17:51:31,832 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:31,832 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-07-06 17:51:31,832 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:31,840 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '1b412221188a4a1dba2038b0d9029b75', 'user_id': 952, 'username': 'test_new_10091401'}, 'msg': '注册成功'}
+2026-07-06 17:51:31,895 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:31,895 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-07-06 17:51:31,895 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:31,903 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '2fd07ccdd39a4249a3747f2d35cfdd15', 'user_id': 953, 'username': 'test_new_10091402'}, 'msg': '注册成功'}
+2026-07-06 17:51:31,956 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:31,956 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-07-06 17:51:31,956 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:31,964 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '4139a716a9c04c99a906b43f95dbba89', 'user_id': 954, 'username': 'test_new_10091403'}, 'msg': '注册成功'}
+2026-07-06 17:51:32,020 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,020 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-07-06 17:51:32,020 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,030 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '27a4ca0e9e7e4ba08d425aa9f6c59777', 'user_id': 950, 'username': 'test_new_10091399'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,061 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,061 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-07-06 17:51:32,061 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,108 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'd9e7801390c74eb9a5a56eed8a4b64ed', 'user_id': 951, 'username': 'test_new_10091400'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,146 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,147 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-07-06 17:51:32,147 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,157 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '06fb3930126b4463bb5fee134a435013', 'user_id': 952, 'username': 'test_new_10091401'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,188 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,188 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-07-06 17:51:32,188 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,217 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '9e75b5a383be411193124297d5dfedbf', 'user_id': 953, 'username': 'test_new_10091402'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,250 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,251 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-07-06 17:51:32,251 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,275 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'a16479f44ded4c7bb410d99769896e86', 'user_id': 954, 'username': 'test_new_10091403'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,305 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,305 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-07-06 17:51:32,305 - INFO - api_client.py - 【请求头】headers: None
+2026-07-06 17:51:32,340 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '9c2a91fbe0ec472c9c9ca2b4fbc65520', 'user_id': 1, 'username': 'test_0006'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,355 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-06 17:51:32,355 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区张江高科', 'contact': '林同学', 'phone': '13800138000'}
+2026-07-06 17:51:32,355 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,387 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'address_id': 16}, 'msg': '新增成功'}
+2026-07-06 17:51:32,416 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-06 17:51:32,416 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+2026-07-06 17:51:32,416 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,422 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': '手机号格式不正确'}
+2026-07-06 17:51:32,473 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-06 17:51:32,473 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-06 17:51:32,473 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,494 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'id': 1, 'name': 'iPhone 15 Pro', 'price': 7999.0, 'stock': 31}, {'id': 2, 'name': 'MacBook Air M3', 'price': 8999.0, 'stock': 30}, {'id': 3, 'name': 'AirPods Pro 2', 'price': 1799.0, 'stock': 200}, {'id': 4, 'name': '华为 Mate 60 Pro', 'price': 6999.0, 'stock': 60}, {'id': 5, 'name': '小米 14 Ultra', 'price': 5999.0, 'stock': 80}, {'id': 6, 'name': 'Sony WH-1000XM5', 'price': 2499.0, 'stock': 120}, {'id': 7, 'name': 'iPad Air 11寸', 'price': 4799.0, 'stock': 45}, {'id': 8, 'name': 'Apple Watch Ultra', 'price': 6299.0, 'stock': 35}], 'page': 1, 'page_size': 10, 'total': 8}, 'msg': '查询成功'}
+2026-07-06 17:51:32,506 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-07-06 17:51:32,507 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 1, 'num': 2}
+2026-07-06 17:51:32,507 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,540 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 14, 'order_no': '20260706175132DC98C5', 'total': 15998.0}, 'msg': '下单成功'}
+2026-07-06 17:51:32,561 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/pay
+2026-07-06 17:51:32,561 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': 14}
+2026-07-06 17:51:32,561 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,571 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '支付成功'}
+2026-07-06 17:51:32,594 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/order/status/14
+2026-07-06 17:51:32,594 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': 14}
+2026-07-06 17:51:32,594 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,632 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 14, 'order_no': '20260706175132DC98C5', 'status': 'paid'}, 'msg': '查询成功'}
+2026-07-06 17:51:32,678 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/1/classes/Goods
+2026-07-06 17:51:32,679 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-06 17:51:32,679 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-06 17:51:32,686 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'id': 1, 'name': 'iPhone 15 Pro', 'price': 7999.0, 'stock': 29}, {'id': 2, 'name': 'MacBook Air M3', 'price': 8999.0, 'stock': 30}, {'id': 3, 'name': 'AirPods Pro 2', 'price': 1799.0, 'stock': 200}, {'id': 4, 'name': '华为 Mate 60 Pro', 'price': 6999.0, 'stock': 60}, {'id': 5, 'name': '小米 14 Ultra', 'price': 5999.0, 'stock': 80}, {'id': 6, 'name': 'Sony WH-1000XM5', 'price': 2499.0, 'stock': 120}, {'id': 7, 'name': 'iPad Air 11寸', 'price': 4799.0, 'stock': 45}, {'id': 8, 'name': 'Apple Watch Ultra', 'price': 6299.0, 'stock': 35}], 'msg': '查询成功'}
+2026-07-06 17:51:32,691 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-06 17:51:32,691 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-06 17:51:32,691 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,697 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'id': 1, 'name': 'iPhone 15 Pro', 'price': 7999.0, 'stock': 29}, {'id': 2, 'name': 'MacBook Air M3', 'price': 8999.0, 'stock': 30}, {'id': 3, 'name': 'AirPods Pro 2', 'price': 1799.0, 'stock': 200}, {'id': 4, 'name': '华为 Mate 60 Pro', 'price': 6999.0, 'stock': 60}, {'id': 5, 'name': '小米 14 Ultra', 'price': 5999.0, 'stock': 80}, {'id': 6, 'name': 'Sony WH-1000XM5', 'price': 2499.0, 'stock': 120}, {'id': 7, 'name': 'iPad Air 11寸', 'price': 4799.0, 'stock': 45}, {'id': 8, 'name': 'Apple Watch Ultra', 'price': 6299.0, 'stock': 35}], 'page': 1, 'page_size': 10, 'total': 8}, 'msg': '查询成功'}
+2026-07-06 17:51:32,698 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-07-06 17:51:32,698 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 1, 'num': 1}
+2026-07-06 17:51:32,698 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9c2a91fbe0ec472c9c9ca2b4fbc65520'}
+2026-07-06 17:51:32,708 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 15, 'order_no': '202607061751320F68E3', 'total': 7999.0}, 'msg': '下单成功'}
+2026-07-06 17:51:32,736 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,737 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-07-06 17:51:32,737 - INFO - api_client.py - 【请求头】headers: {}
+2026-07-06 17:51:32,756 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '9d9eda6ee28a4c1f9f5bd9643a6d93e0', 'user_id': 1, 'username': 'test_0006'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,757 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-06 17:51:32,757 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区某某路123号', 'contact': '林同学', 'phone': '13800138000'}
+2026-07-06 17:51:32,757 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '9d9eda6ee28a4c1f9f5bd9643a6d93e0'}
+2026-07-06 17:51:32,803 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'address_id': 17}, 'msg': '新增成功'}
+2026-07-06 17:51:32,832 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-06 17:51:32,832 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_67935', 'password': '123456'}
+2026-07-06 17:51:32,832 - INFO - api_client.py - 【请求头】headers: None
+2026-07-06 17:51:32,865 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '00ecbd0d7904438b9aad270d06dafdb8', 'user_id': 955, 'username': 'test_flow_67935'}, 'msg': '注册成功'}
+2026-07-06 17:51:32,908 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-06 17:51:32,908 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_67935', 'password': '123456'}
+2026-07-06 17:51:32,908 - INFO - api_client.py - 【请求头】headers: {}
+2026-07-06 17:51:32,942 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'bf4d4b48d9284a5b8f716e0321cba321', 'user_id': 955, 'username': 'test_flow_67935'}, 'msg': '登录成功'}
+2026-07-06 17:51:32,985 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-06 17:51:32,985 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-06 17:51:32,985 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'bf4d4b48d9284a5b8f716e0321cba321'}
+2026-07-06 17:51:33,033 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'id': 1, 'name': 'iPhone 15 Pro', 'price': 7999.0, 'stock': 28}, {'id': 2, 'name': 'MacBook Air M3', 'price': 8999.0, 'stock': 30}, {'id': 3, 'name': 'AirPods Pro 2', 'price': 1799.0, 'stock': 200}, {'id': 4, 'name': '华为 Mate 60 Pro', 'price': 6999.0, 'stock': 60}, {'id': 5, 'name': '小米 14 Ultra', 'price': 5999.0, 'stock': 80}, {'id': 6, 'name': 'Sony WH-1000XM5', 'price': 2499.0, 'stock': 120}, {'id': 7, 'name': 'iPad Air 11寸', 'price': 4799.0, 'stock': 45}, {'id': 8, 'name': 'Apple Watch Ultra', 'price': 6299.0, 'stock': 35}], 'page': 1, 'page_size': 10, 'total': 8}, 'msg': '查询成功'}
+2026-07-06 17:51:33,069 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/user/info
+2026-07-06 17:51:33,069 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_67935', 'password': '123456'}
+2026-07-06 17:51:33,070 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'bf4d4b48d9284a5b8f716e0321cba321'}
+2026-07-06 17:51:33,113 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'create_time': '2026-07-06 17:51:32', 'id': 955, 'status': 1, 'username': 'test_flow_67935'}, 'msg': '查询成功'}
+2026-07-06 17:51:33,138 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/logout
+2026-07-06 17:51:33,138 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_67935', 'password': '123456'}
+2026-07-06 17:51:33,139 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'bf4d4b48d9284a5b8f716e0321cba321'}
+2026-07-06 17:51:33,190 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '退出成功'}

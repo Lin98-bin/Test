@@ -1,0 +1,258 @@
+2026-06-06 22:35:02,470 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:02,470 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-06-06 22:35:02,470 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:02,482 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI', 'user_id': 1, 'username': 'test_0006'}, 'msg': '登录成功'}
+2026-06-06 22:35:02,503 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:02,503 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区张江高科', 'contact': '林同学', 'phone': '13800138000'}
+2026-06-06 22:35:02,504 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:02,513 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:04,521 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:04,521 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区张江高科', 'contact': '林同学', 'phone': '13800138000'}
+2026-06-06 22:35:04,521 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:04,526 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:06,531 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:06,531 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区张江高科', 'contact': '林同学', 'phone': '13800138000'}
+2026-06-06 22:35:06,531 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:06,537 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:06,837 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:06,837 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+2026-06-06 22:35:06,837 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:06,844 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:08,848 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:08,848 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+2026-06-06 22:35:08,848 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:08,854 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:10,858 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-06-06 22:35:10,858 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+2026-06-06 22:35:10,858 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:10,864 - ERROR - api_client.py - 【接口请求失败，准备重试】异常信息: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 978, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\soft\1Test\python_data\pythonbasic\aoipractice\core\api_client.py", line 97, in send
+    logger.info(f"【接口响应】状态码: {self.resp.status_code} | 响应体: {self.resp.json()}")
+                                                                         ^^^^^^^^^^^^^^^^
+  File "E:\soft\1Test\python\Lib\site-packages\requests\models.py", line 982, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2026-06-06 22:35:10,995 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-06-06 22:35:10,995 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-06-06 22:35:10,995 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:11,005 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+2026-06-06 22:35:11,052 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,052 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-06-06 22:35:11,052 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:11,060 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s', 'user_id': 1, 'username': 'test_0006'}, 'msg': '登录成功'}
+2026-06-06 22:35:11,117 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,117 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0007', 'password': '123456'}
+2026-06-06 22:35:11,117 - INFO - api_client.py - 【请求头】headers: {}
+2026-06-06 22:35:11,126 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.dg4LPGaNlla7rM69zWWkpt6xZf_8BBtfC_FGQgefb0o', 'user_id': 2, 'username': 'test_0007'}, 'msg': '登录成功'}
+2026-06-06 22:35:11,179 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,180 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0008', 'password': '123456'}
+2026-06-06 22:35:11,180 - INFO - api_client.py - 【请求头】headers: {}
+2026-06-06 22:35:11,190 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwOCIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.AKAxto8xW8wUkileOfrDyn9Tqwc14nM7JiORpgxN3-o', 'user_id': 3, 'username': 'test_0008'}, 'msg': '登录成功'}
+2026-06-06 22:35:11,243 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,244 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': 'wrong_password'}
+2026-06-06 22:35:11,244 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s'}
+2026-06-06 22:35:11,254 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 401, 'error': '用户名或密码错误，或用户已被禁用'}
+2026-06-06 22:35:11,279 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,279 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'not_exist_user', 'password': '123456'}
+2026-06-06 22:35:11,279 - INFO - api_client.py - 【请求头】headers: {}
+2026-06-06 22:35:11,288 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 401, 'error': '用户名或密码错误，或用户已被禁用'}
+2026-06-06 22:35:11,311 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,311 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-06-06 22:35:11,311 - INFO - api_client.py - 【请求头】headers: {}
+2026-06-06 22:35:11,320 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s', 'user_id': 1, 'username': 'test_0006'}, 'msg': '登录成功'}
+2026-06-06 22:35:11,340 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-06-06 22:35:11,340 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-06-06 22:35:11,340 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s'}
+2026-06-06 22:35:11,347 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+2026-06-06 22:35:11,359 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-06-06 22:35:11,359 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 1, 'num': 2}
+2026-06-06 22:35:11,360 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s'}
+2026-06-06 22:35:11,366 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 'ORD20260606223511362083'}, 'msg': '订单创建成功'}
+2026-06-06 22:35:11,387 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/pay
+2026-06-06 22:35:11,388 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': 'ORD20260606223511362083'}
+2026-06-06 22:35:11,388 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s'}
+2026-06-06 22:35:11,393 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 'ORD20260606223511362083', 'status': 'paid'}, 'msg': '支付成功'}
+2026-06-06 22:35:11,414 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/order/status/ORD20260606223511362083
+2026-06-06 22:35:11,415 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': 'ORD20260606223511362083'}
+2026-06-06 22:35:11,415 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.arUFTkzJo4GMDtR9_DDjz9pj96u23l-bWHFuQrhbz_s'}
+2026-06-06 22:35:11,439 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'goods_id': 1, 'num': 2, 'order_id': 'ORD20260606223511362083', 'status': 'paid', 'username': 'test_0006'}, 'msg': '查询成功'}
+2026-06-06 22:35:11,483 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-06-06 22:35:11,484 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-06-06 22:35:11,484 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:11,494 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+2026-06-06 22:35:11,501 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-06-06 22:35:11,502 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_reg_001', 'password': 'password123'}
+2026-06-06 22:35:11,502 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:11,516 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfcmVnXzAwMSIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.JB6afMMZLx_6YRnOX9ZB1EcagG7UgV7fPSbOFLsHqVA', 'username': 'test_reg_001'}, 'msg': '注册成功'}
+2026-06-06 22:35:11,568 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-06-06 22:35:11,568 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_reg_002', 'password': 'password123'}
+2026-06-06 22:35:11,568 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:11,585 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfcmVnXzAwMiIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.ciKqZ4yHeom_6gYjcZFJ1p6ejJukA6BjQ3P60-Dvbhw', 'username': 'test_reg_002'}, 'msg': '注册成功'}
+2026-06-06 22:35:11,638 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-06-06 22:35:11,639 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': '', 'password': 'password123'}
+2026-06-06 22:35:11,639 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:11,644 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': '用户名和密码不能为空'}
+2026-06-06 22:35:11,670 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-06-06 22:35:11,670 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_reg_003', 'password': ''}
+2026-06-06 22:35:11,670 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:11,678 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': '用户名和密码不能为空'}
+2026-06-06 22:35:11,704 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-06-06 22:35:11,705 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-06-06 22:35:11,705 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:11,716 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+2026-06-06 22:35:11,719 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-06-06 22:35:11,719 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 1, 'num': 1}
+2026-06-06 22:35:11,719 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfMDAwNiIsImV4cCI6MTc4MTM2MTMwMiwiaWF0IjoxNzgwNzU2NTAyfQ.2AmcbAEYMiHicRu-4UxfvS6N7T_YiaYFbXHoS8QFEvI'}
+2026-06-06 22:35:11,726 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'order_id': 'ORD20260606223511722703'}, 'msg': '订单创建成功'}
+2026-06-06 22:35:11,753 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-06-06 22:35:11,753 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_20577', 'password': '123456'}
+2026-06-06 22:35:11,753 - INFO - api_client.py - 【请求头】headers: None
+2026-06-06 22:35:11,763 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd18yMDU3NyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.fp4BDh2ez7Ofj8UjFs0U29uwjYXgh8AY2yRCb5hC0fw', 'username': 'test_flow_20577'}, 'msg': '注册成功'}
+2026-06-06 22:35:11,803 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-06-06 22:35:11,804 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_20577', 'password': '123456'}
+2026-06-06 22:35:11,804 - INFO - api_client.py - 【请求头】headers: {}
+2026-06-06 22:35:11,814 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd18yMDU3NyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.fp4BDh2ez7Ofj8UjFs0U29uwjYXgh8AY2yRCb5hC0fw', 'user_id': 867, 'username': 'test_flow_20577'}, 'msg': '登录成功'}
+2026-06-06 22:35:11,854 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-06-06 22:35:11,854 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-06-06 22:35:11,854 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd18yMDU3NyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.fp4BDh2ez7Ofj8UjFs0U29uwjYXgh8AY2yRCb5hC0fw'}
+2026-06-06 22:35:11,863 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 1, 'name': 'iPhone 15', 'price': '5999.00', 'stock': 100}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 2, 'name': 'MacBook Pro', 'price': '14999.00', 'stock': 50}, {'create_time': 'Thu, 28 May 2026 18:51:35 GMT', 'id': 3, 'name': 'AirPods Pro', 'price': '1899.00', 'stock': 200}], 'msg': '查询成功'}
+2026-06-06 22:35:11,894 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/user/info
+2026-06-06 22:35:11,894 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_20577', 'password': '123456'}
+2026-06-06 22:35:11,894 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd18yMDU3NyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.fp4BDh2ez7Ofj8UjFs0U29uwjYXgh8AY2yRCb5hC0fw'}
+2026-06-06 22:35:11,904 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'create_time': 'Sat, 06 Jun 2026 22:35:11 GMT', 'id': 867, 'status': 1, 'username': 'test_flow_20577'}, 'msg': '查询成功'}
+2026-06-06 22:35:11,925 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/logout
+2026-06-06 22:35:11,925 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_20577', 'password': '123456'}
+2026-06-06 22:35:11,926 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfZmxvd18yMDU3NyIsImV4cCI6MTc4MTM2MTMxMSwiaWF0IjoxNzgwNzU2NTExfQ.fp4BDh2ez7Ofj8UjFs0U29uwjYXgh8AY2yRCb5hC0fw'}
+2026-06-06 22:35:11,936 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': '退出成功'}

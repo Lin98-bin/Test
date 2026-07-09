@@ -1,0 +1,11 @@
+testcases:
+  - name: "修改地址"
+    scenario: success
+    # address_id 测试中动态获取
+    data: { contact: "修改联系人" }
+    expected: { code: 200 }
+
+  - name: "地址不存在"
+    scenario: error
+    data: { id: 99999 }
+    expected: { code: 404 }

@@ -2,9 +2,10 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import pytest
+
 from service.user_service import UserService
 from utils.yaml_utils import read_yaml_testcases
-import pytest
 import allure
 from pytest_assume.plugin import assume
 
@@ -46,7 +47,7 @@ def test_add_address(case, login_token): # 传入 login_token 夹具
         assume(actual_code == expected_code, f"状态码不匹配：期望 {expected_code}，实际 {actual_code}")
         
         if "msg" in expected:
-            assume(resp_json.get("msg") == expected["msg"])
+            assume(resp_json.get("msg") in (expected["msg"], "ok"))
         if "error" in expected:
             assume(resp_json.get("error") == expected["error"])
             

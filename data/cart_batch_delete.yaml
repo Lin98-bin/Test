@@ -1,0 +1,10 @@
+testcases:
+  - name: "批量删除购物车"
+    scenario: success
+    # ids 测试中动态获取
+    expected: { code: 200 }
+
+  - name: "空ID列表"
+    scenario: error
+    data: { ids: [] }
+    expected: { code: 400 }

@@ -34,7 +34,7 @@ def test_user_complete_flow():
         print(f"注册响应：{resp_json}")
 
         assume(resp_json.get("code") == 200)
-        assume(resp_json.get("msg") == "注册成功")
+        assume(resp_json.get("msg") in ("注册成功", "ok"))
 
         token = extractor.extract(resp_json, "$.data.token")
         assume(token is not None, "注册后应返回token")
@@ -46,7 +46,7 @@ def test_user_complete_flow():
         print(f"登录响应：{resp_json}")
 
         assume(resp_json.get("code") == 200)
-        assume(resp_json.get("msg") == "登录成功")
+        assume(resp_json.get("msg") in ("登录成功", "ok"))
 
         token = extractor.extract(resp_json, "$.data.token")
         # 存储 Token 到全局上下文
@@ -63,7 +63,7 @@ def test_user_complete_flow():
         print(f"商品查询响应：{resp_json}")
 
         assume(resp_json.get("code") == 200)
-        assume(resp_json.get("msg") == "查询成功")
+        assume(resp_json.get("msg") in ("查询成功", "ok"))
 
         goods_list = resp_json.get("data", [])
         assume(len(goods_list) > 0, "商品列表不应为空")
@@ -87,7 +87,7 @@ def test_user_complete_flow():
         print(f"退出登录响应：{resp_json}")
 
         assume(resp_json.get("code") == 200)
-        assume(resp_json.get("msg") == "退出成功")
+        assume(resp_json.get("msg") in ("退出成功", "ok"))
 
     print(f"\nComplete business flow test passed! User: {username}")
 

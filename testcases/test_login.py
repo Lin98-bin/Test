@@ -1,72 +1,72 @@
+#让你能操作Python 解释器的环境、路径
 import sys
+#帮你找当前文件在哪里
 import os
+#把这个文件夹，加入 Python 的搜索路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from service.user_service import UserService
-from core.context import TokenStore
-from utils.jsonpath_utils import JsonPathExtractor
-from utils.yaml_utils import read_yaml_testcases
-from utils.db_handler import db
-import pytest
-import allure
+#导入请求封装里面的请求类，以及全局的token
+from core.api_client import RequestsClient
+#导入数据驱动里面的读取excel的读取方法
+from common.data_driven import read_excel
+#导入pytest中的assume
 from pytest_assume.plugin import assume
+#数据库封装方法导入
+from common.db_handler import DBHandler
+#导入数据库对象
+from common.db_handler import db
+from common.environment import BASE_URL,COMMON_HEADERS
 
-# 从 YAML 读取测试数据
-test_data = read_yaml_testcases('login')
-@allure.parent_suite("接口自动化测试-自己练习")
-@allure.suite("test全量用例")
+
+#导入pytest
+import pytest
+#导入requests
+import requests
+import pytest
+#导入pymysql连接数据库
+import pymysql
+#导入allure，生成allure报告
+import allure
+
+pytestmark = pytest.mark.run(order=2)  # 登录后跑，等注册先创建用户
+
+test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
+# 登录函数
+# ====================== 在这里加 Allure 装饰器 ======================
+@allure.parent_suite("注册接口测试套-自己练习")
+@allure.suite("beta核心用例") # 这行是顶层！
 @allure.epic("用户模块")
 @allure.feature("登录接口")
 @allure.story("用户登录")
-@allure.tag("test", "beta")
-@pytest.mark.test
-@pytest.mark.beta
-@allure.title("登录用例：{case[name]}")
+@allure.title("登录用例：{casename}")
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.parametrize("case", test_data)
-def test_login(case):
-    user_service = UserService()
-    
-    username = case['username']
-    password = case['password']
-    expected = case['expected']
-    
-    with allure.step(f"步骤1：发送登录请求 - {case['name']}"):
-        # 使用封装好的 Service 对象
-        resp = user_service.login(
-            username=username,
-            password=password,
-            token=TokenStore.get_token(username)
-        )
-        resp_json = resp.json()
+# ==================================================================
 
-    with allure.step("步骤2：断言结果"):
-        actual_code = resp_json.get("code")
-        expected_code = expected.get("code")
-        assume(actual_code == expected_code, f"状态码不匹配：期望 {expected_code}，实际 {actual_code}")
-        
-        if "msg" in expected:
-            assume(resp_json.get("msg") == expected["msg"])
-        if "error" in expected:
-            assume(resp_json.get("error") == expected["error"])
+@pytest.mark.beta_run  # 专属标记：只有beta环境执行
+@pytest.mark.parametrize("casename,username,password,code,msg", test_data)
+def test_login(casename, username, password, code, msg):
+    with allure.step("步骤1：构造登录请求"):
+        test_login=RequestsClient()
+        test_login.url=BASE_URL+'/login'
+        test_login.method="post"
+        test_login.headers = {
+            "Accept": "application/json",
+        }
+        test_login.json = {
+            "username": username,
+            "password": str(password)
+        }
+    with allure.step("步骤2：发送请求"):
+        test_login.resp=test_login.send()
+        test_login.resp_json = test_login.resp.json()
+        # print(test_login.resp_json)
+    with allure.step("步骤3：断言结果"):
+        #业务断言
+        #返回码code断言
+        assume (test_login.resp_json.get("code") == 200)
+        #msg断言
+        assume(test_login.resp_json.get("msg")=='登录成功' or test_login.resp_json.get("msg")=='ok')
 
-    # 只有成功登录才提取 Token 和查数据库
-    if actual_code == 200:
-        with allure.step("步骤3：提取并存储Token"):
-            extractor = JsonPathExtractor()
-            token = extractor.extract(resp_json, "$.data.token")
-
-            if token is not None and token != "":
-                TokenStore.set_token(username, token)
-                print(f"Token提取成功：{token[:20]}...")
-                allure.attach(token, name="提取的Token", attachment_type=allure.attachment_type.TEXT)
-
-        with allure.step("步骤4：数据库断言 - 验证用户信息"):
-            sql = "SELECT * FROM user WHERE username = %s"
-            user_data = db.query(sql, args=(username,))
-            assume(user_data is not None, f"数据库中未找到用户: {username}")
-            assume(user_data["username"] == username)
-            print(f"数据库查询成功：用户 {username} 存在")
 
 if __name__ == '__main__':
-    pytest.main([__file__, "-v", "-s"])
+    test_login()

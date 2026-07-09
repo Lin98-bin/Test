@@ -1,0 +1,10 @@
+testcases:
+  - name: "正常支付"
+    scenario: success
+    # order_id 测试中动态创建
+    expected: { code: 200 }
+
+  - name: "订单不存在"
+    scenario: error
+    data: { order_id: 99999 }
+    expected: { code: 404 }

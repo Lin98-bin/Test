@@ -1,56 +1,56 @@
+
 import pymysql
 from pymysql.cursors import DictCursor
-from core import setting
-
 class DBHandler:
-    def __init__(self):
-        self._conn = None
-        self._cursor = None
-
-    def query(self, sql, args=None, one=True):
-        conn = self._get_connection()
-        with conn.cursor() as cursor:
-            cursor.execute(sql, args)
-            if one is True:
-                return cursor.fetchone()
-            else:
-                return cursor.fetchall()
-
-    def execute(self, sql, args=None):
-        conn = self._get_connection()
-        with conn.cursor() as cursor:
-            cursor.execute(sql, args)
-            conn.commit()
+    def __init__(self,host,port,database,user,password,charset="utf8"):
+        self.conn=pymysql.connect(
+            #地址
+            host=host,
+            #端口
+            port=port,
+            #数据库
+            database=database,
+            #用户名
+            user=user,
+            #密码
+            password=password,
+            #编码
+            charset=charset,
+            #数据库返回【字典】，而不是【元组】
+            cursorclass=DictCursor,
+            # 开启自动提交，否则 REPEATABLE-READ 隔离导致查不到其他连接写入的数据
+            autocommit=True
+        )
+        #创建一个游标对象
+        self.cursor=self.conn.cursor()
+    #查询类
+    def query(self,sql,args=None,one=True):
+        #用游标执行语句
+        self.cursor.execute(sql,args)
+        if one:
+            #如果one=True，返回一条数据
+            return self.cursor.fetchone()
+        else:
+            #否则全部返回
+            return self.cursor.fetchall()
+    #执行类：增删改
+    def execute(self,sql,args=None):
+    #游标执行语句
+        self.cursor.execute(sql,args)
+    #执行类语句需要确认提交
+        self.conn.commit()
 
     def close(self):
-        if self._conn is not None:
-            self._conn.close()
-            self._conn = None
+        #执行完语句记得关闭
+        self.cursor.close()
+        #记得断开连接
+        self.conn.close()
 
-    def _get_connection(self):
-        """动态获取数据库连接，确保环境切换后配置生效"""
-        conf = setting.DB_CONF
-        
-        # 如果已经有连接，简单检查是否可用
-        if self._conn is not None:
-            try:
-                self._conn.ping(reconnect=True)
-                return self._conn
-            except:
-                pass
-
-        # 创建新连接
-        self._conn = pymysql.connect(
-            host=conf.get('host'),
-            port=conf.get('port', 3306),
-            database=conf.get('database'),
-            user=conf.get('user'),
-            password=conf.get('password'),
-            charset=conf.get('charset', 'utf8'),
-            cursorclass=DictCursor
-        )
-        return self._conn
-
-
-# 默认实例
-db = DBHandler()
+db=DBHandler(
+    host="127.0.0.1",
+    port=3306,
+    database="pycharm_test",
+    user="root",
+    password="root",
+    charset="utf8"
+)

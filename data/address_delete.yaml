@@ -1,0 +1,10 @@
+testcases:
+  - name: "正常删除地址"
+    scenario: success
+    # address_id 测试中动态获取
+    expected: { code: 200 }
+
+  - name: "地址不存在"
+    scenario: error
+    data: { id: 99999 }
+    expected: { code: 404 }

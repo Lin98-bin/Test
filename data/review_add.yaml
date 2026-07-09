@@ -1,0 +1,15 @@
+testcases:
+  - name: "发表好评"
+    scenario: success
+    data: { rating: 5, content: "商品非常好用" }
+    expected: { code: 200 }
+
+  - name: "评分超出范围"
+    scenario: error
+    data: { rating: 6, content: "非常好" }
+    expected: { code: 400 }
+
+  - name: "评价内容为空"
+    scenario: error
+    data: { rating: 5, content: "" }
+    expected: { code: 400 }

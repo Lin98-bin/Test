@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    // 1. Scheduled trigger: Runs daily at 01:00 AM
+    // 1. 定时构建触发器：每日凌晨1点自动运行
     triggers {
         cron('H 1 * * *')
     }
@@ -10,52 +10,52 @@ pipeline {
         PYTHON_PATH = "python"
         PYTHONUTF8 = "1"
         PYTHONIOENCODING = "UTF-8"
-        // Email recipient
+        // 邮件接收人邮箱
         EMAIL_RECIPIENT = "1029633859@qq.com" 
     }
 
     stages {
-        stage('Checkout') {
+        stage('拉取代码') {
             steps {
                 script {
-                    echo '[INFO] Start pulling code from Git...'
+                    echo '[信息] 开始从Git仓库拉取代码...'
                     checkout scm
                 }
             }
         }
 
-        stage('Prepare Environment') {
+        stage('初始化运行环境') {
             steps {
                 script {
-                    echo '[INFO] Installing project dependencies...'
+                    echo '[信息] 安装项目所需依赖包...'
                     bat 'pip install -r requirements.txt'
                 }
             }
         }
 
-        // 2. Sequential execution: Test -> Beta -> Prod
-        stage('Test Environment') {
+        // 2. 串行执行流程：测试环境 → Beta预发环境 → 生产环境
+        stage('测试环境执行用例') {
             steps {
                 script {
-                    echo "[INFO] Running tests in TEST environment..."
+                    echo "[信息] 在TEST测试环境执行自动化测试..."
                     bat "python run.py --env=test"
                 }
             }
         }
 
-        stage('Beta Environment') {
+        stage('Beta预发环境执行用例') {
             steps {
                 script {
-                    echo "[INFO] Running tests in BETA environment..."
+                    echo "[信息] 在BETA预发环境执行自动化测试..."
                     bat "python run.py --env=beta"
                 }
             }
         }
 
-        stage('Prod Environment') {
+        stage('生产环境执行用例') {
             steps {
                 script {
-                    echo "[INFO] Running tests in PROD environment..."
+                    echo "[信息] 在PROD生产环境执行自动化测试..."
                     bat "python run.py --env=prod"
                 }
             }
@@ -65,21 +65,21 @@ pipeline {
     post {
         always {
             script {
-                echo '[INFO] Collecting test results and generating Allure report...'
+                echo '[信息] 收集测试结果并生成Allure可视化报告...'
                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
                 
-                // 3. Email notification logic
+                // 3. 邮件通知逻辑
                 mail to: "${env.EMAIL_RECIPIENT}",
-                     subject: "Jenkins Test Report - Build #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+                     subject: "Jenkins自动化测试报告 - 构建号#${env.BUILD_NUMBER} - 运行结果：${currentBuild.currentResult}",
                      body: """
                      <html>
                      <body>
-                        <h2>Automated Test Execution Completed</h2>
-                        <p>Project Name: ${env.JOB_NAME}</p>
-                        <p>Build Number: #${env.BUILD_NUMBER}</p>
-                        <p>Status: ${currentBuild.currentResult}</p>
-                        <p>Report Link: <a href="${env.BUILD_URL}allure/">Click to view Allure Report</a></p>
-                        <p>Note: Download complete.html from build artifacts for offline viewing.</p>
+                        <h2>自动化测试任务执行完成</h2>
+                        <p>项目名称：${env.JOB_NAME}</p>
+                        <p>构建编号：#${env.BUILD_NUMBER}</p>
+                        <p>运行状态：${currentBuild.currentResult}</p>
+                        <p>测试报告地址：<a href="${env.BUILD_URL}allure/">点击查看Allure完整报告</a></p>
+                        <p>备注：可从构建产物下载complete.html用于离线查看报告</p>
                      </body>
                      </html>
                      """,
@@ -87,10 +87,10 @@ pipeline {
             }
         }
         success {
-            echo '[SUCCESS] All environments passed!'
+            echo '[成功] 所有环境测试全部通过！'
         }
         failure {
-            echo '[FAILURE] Pipeline stopped due to failure in one of the stages.'
+            echo '[失败] 某一环境测试报错，流水线已中断停止。'
         }
     }
 }

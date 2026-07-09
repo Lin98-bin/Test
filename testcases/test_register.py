@@ -1,58 +1,95 @@
+#让你能操作Python 解释器的环境、路径
 import sys
+#帮你找当前文件在哪里
 import os
+#把这个文件夹，加入 Python 的搜索路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from service.user_service import UserService
-from utils.yaml_utils import read_yaml_testcases
-from utils.db_handler import db
-import pytest
-import allure
+#导入请求封装里面的请求类，以及全局的token
+from core.api_client import RequestsClient
+#导入数据驱动里面的读取excel的读取方法
+from common.data_driven import read_excel
+#导入pytest中的assume
 from pytest_assume.plugin import assume
+#数据库封装方法导入
+from common.db_handler import DBHandler
+#导入数据库对象
+from common.db_handler import db
+from common.environment import BASE_URL,COMMON_HEADERS
 
-# 从 YAML 读取测试数据
-test_data = read_yaml_testcases('register')
 
-@allure.parent_suite("接口自动化测试-自己练习")
-@allure.suite("test全量用例")
-@allure.epic("用户模块")
-@allure.feature("注册接口")
-@allure.story("用户注册")
-@allure.tag("test", "beta")
-@pytest.mark.test
-@allure.title("注册用例：{case[name]}")
-@allure.severity(allure.severity_level.NORMAL)
-@pytest.mark.parametrize("case", test_data)
-def test_register(case):
-    user_service = UserService()
-    
-    username = case['username']
-    password = case['password']
-    expected = case['expected']
+#导入pytest
+import pytest
+#导入requests
+import requests
+import pytest
+#导入pymysql连接数据库
+import pymysql
+#导入allure，生成allure报告
+import allure
 
-    with allure.step(f"步骤1：发送注册请求 - {case['name']}"):
-        resp = user_service.register(username, password)
+pytestmark = pytest.mark.run(order=1)  # 注册先跑，登录后跑
+
+test_data = read_excel(file_path=r'E:\soft\test.xlsx', sheet_name='Sheet1')
+# ====================== 在这里加 Allure 装饰器 ======================
+
+@allure.parent_suite("注册接口测试套-自己练习")
+@allure.suite("test全量用例")# 这行是顶层！
+@allure.epic("用户模块")           # 一级大模块
+@allure.feature("注册接口")        # 二级功能
+@allure.story("用户注册")          # 三级场景
+@allure.title("注册用例：{casename}")  # 用例标题（动态显示）
+@allure.severity(allure.severity_level.CRITICAL)  # 严重级别
+
+# ==================================================================
+#注册函数
+
+@pytest.mark.test_run  # 专属标记：只有test环境执行
+@pytest.mark.parametrize("casename,username,password,code,msg", test_data)
+def test_register(casename, username, password, code, msg):
+    import random, string
+    # 加随机后缀避免用户名重复
+    suffix = ''.join(random.choices(string.digits, k=4))
+    username = f"{username}_{suffix}"
+    with allure.step("步骤1：构造请求"):
+        test_register=RequestsClient()
+        test_register.url=BASE_URL+'/register'
+        test_register.method="post"
+        test_register.headers = {
+        "Accept": "application/json",
+        }
+
+        test_register.json = {
+            "username": username,
+            "password": str(password)
+        }
+    with allure.step("步骤2：发送请求"):
+        resp=test_register.send()
         resp_json = resp.json()
-        print(f"接口返回：{resp_json}")
-        
-    with allure.step("步骤2：断言结果"):
-        # 断言状态码
-        actual_code = resp_json.get("code")
-        expected_code = expected.get("code")
-        assume(actual_code == expected_code, f"状态码不匹配：期望 {expected_code}，实际 {actual_code}")
-        
-        # 断言消息
-        if "msg" in expected:
-            assume(resp_json.get("msg") == expected["msg"])
-        if "error" in expected:
-            assume(resp_json.get("error") == expected["error"])
-            
-    # 只有成功注册才进行数据库校验
-    if actual_code == 200:
-        with allure.step("步骤3：数据库校验"):
-            sql = "SELECT * FROM user WHERE username = %s"
-            user = db.query(sql, [username])
-            assume(user is not None, f"数据库中未找到用户: {username}")
-            assume(user["username"] == username)
+        print(f"接口返回{resp_json}")
+    with allure.step("步骤3：断言结果"):
+        #业务断言
+        #断言返回码
+        assume (resp_json.get("code") == 200)
+        #断言返回注册信息
+        assume (resp_json.get("msg") == 'ok')
+    with allure.step("步骤4：数据库断言"):
+        #数据库断言
+        #先查数据
+        sql="select * from user where username= %s"
+        user=db.query(sql,args=(username,),one=True)
+
+        #数据库断言
+        #如果数据库查到了改用户就通过，查不到就输出：数据库未查到用户
+        assume(user is not None,
+               f"数据库未查到用户 {username}")
+        # 如果数据库查到了改用户就通过，查不到就输出：用户名不一致
+        assume(user["username"] == username,
+               "用户名不一致")
+
+
+
+
 
 if __name__ == '__main__':
-    pytest.main([__file__, "-v", "-s"])
+    test_register()

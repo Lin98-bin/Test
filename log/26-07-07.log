@@ -1,0 +1,112 @@
+2026-07-07 02:06:23,767 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:23,767 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-07-07 02:06:23,768 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:23,779 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'username already exists'}
+2026-07-07 02:06:24,209 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:24,209 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-07-07 02:06:24,210 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,236 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'username already exists'}
+2026-07-07 02:06:24,316 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:24,316 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-07-07 02:06:24,316 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,322 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'username already exists'}
+2026-07-07 02:06:24,396 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:24,396 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-07-07 02:06:24,397 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,404 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'username already exists'}
+2026-07-07 02:06:24,494 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:24,494 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-07-07 02:06:24,494 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,505 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'username already exists'}
+2026-07-07 02:06:24,589 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,589 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091399', 'password': '123456'}
+2026-07-07 02:06:24,589 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,600 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '9db7e587f9254d2b832d7dc0777bb203', 'user_id': 950, 'username': 'test_new_10091399'}, 'msg': 'ok'}
+2026-07-07 02:06:24,651 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,652 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091400', 'password': '123456'}
+2026-07-07 02:06:24,652 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,662 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '34cadb7ab1944bab9c7e760716898ffa', 'user_id': 951, 'username': 'test_new_10091400'}, 'msg': 'ok'}
+2026-07-07 02:06:24,716 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,717 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091401', 'password': '123456'}
+2026-07-07 02:06:24,717 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,730 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'fd02976d89874be29b959ca55e90b1c3', 'user_id': 952, 'username': 'test_new_10091401'}, 'msg': 'ok'}
+2026-07-07 02:06:24,810 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,810 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091402', 'password': '123456'}
+2026-07-07 02:06:24,810 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,819 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '063991b491864064a2d37f095a349e30', 'user_id': 953, 'username': 'test_new_10091402'}, 'msg': 'ok'}
+2026-07-07 02:06:24,867 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,867 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_new_10091403', 'password': '123456'}
+2026-07-07 02:06:24,867 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:24,907 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '7fa18a7d58fa4a4bb2e08ff0c0197796', 'user_id': 954, 'username': 'test_new_10091403'}, 'msg': 'ok'}
+2026-07-07 02:06:24,963 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:24,963 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-07-07 02:06:24,963 - INFO - api_client.py - 【请求头】headers: None
+2026-07-07 02:06:24,974 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '1bdcc1f8fa484ad4b9c2209af5ed5a9f', 'user_id': 1, 'username': 'test_0006'}, 'msg': 'ok'}
+2026-07-07 02:06:24,991 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-07 02:06:24,991 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区张江高科', 'contact': '林同学', 'phone': '13800138000'}
+2026-07-07 02:06:24,991 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,020 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'address_id': 18}, 'msg': 'ok'}
+2026-07-07 02:06:25,073 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-07 02:06:25,073 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '北京市朝阳区', 'contact': '王小二', 'phone': '123'}
+2026-07-07 02:06:25,073 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,081 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'invalid phone'}
+2026-07-07 02:06:25,151 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-07 02:06:25,151 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-07 02:06:25,151 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,190 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'category_id': 2, 'id': 12, 'image': '', 'member_price': 4299.0, 'name': 'iPad Air M2 11英寸', 'price': 4799.0, 'sales': 650, 'specs': [{'name': '颜色', 'values': ['星光色', '深空灰', '紫色', '蓝色']}, {'name': '存储', 'values': ['128GB', '256GB', '512GB']}], 'stock': 110}, {'category_id': 5, 'id': 11, 'image': '', 'member_price': 42.0, 'name': '农夫山泉 矿泉水 550ml*24瓶', 'price': 48.0, 'sales': 15000, 'specs': [{'name': '规格', 'values': ['550ml*24瓶', '1.5L*12瓶']}], 'stock': 500}, {'category_id': 4, 'id': 10, 'image': '', 'member_price': 6480.0, 'name': 'Arcteryx Beta AR 冲锋衣', 'price': 7200.0, 'sales': 320, 'specs': [{'name': '颜色', 'values': ['黑色', '蓝色', '红色']}, {'name': '尺码', 'values': ['S', 'M', 'L', 'XL']}], 'stock': 45}, {'category_id': 6, 'id': 9, 'image': '', 'member_price': 1390.0, 'name': 'SK-II 神仙水 230ml', 'price': 1590.0, 'sales': 2300, 'specs': [{'name': '规格', 'values': ['230ml', '330ml']}], 'stock': 150}, {'category_id': 2, 'id': 8, 'image': '', 'member_price': 3799.0, 'name': '华为 MatePad Pro 12.6英寸', 'price': 4299.0, 'sales': 780, 'specs': [{'name': '颜色', 'values': ['星河蓝', '曜石灰']}, {'name': '存储', 'values': ['128GB', '256GB']}], 'stock': 95}, {'category_id': 3, 'id': 7, 'image': '', 'member_price': 2899.0, 'name': '海尔 三门冰箱 300L', 'price': 3299.0, 'sales': 210, 'specs': [{'name': '颜色', 'values': ['银色', '白色']}], 'stock': 60}, {'category_id': 3, 'id': 6, 'image': '', 'member_price': 3499.0, 'name': '戴森 V12 无线吸尘器', 'price': 3999.0, 'sales': 430, 'specs': [{'name': '颜色', 'values': ['金色', '银色']}], 'stock': 75}, {'category_id': 5, 'id': 5, 'image': '', 'member_price': 148.0, 'name': '良品铺子 坚果大礼包 1.5kg', 'price': 168.0, 'sales': 8900, 'specs': [{'name': '规格', 'values': ['1.5kg装', '2.5kg装']}], 'stock': 320}, {'category_id': 4, 'id': 4, 'image': '', 'member_price': 1099.0, 'name': 'Nike Air Jordan 1 复古运动鞋', 'price': 1299.0, 'sales': 5600, 'specs': [{'name': '颜色', 'values': ['黑白', '红黑', '蓝白']}, {'name': '尺码', 'values': ['39', '40', '41', '42', '43']}], 'stock': 180}, {'category_id': 1, 'id': 3, 'image': '', 'member_price': 2199.0, 'name': '索尼 WH-1000XM5 头戴式耳机', 'price': 2499.0, 'sales': 980, 'specs': [{'name': '颜色', 'values': ['黑色', '铂金银', '午夜蓝']}], 'stock': 200}, {'category_id': 2, 'id': 2, 'image': '', 'member_price': 11499.0, 'name': 'MacBook Pro 14英寸 M3', 'price': 12999.0, 'sales': 1520, 'specs': [{'name': '颜色', 'values': ['深空黑', '银色']}, {'name': '内存', 'values': ['16GB', '32GB']}], 'stock': 89}, {'category_id': 1, 'id': 1, 'image': '', 'member_price': 7999.0, 'name': 'iPhone 15 Pro Max 256GB', 'price': 8999.0, 'sales': 2340, 'specs': [{'name': '颜色', 'values': ['原色钛金属', '蓝色钛金属', '白色钛金属', '黑色钛金属']}, {'name': '存储', 'values': ['256GB', '512GB', '1TB']}], 'stock': 156}], 'page': 1, 'page_size': 20, 'total': 12}, 'msg': 'ok'}
+2026-07-07 02:06:25,207 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-07-07 02:06:25,207 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 12, 'num': 2}
+2026-07-07 02:06:25,207 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,217 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'please select an address'}
+2026-07-07 02:06:25,240 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/pay
+2026-07-07 02:06:25,240 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': None}
+2026-07-07 02:06:25,240 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,250 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 404, 'error': 'order not found'}
+2026-07-07 02:06:25,279 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/order/status/None
+2026-07-07 02:06:25,279 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'order_id': None}
+2026-07-07 02:06:25,279 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,286 - INFO - api_client.py - 【接口响应】状态码: 404 | 响应体: <!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try agai
+2026-07-07 02:06:25,313 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/1/classes/Goods
+2026-07-07 02:06:25,313 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-07 02:06:25,313 - INFO - api_client.py - 【请求头】headers: {'Accept': 'application/json'}
+2026-07-07 02:06:25,324 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': [{'id': 1, 'name': 'iPhone 15 Pro Max 256GB', 'price': 8999.0, 'stock': 156}, {'id': 2, 'name': 'MacBook Pro 14英寸 M3', 'price': 12999.0, 'stock': 89}, {'id': 3, 'name': '索尼 WH-1000XM5 头戴式耳机', 'price': 2499.0, 'stock': 200}, {'id': 4, 'name': 'Nike Air Jordan 1 复古运动鞋', 'price': 1299.0, 'stock': 180}, {'id': 5, 'name': '良品铺子 坚果大礼包 1.5kg', 'price': 168.0, 'stock': 320}, {'id': 6, 'name': '戴森 V12 无线吸尘器', 'price': 3999.0, 'stock': 75}, {'id': 7, 'name': '海尔 三门冰箱 300L', 'price': 3299.0, 'stock': 60}, {'id': 8, 'name': '华为 MatePad Pro 12.6英寸', 'price': 4299.0, 'stock': 95}, {'id': 9, 'name': 'SK-II 神仙水 230ml', 'price': 1590.0, 'stock': 150}, {'id': 10, 'name': 'Arcteryx Beta AR 冲锋衣', 'price': 7200.0, 'stock': 45}, {'id': 11, 'name': '农夫山泉 矿泉水 550ml*24瓶', 'price': 48.0, 'stock': 500}, {'id': 12, 'name': 'iPad Air M2 11英寸', 'price': 4799.0, 'stock': 110}], 'msg': 'ok'}
+2026-07-07 02:06:25,336 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-07 02:06:25,337 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-07 02:06:25,337 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,347 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'category_id': 2, 'id': 12, 'image': '', 'member_price': 4299.0, 'name': 'iPad Air M2 11英寸', 'price': 4799.0, 'sales': 650, 'specs': [{'name': '颜色', 'values': ['星光色', '深空灰', '紫色', '蓝色']}, {'name': '存储', 'values': ['128GB', '256GB', '512GB']}], 'stock': 110}, {'category_id': 5, 'id': 11, 'image': '', 'member_price': 42.0, 'name': '农夫山泉 矿泉水 550ml*24瓶', 'price': 48.0, 'sales': 15000, 'specs': [{'name': '规格', 'values': ['550ml*24瓶', '1.5L*12瓶']}], 'stock': 500}, {'category_id': 4, 'id': 10, 'image': '', 'member_price': 6480.0, 'name': 'Arcteryx Beta AR 冲锋衣', 'price': 7200.0, 'sales': 320, 'specs': [{'name': '颜色', 'values': ['黑色', '蓝色', '红色']}, {'name': '尺码', 'values': ['S', 'M', 'L', 'XL']}], 'stock': 45}, {'category_id': 6, 'id': 9, 'image': '', 'member_price': 1390.0, 'name': 'SK-II 神仙水 230ml', 'price': 1590.0, 'sales': 2300, 'specs': [{'name': '规格', 'values': ['230ml', '330ml']}], 'stock': 150}, {'category_id': 2, 'id': 8, 'image': '', 'member_price': 3799.0, 'name': '华为 MatePad Pro 12.6英寸', 'price': 4299.0, 'sales': 780, 'specs': [{'name': '颜色', 'values': ['星河蓝', '曜石灰']}, {'name': '存储', 'values': ['128GB', '256GB']}], 'stock': 95}, {'category_id': 3, 'id': 7, 'image': '', 'member_price': 2899.0, 'name': '海尔 三门冰箱 300L', 'price': 3299.0, 'sales': 210, 'specs': [{'name': '颜色', 'values': ['银色', '白色']}], 'stock': 60}, {'category_id': 3, 'id': 6, 'image': '', 'member_price': 3499.0, 'name': '戴森 V12 无线吸尘器', 'price': 3999.0, 'sales': 430, 'specs': [{'name': '颜色', 'values': ['金色', '银色']}], 'stock': 75}, {'category_id': 5, 'id': 5, 'image': '', 'member_price': 148.0, 'name': '良品铺子 坚果大礼包 1.5kg', 'price': 168.0, 'sales': 8900, 'specs': [{'name': '规格', 'values': ['1.5kg装', '2.5kg装']}], 'stock': 320}, {'category_id': 4, 'id': 4, 'image': '', 'member_price': 1099.0, 'name': 'Nike Air Jordan 1 复古运动鞋', 'price': 1299.0, 'sales': 5600, 'specs': [{'name': '颜色', 'values': ['黑白', '红黑', '蓝白']}, {'name': '尺码', 'values': ['39', '40', '41', '42', '43']}], 'stock': 180}, {'category_id': 1, 'id': 3, 'image': '', 'member_price': 2199.0, 'name': '索尼 WH-1000XM5 头戴式耳机', 'price': 2499.0, 'sales': 980, 'specs': [{'name': '颜色', 'values': ['黑色', '铂金银', '午夜蓝']}], 'stock': 200}, {'category_id': 2, 'id': 2, 'image': '', 'member_price': 11499.0, 'name': 'MacBook Pro 14英寸 M3', 'price': 12999.0, 'sales': 1520, 'specs': [{'name': '颜色', 'values': ['深空黑', '银色']}, {'name': '内存', 'values': ['16GB', '32GB']}], 'stock': 89}, {'category_id': 1, 'id': 1, 'image': '', 'member_price': 7999.0, 'name': 'iPhone 15 Pro Max 256GB', 'price': 8999.0, 'sales': 2340, 'specs': [{'name': '颜色', 'values': ['原色钛金属', '蓝色钛金属', '白色钛金属', '黑色钛金属']}, {'name': '存储', 'values': ['256GB', '512GB', '1TB']}], 'stock': 156}], 'page': 1, 'page_size': 20, 'total': 12}, 'msg': 'ok'}
+2026-07-07 02:06:25,348 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/order/create
+2026-07-07 02:06:25,349 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'goods_id': 12, 'num': 1}
+2026-07-07 02:06:25,349 - INFO - api_client.py - 【请求头】headers: {'sessionToken': '1bdcc1f8fa484ad4b9c2209af5ed5a9f'}
+2026-07-07 02:06:25,358 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 400, 'error': 'please select an address'}
+2026-07-07 02:06:25,394 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:25,395 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_0006', 'password': '123456'}
+2026-07-07 02:06:25,395 - INFO - api_client.py - 【请求头】headers: {}
+2026-07-07 02:06:25,425 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'b3da36885a414ebd8c602899b939aa61', 'user_id': 1, 'username': 'test_0006'}, 'msg': 'ok'}
+2026-07-07 02:06:25,426 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/user/address/add
+2026-07-07 02:06:25,426 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'address': '上海市浦东新区某某路123号', 'contact': '林同学', 'phone': '13800138000'}
+2026-07-07 02:06:25,426 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'b3da36885a414ebd8c602899b939aa61'}
+2026-07-07 02:06:25,470 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'address_id': 19}, 'msg': 'ok'}
+2026-07-07 02:06:25,516 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/register
+2026-07-07 02:06:25,516 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_89466', 'password': '123456'}
+2026-07-07 02:06:25,516 - INFO - api_client.py - 【请求头】headers: None
+2026-07-07 02:06:25,565 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': '7d64eccd144c41b19af521b4216f3e99', 'user_id': 957, 'username': 'test_flow_89466'}, 'msg': 'ok'}
+2026-07-07 02:06:25,612 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/login
+2026-07-07 02:06:25,612 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_89466', 'password': '123456'}
+2026-07-07 02:06:25,613 - INFO - api_client.py - 【请求头】headers: {}
+2026-07-07 02:06:25,643 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'token': 'e214cbf843284a18a8c3274db2cfef4f', 'user_id': 957, 'username': 'test_flow_89466'}, 'msg': 'ok'}
+2026-07-07 02:06:25,683 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/goods
+2026-07-07 02:06:25,684 - INFO - api_client.py - 【请求参数】params: None | data: None | json: None
+2026-07-07 02:06:25,684 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'e214cbf843284a18a8c3274db2cfef4f'}
+2026-07-07 02:06:25,703 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'list': [{'category_id': 2, 'id': 12, 'image': '', 'member_price': 4299.0, 'name': 'iPad Air M2 11英寸', 'price': 4799.0, 'sales': 650, 'specs': [{'name': '颜色', 'values': ['星光色', '深空灰', '紫色', '蓝色']}, {'name': '存储', 'values': ['128GB', '256GB', '512GB']}], 'stock': 110}, {'category_id': 5, 'id': 11, 'image': '', 'member_price': 42.0, 'name': '农夫山泉 矿泉水 550ml*24瓶', 'price': 48.0, 'sales': 15000, 'specs': [{'name': '规格', 'values': ['550ml*24瓶', '1.5L*12瓶']}], 'stock': 500}, {'category_id': 4, 'id': 10, 'image': '', 'member_price': 6480.0, 'name': 'Arcteryx Beta AR 冲锋衣', 'price': 7200.0, 'sales': 320, 'specs': [{'name': '颜色', 'values': ['黑色', '蓝色', '红色']}, {'name': '尺码', 'values': ['S', 'M', 'L', 'XL']}], 'stock': 45}, {'category_id': 6, 'id': 9, 'image': '', 'member_price': 1390.0, 'name': 'SK-II 神仙水 230ml', 'price': 1590.0, 'sales': 2300, 'specs': [{'name': '规格', 'values': ['230ml', '330ml']}], 'stock': 150}, {'category_id': 2, 'id': 8, 'image': '', 'member_price': 3799.0, 'name': '华为 MatePad Pro 12.6英寸', 'price': 4299.0, 'sales': 780, 'specs': [{'name': '颜色', 'values': ['星河蓝', '曜石灰']}, {'name': '存储', 'values': ['128GB', '256GB']}], 'stock': 95}, {'category_id': 3, 'id': 7, 'image': '', 'member_price': 2899.0, 'name': '海尔 三门冰箱 300L', 'price': 3299.0, 'sales': 210, 'specs': [{'name': '颜色', 'values': ['银色', '白色']}], 'stock': 60}, {'category_id': 3, 'id': 6, 'image': '', 'member_price': 3499.0, 'name': '戴森 V12 无线吸尘器', 'price': 3999.0, 'sales': 430, 'specs': [{'name': '颜色', 'values': ['金色', '银色']}], 'stock': 75}, {'category_id': 5, 'id': 5, 'image': '', 'member_price': 148.0, 'name': '良品铺子 坚果大礼包 1.5kg', 'price': 168.0, 'sales': 8900, 'specs': [{'name': '规格', 'values': ['1.5kg装', '2.5kg装']}], 'stock': 320}, {'category_id': 4, 'id': 4, 'image': '', 'member_price': 1099.0, 'name': 'Nike Air Jordan 1 复古运动鞋', 'price': 1299.0, 'sales': 5600, 'specs': [{'name': '颜色', 'values': ['黑白', '红黑', '蓝白']}, {'name': '尺码', 'values': ['39', '40', '41', '42', '43']}], 'stock': 180}, {'category_id': 1, 'id': 3, 'image': '', 'member_price': 2199.0, 'name': '索尼 WH-1000XM5 头戴式耳机', 'price': 2499.0, 'sales': 980, 'specs': [{'name': '颜色', 'values': ['黑色', '铂金银', '午夜蓝']}], 'stock': 200}, {'category_id': 2, 'id': 2, 'image': '', 'member_price': 11499.0, 'name': 'MacBook Pro 14英寸 M3', 'price': 12999.0, 'sales': 1520, 'specs': [{'name': '颜色', 'values': ['深空黑', '银色']}, {'name': '内存', 'values': ['16GB', '32GB']}], 'stock': 89}, {'category_id': 1, 'id': 1, 'image': '', 'member_price': 7999.0, 'name': 'iPhone 15 Pro Max 256GB', 'price': 8999.0, 'sales': 2340, 'specs': [{'name': '颜色', 'values': ['原色钛金属', '蓝色钛金属', '白色钛金属', '黑色钛金属']}, {'name': '存储', 'values': ['256GB', '512GB', '1TB']}], 'stock': 156}], 'page': 1, 'page_size': 20, 'total': 12}, 'msg': 'ok'}
+2026-07-07 02:06:25,738 - INFO - api_client.py - 【接口请求】get | URL: http://127.0.0.1:5000/api/user/info
+2026-07-07 02:06:25,738 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_89466', 'password': '123456'}
+2026-07-07 02:06:25,738 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'e214cbf843284a18a8c3274db2cfef4f'}
+2026-07-07 02:06:25,796 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'data': {'create_time': '2026-07-07 02:06:25', 'id': 957, 'is_member': False, 'member_expire': None, 'nickname': '', 'status': 1, 'username': 'test_flow_89466'}, 'msg': 'ok'}
+2026-07-07 02:06:25,825 - INFO - api_client.py - 【接口请求】post | URL: http://127.0.0.1:5000/api/logout
+2026-07-07 02:06:25,826 - INFO - api_client.py - 【请求参数】params: None | data: None | json: {'username': 'test_flow_89466', 'password': '123456'}
+2026-07-07 02:06:25,826 - INFO - api_client.py - 【请求头】headers: {'sessionToken': 'e214cbf843284a18a8c3274db2cfef4f'}
+2026-07-07 02:06:25,836 - INFO - api_client.py - 【接口响应】状态码: 200 | 响应体: {'code': 200, 'msg': 'ok'}

@@ -1,0 +1,11 @@
+testcases:
+  - name: "正常取消订单"
+    scenario: success
+    data: { reason: "不想要了" }
+    # order_id 测试中动态创建
+    expected: { code: 200 }
+
+  - name: "取消原因过短"
+    scenario: error
+    data: { reason: "a" }
+    expected: { code: 400 }
