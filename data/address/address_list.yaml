@@ -1,0 +1,5 @@
+# address_list 测试用例
+name: 正常获取地址列表
+scenario: success
+expected:
+  code: 200

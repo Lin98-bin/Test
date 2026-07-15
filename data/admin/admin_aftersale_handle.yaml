@@ -1,0 +1,24 @@
+testcases:
+  - name: "同意售后"
+    scenario: success
+    data:
+      action: approve
+      reply: "同意退款"
+    expected:
+      code: 200
+
+  - name: "拒绝售后"
+    scenario: success
+    data:
+      action: reject
+      reply: "不符合退款条件"
+    expected:
+      code: 200
+
+  - name: "无效操作"
+    scenario: error
+    data:
+      action: invalid
+      reply: "测试"
+    expected:
+      code: 400

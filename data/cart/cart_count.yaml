@@ -1,0 +1,5 @@
+# cart_count 测试用例
+name: 正常获取购物车数量
+scenario: success
+expected:
+  code: 200

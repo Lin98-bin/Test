@@ -1,0 +1,23 @@
+# cart_add 测试用例
+testcases:
+- name: 商品ID为空
+  scenario: error
+  data:
+    goods_id: 0
+    quantity: 1
+  expected:
+    code: 400
+- name: 商品不存在
+  scenario: error
+  data:
+    goods_id: 99999
+    quantity: 1
+  expected:
+    code: 404
+- name: 正常添加
+  scenario: success
+  data:
+    goods_id: 1
+    quantity: 1
+  expected:
+    code: 200

@@ -64,21 +64,13 @@ def admin_token():
     """
     会话级 fixture：确保 test_0006 是管理员，登录后返回 admin token
     """
-    import pymysql
+    from common.db_handler import db
     username = "test_0006"
     password = "123456"
 
     # 确保 test_0006 是管理员
     try:
-        conn = pymysql.connect(
-            host="127.0.0.1", user="root", password="root",
-            database="pycharm_test", charset="utf8"
-        )
-        cursor = conn.cursor()
-        cursor.execute("UPDATE user SET is_admin=1 WHERE username=%s", (username,))
-        conn.commit()
-        cursor.close()
-        conn.close()
+        db.execute("UPDATE user SET is_admin=1 WHERE username=%s", (username,))
         print(f"\n【Fixture】已将 {username} 设为管理员")
     except Exception as e:
         print(f"\n【Fixture】设置管理员失败: {e}")

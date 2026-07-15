@@ -1,0 +1,12 @@
+# address_default 测试用例
+testcases:
+- name: 设为默认地址
+  scenario: success
+  expected:
+    code: 200
+- name: 设为默认失败-地址不存在
+  scenario: error
+  data:
+    id: 99999
+  expected:
+    code: 404

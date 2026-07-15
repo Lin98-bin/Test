@@ -1,4 +1,0 @@
-testcases:
-  - name: "正常获取我的评价"
-    scenario: success
-    expected: { code: 200 }

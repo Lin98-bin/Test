@@ -1,6 +1,7 @@
 
 import pymysql
 from pymysql.cursors import DictCursor
+from core import setting
 class DBHandler:
     def __init__(self,host,port,database,user,password,charset="utf8"):
         self.conn=pymysql.connect(
@@ -47,10 +48,10 @@ class DBHandler:
         self.conn.close()
 
 db=DBHandler(
-    host="127.0.0.1",
-    port=3306,
-    database="pycharm_test",
-    user="root",
-    password="root",
-    charset="utf8"
+    host=setting.DB_CONF.get("host", "127.0.0.1"),
+    port=setting.DB_CONF.get("port", 3306),
+    database=setting.DB_CONF.get("database", "pycharm_test"),
+    user=setting.DB_CONF.get("user", "root"),
+    password=setting.DB_CONF.get("password", "root"),
+    charset=setting.DB_CONF.get("charset", "utf8")
 )

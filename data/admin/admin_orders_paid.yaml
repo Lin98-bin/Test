@@ -1,0 +1,5 @@
+# admin_orders 测试用例
+name: 查看待发货订单
+scenario: success
+expected:
+  code: 200

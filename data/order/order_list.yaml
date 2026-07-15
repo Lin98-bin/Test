@@ -1,0 +1,12 @@
+# order_list 测试用例
+testcases:
+- name: 按状态筛选
+  scenario: success
+  params:
+    status: pending
+  expected:
+    code: 200
+- name: 获取全部订单
+  scenario: success
+  expected:
+    code: 200

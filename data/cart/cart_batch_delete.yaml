@@ -1,0 +1,12 @@
+# cart_batch 测试用例
+testcases:
+- name: 批量删除购物车
+  scenario: success
+  expected:
+    code: 200
+- name: 空ID列表
+  scenario: error
+  data:
+    ids: []
+  expected:
+    code: 400

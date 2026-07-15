@@ -1,0 +1,12 @@
+# address_delete 测试用例
+testcases:
+- name: 删除失败-地址不存在
+  scenario: error
+  data:
+    id: 99999
+  expected:
+    code: 404
+- name: 正常删除地址
+  scenario: success
+  expected:
+    code: 200

@@ -1,0 +1,12 @@
+# cart_delete 测试用例
+testcases:
+- name: 删除不存在的项
+  scenario: error
+  data:
+    cart_id: 99999
+  expected:
+    code: 404
+- name: 正常删除购物车项
+  scenario: success
+  expected:
+    code: 200

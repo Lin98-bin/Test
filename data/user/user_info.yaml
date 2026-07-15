@@ -1,0 +1,5 @@
+# user_info 测试用例
+name: 正常获取用户信息
+scenario: success
+expected:
+  code: 200

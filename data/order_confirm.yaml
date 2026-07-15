@@ -1,5 +1,0 @@
-testcases:
-  - name: "确认收货"
-    scenario: success
-    # order_id 测试中先创建已支付订单
-    expected: { code: 200 }

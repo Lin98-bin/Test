@@ -1,0 +1,14 @@
+# address_update 测试用例
+testcases:
+- name: 修改地址
+  scenario: success
+  data:
+    contact: 修改联系人
+  expected:
+    code: 200
+- name: 修改失败-地址不存在
+  scenario: error
+  data:
+    id: 99999
+  expected:
+    code: 404

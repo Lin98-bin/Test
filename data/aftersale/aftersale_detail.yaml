@@ -1,0 +1,12 @@
+# aftersale_detail 测试用例
+testcases:
+- name: 售后不存在
+  scenario: error
+  data:
+    id: 99999
+  expected:
+    code: 404
+- name: 正常查看售后详情
+  scenario: success
+  expected:
+    code: 200

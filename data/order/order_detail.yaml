@@ -1,0 +1,12 @@
+# order_detail 测试用例
+testcases:
+- name: 正常查看订单详情
+  scenario: success
+  expected:
+    code: 200
+- name: 订单不存在
+  scenario: error
+  data:
+    order_id: 99999
+  expected:
+    code: 404

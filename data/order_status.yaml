@@ -1,5 +1,0 @@
-testcases:
-  - name: "正常查询订单状态"
-    scenario: success
-    # order_id 测试中动态创建
-    expected: { code: 200 }

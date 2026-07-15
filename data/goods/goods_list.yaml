@@ -1,0 +1,25 @@
+# goods_list 测试用例
+testcases:
+- name: 关键词搜索
+  scenario: success
+  params:
+    keyword: iPhone
+  expected:
+    code: 200
+- name: 分页查询
+  scenario: success
+  params:
+    page: 1
+    page_size: 5
+  expected:
+    code: 200
+- name: 按分类筛选
+  scenario: success
+  params:
+    category_id: 1
+  expected:
+    code: 200
+- name: 正常获取商品列表
+  scenario: success
+  expected:
+    code: 200

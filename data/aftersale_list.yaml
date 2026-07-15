@@ -1,4 +1,0 @@
-testcases:
-  - name: "正常获取售后列表"
-    scenario: success
-    expected: { code: 200 }

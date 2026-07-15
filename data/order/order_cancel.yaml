@@ -1,0 +1,14 @@
+# order_cancel 测试用例
+testcases:
+- name: 取消原因过短
+  scenario: error
+  data:
+    reason: a
+  expected:
+    code: 400
+- name: 正常取消订单
+  scenario: success
+  data:
+    reason: 不想要了
+  expected:
+    code: 200

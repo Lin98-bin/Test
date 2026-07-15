@@ -1,0 +1,5 @@
+# user_logout 测试用例
+name: 正常退出登录
+scenario: success
+expected:
+  code: 200

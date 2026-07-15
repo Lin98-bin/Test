@@ -1,5 +1,0 @@
-testcases:
-  - name: "正常获取商品评价"
-    scenario: success
-    data: { goods_id: 1 }
-    expected: { code: 200 }

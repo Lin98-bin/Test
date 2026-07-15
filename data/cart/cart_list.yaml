@@ -1,0 +1,5 @@
+# cart_list 测试用例
+name: 正常获取购物车列表
+scenario: success
+expected:
+  code: 200

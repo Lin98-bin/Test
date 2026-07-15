@@ -1,0 +1,5 @@
+# order_status 测试用例
+name: 正常查询订单状态
+scenario: success
+expected:
+  code: 200

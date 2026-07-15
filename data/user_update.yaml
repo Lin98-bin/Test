@@ -1,5 +1,0 @@
-testcases:
-  - name: "修改昵称"
-    scenario: success
-    data: { nickname: "测试昵称" }
-    expected: { code: 200 }

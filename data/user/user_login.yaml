@@ -1,0 +1,32 @@
+# login 测试用例
+testcases:
+- name: 登录成功-用户0006
+  username: test_0006
+  password: '123456'
+  expected:
+    code: 200
+    msg: 登录成功
+- name: 登录成功-用户0007
+  username: test_0007
+  password: '123456'
+  expected:
+    code: 200
+    msg: 登录成功
+- name: 登录成功-用户0008
+  username: test_0008
+  password: '123456'
+  expected:
+    code: 200
+    msg: 登录成功
+- name: 登录失败-密码错误
+  username: test_0006
+  password: wrong_password
+  expected:
+    code: 401
+    error: wrong username or password
+- name: 登录失败-用户不存在
+  username: not_exist_user
+  password: '123456'
+  expected:
+    code: 401
+    error: wrong username or password

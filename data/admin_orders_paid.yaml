@@ -1,4 +1,0 @@
-testcases:
-  - name: "查看待发货订单"
-    scenario: success
-    expected: { code: 200 }

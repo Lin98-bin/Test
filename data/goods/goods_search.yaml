@@ -1,0 +1,14 @@
+# goods_search 测试用例
+testcases:
+- name: 正常搜索
+  scenario: success
+  params:
+    keyword: iPhone
+  expected:
+    code: 200
+- name: 空关键词
+  scenario: error
+  params:
+    keyword: ''
+  expected:
+    code: 400

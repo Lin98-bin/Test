@@ -1,0 +1,14 @@
+# goods_detail 测试用例
+testcases:
+- name: 商品不存在
+  scenario: error
+  data:
+    goods_id: 99999
+  expected:
+    code: 404
+- name: 正常获取商品详情
+  scenario: success
+  data:
+    goods_id: 1
+  expected:
+    code: 200

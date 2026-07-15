@@ -1,0 +1,13 @@
+# cart_update 测试用例
+testcases:
+- name: 不存在的购物车项
+  scenario: error
+  data:
+    cart_id: 99999
+    quantity: 1
+  expected:
+    code: 404
+- name: 修改购物车数量
+  scenario: success
+  expected:
+    code: 200
