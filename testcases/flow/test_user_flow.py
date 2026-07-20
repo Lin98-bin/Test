@@ -6,7 +6,7 @@ from service.user_service import UserService
 from service.goods_service import GoodsService
 from core.context import GlobalContext, TokenStore
 from utils.jsonpath_utils import JsonPathExtractor
-from common.db_handler import db
+from core.db_handler import db
 import pytest
 import allure
 from pytest_assume.plugin import assume
@@ -95,6 +95,11 @@ def test_user_complete_flow():
 
         assume(resp_json.get("code") == 200)
         assume(resp_json.get("msg") in ("退出成功", "ok"))
+
+    with allure.step("步骤6：清理全局上下文"):
+        GlobalContext.clear()
+        assume(TokenStore.get_token(username) == "",
+               f"clear 后 token 应为空，实际={TokenStore.get_token(username)}")
 
     print(f"\nComplete business flow test passed! User: {username}")
 

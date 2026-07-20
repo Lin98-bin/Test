@@ -4,7 +4,7 @@ import requests
 import json
 #增加重试机制
 from tenacity import retry,stop_after_attempt,wait_exponential
-from utils.logger import *
+from utils.logger_utils import *
 
 try:
     import allure

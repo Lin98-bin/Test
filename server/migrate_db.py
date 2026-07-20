@@ -127,7 +127,26 @@ def migrate():
     """)
 
     # ============================================
-    # 8. 种子数据 — 插入默认分类和示例商品
+    # 8. 新建 feedback 反馈表  &  扩展 user 表 avatar 字段
+    # ============================================
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            type ENUM('suggestion','bug','complaint','other') DEFAULT 'suggestion' COMMENT '反馈类型',
+            contact VARCHAR(200) DEFAULT '' COMMENT '联系方式',
+            content VARCHAR(1000) DEFAULT '' COMMENT '反馈内容',
+            create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_user (user_id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+    """)
+    try:
+        cursor.execute("ALTER TABLE user ADD COLUMN avatar VARCHAR(500) DEFAULT '' COMMENT '头像URL'")
+    except Exception:
+        pass
+
+    # ============================================
+    # 9. 种子数据 — 插入默认分类和示例商品
     # ============================================
     cursor.execute("SELECT COUNT(*) FROM category")
     if cursor.fetchone()[0] == 0:

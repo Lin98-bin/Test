@@ -1,0 +1,56 @@
+# goods_filter 测试用例 — 演示查询参数
+testcases:
+- name: 正常筛选-按价格升序
+  scenario: success
+  params:
+    min_price: 0
+    max_price: 0
+    sort_by: price
+    order: asc
+  expected:
+    code: 200
+- name: 筛选-价格区间+销量降序
+  scenario: success
+  params:
+    min_price: 100
+    max_price: 5000
+    sort_by: sales
+    order: desc
+  expected:
+    code: 200
+- name: 筛选-高价商品按最新排序
+  scenario: success
+  params:
+    min_price: 5000
+    max_price: 0
+    sort_by: id
+    order: desc
+  expected:
+    code: 200
+- name: 错误-min_price大于max_price
+  scenario: error
+  params:
+    min_price: 5000
+    max_price: 100
+    sort_by: id
+    order: desc
+  expected:
+    code: 400
+- name: 错误-无效的sort_by
+  scenario: error
+  params:
+    min_price: 0
+    max_price: 0
+    sort_by: invalid
+    order: desc
+  expected:
+    code: 400
+- name: 错误-无效的order
+  scenario: error
+  params:
+    min_price: 0
+    max_price: 0
+    sort_by: id
+    order: invalid
+  expected:
+    code: 400

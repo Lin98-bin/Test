@@ -64,7 +64,7 @@ def admin_token():
     """
     会话级 fixture：确保 test_0006 是管理员，登录后返回 admin token
     """
-    from common.db_handler import db
+    from core.db_handler import db
     username = "test_0006"
     password = "123456"
 
@@ -90,3 +90,34 @@ def admin_token():
     if token:
         print(f"【Fixture】Admin Token获取成功：{token[:20]}...")
     return token
+
+def _cleanup(db, username):
+    """清理指定用户的测试数据"""
+    try:
+        user = db.query("SELECT id FROM user WHERE username=%s", args=(username,), one=True)
+        if user:
+            uid = user["id"]
+            db.execute("DELETE FROM cart WHERE user_id=%s", (uid,))
+            db.execute("DELETE FROM order_items WHERE order_id IN (SELECT id FROM orders WHERE user_id=%s)", (uid,))
+            db.execute("DELETE FROM review WHERE user_id=%s", (uid,))
+            db.execute("DELETE FROM after_sale WHERE user_id=%s", (uid,))
+            db.execute("DELETE FROM orders WHERE user_id=%s", (uid,))
+            db.execute("DELETE FROM address WHERE user_id=%s AND is_default=0", (uid,))
+            db.execute("UPDATE user SET is_member=0, member_expire=NULL WHERE id=%s", (uid,))
+        db.execute("UPDATE goods SET stock=100 WHERE stock=0")
+        db.execute("DELETE FROM user WHERE username LIKE 'test_flow_%'")
+        print(f"【Fixture】测试数据清理完成")
+    except Exception as e:
+        print(f"【Fixture】清理失败: {e}")
+
+
+
+@pytest.fixture(scope="session", autouse=True)
+def cleanup_test_data():
+    """前置：清理上次残留  →  后置：清理本次产生的测试数据"""
+    from core.db_handler import db
+    username = "test_0006"
+
+    _cleanup(db, username)   # 前置
+    yield                    # 跑所有测试
+    _cleanup(db, username)   # 后置

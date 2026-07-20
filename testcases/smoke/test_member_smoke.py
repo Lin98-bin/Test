@@ -7,7 +7,7 @@ import pytest
 import allure
 from pytest_assume.plugin import assume
 from service.member_service import MemberService
-from common.db_handler import db
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")

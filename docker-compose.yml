@@ -1,0 +1,140 @@
+# =============================================
+# Mini Mall — 完整服务编排（测试/预发环境）
+# 启动: docker-compose up -d
+# 停止: docker-compose down
+# =============================================
+version: "3.8"
+
+services:
+  # ==================== Flask API 服务 ====================
+  app:
+    build: .
+    image: ${DOCKER_REGISTRY:-}mini-mall-api:${BUILD_TAG:-latest}
+    container_name: mini-mall-api
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASS=${DB_PASS:-root}
+      - DB_NAME=pycharm_test
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ES_HOST=elasticsearch
+      - ES_PORT=9200
+      - MQ_HOST=rabbitmq
+      - MQ_PORT=5672
+      - JWT_SECRET=${JWT_SECRET:-mini_mall_jwt_secret_2026}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      elasticsearch:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - ./uploads:/app/server/uploads
+    networks:
+      - mini-mall-net
+
+  # ==================== MySQL ====================
+  mysql:
+    image: mysql:8.0
+    container_name: mini-mall-mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-root}
+      - MYSQL_DATABASE=pycharm_test
+      - MYSQL_CHARSET=utf8mb4
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./server/add_indexes.sql:/docker-entrypoint-initdb.d/01_init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - mini-mall-net
+
+  # ==================== Redis ====================
+  redis:
+    image: redis:7-alpine
+    container_name: mini-mall-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - mini-mall-net
+
+  # ==================== Elasticsearch ====================
+  elasticsearch:
+    image: elasticsearch:8.11.0
+    container_name: mini-mall-es
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+    networks:
+      - mini-mall-net
+
+  # ==================== RabbitMQ ====================
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: mini-mall-rabbitmq
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"    # AMQP
+      - "15672:15672"  # 管理后台
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - mini-mall-net
+
+# ==================== 数据卷 ====================
+volumes:
+  mysql-data:
+  redis-data:
+  es-data:
+  rabbitmq-data:
+
+# ==================== 网络 ====================
+networks:
+  mini-mall-net:
+    driver: bridge

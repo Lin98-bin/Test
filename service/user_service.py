@@ -32,24 +32,20 @@ class UserService:
         """获取用户信息接口"""
         self.client.url = f"{setting.BASE_URL}/api/user/info"
         self.client.method = "get"
-        self.client.headers = {"sessionToken": token}
+        self.client.headers = {"sessionToken": token} if token else {}
         return self.client.send()
 
     def logout(self, token):
         """退出登录接口"""
         self.client.url = f"{setting.BASE_URL}/api/logout"
         self.client.method = "post"
-        self.client.headers = {"sessionToken": token}
+        self.client.headers = {"sessionToken": token} if token else {}
         return self.client.send()
 
-    def add_address(self, address_detail, contact_name, contact_phone, token):
-        """新增收货地址接口"""
-        self.client.url = f"{setting.BASE_URL}/api/user/address/add"
-        self.client.method = "post"
-        self.client.headers = {"sessionToken": token}
-        self.client.json = {
-            "address": address_detail,
-            "contact": contact_name,
-            "phone": contact_phone
-        }
+    def update_info(self, nickname, token):
+        """修改用户信息接口"""
+        self.client.url = f"{setting.BASE_URL}/api/user/update"
+        self.client.method = "put"
+        self.client.headers = {"sessionToken": token} if token else {}
+        self.client.json = {"nickname": nickname}
         return self.client.send()

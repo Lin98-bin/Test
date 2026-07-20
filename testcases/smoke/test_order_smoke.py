@@ -7,28 +7,18 @@ import pytest
 import allure
 from pytest_assume.plugin import assume
 from service.order_service import OrderService
-from service.user_service import UserService
-from common.db_handler import db
+from service.address_service import AddressService
+from core.db_handler import db
 
 
 def _create_test_order(token):
     """辅助：下单并返回 order_id"""
     # 确保有地址
-    from core.api_client import RequestsClient
-    from core import setting
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/address/list"
-    client.method = "get"
-    client.headers = {"sessionToken": token}
-    resp = client.send()
+    resp = AddressService().get_list(token=token)
     addrs = resp.json().get("data", {}).get("list", [])
     if not addrs:
         # 创建一个地址
-        client.url = f"{setting.BASE_URL}/api/address/add"
-        client.method = "post"
-        client.headers = {"sessionToken": token}
-        client.json = {"address": "测试地址", "contact": "测试", "phone": "13800138000"}
-        client.send()
+        AddressService().add(address="测试地址", contact="测试", phone="13800138000", token=token)
 
     resp = OrderService().create(goods_id=1, quantity=1, token=token)
     return resp.json()["data"]["order_id"]
@@ -60,13 +50,7 @@ def test_order_create(login_token):
 @allure.story("订单列表")
 @allure.title("订单列表冒烟用例")
 def test_order_list(login_token):
-    from core.api_client import RequestsClient
-    from core import setting
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/order/list"
-    client.method = "get"
-    client.headers = {"sessionToken": login_token}
-    resp = client.send()
+    resp = OrderService().get_list(token=login_token)
     resp_json = resp.json()
 
     assume(resp_json.get("code") == 200)
@@ -81,14 +65,7 @@ def test_order_list(login_token):
 @allure.title("订单详情冒烟用例")
 def test_order_detail(login_token):
     order_id = _create_test_order(login_token)
-
-    from core.api_client import RequestsClient
-    from core import setting
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/order/detail/{order_id}"
-    client.method = "get"
-    client.headers = {"sessionToken": login_token}
-    resp = client.send()
+    resp = OrderService().get_detail(order_id, token=login_token)
     resp_json = resp.json()
 
     assume(resp_json.get("code") == 200)
@@ -147,15 +124,7 @@ def test_order_status(login_token):
 @allure.title("取消订单冒烟用例")
 def test_order_cancel(login_token):
     order_id = _create_test_order(login_token)
-
-    from core.api_client import RequestsClient
-    from core import setting
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/order/cancel/{order_id}"
-    client.method = "put"
-    client.headers = {"sessionToken": login_token}
-    client.json = {"reason": "冒烟测试取消"}
-    resp = client.send()
+    resp = OrderService().cancel(order_id, reason="冒烟测试取消", token=login_token)
     resp_json = resp.json()
 
     assume(resp_json.get("code") == 200)

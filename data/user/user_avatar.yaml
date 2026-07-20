@@ -1,0 +1,20 @@
+# user_avatar 测试用例 — 演示文件上传
+testcases:
+- name: 上传PNG头像
+  scenario: success
+  data:
+    ext: png
+  expected:
+    code: 200
+- name: 上传JPG头像
+  scenario: success
+  data:
+    ext: jpg
+  expected:
+    code: 200
+- name: 上传GIF头像
+  scenario: success
+  data:
+    ext: gif
+  expected:
+    code: 200

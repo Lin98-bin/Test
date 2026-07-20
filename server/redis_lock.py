@@ -46,17 +46,24 @@ class RedisLock:
         self.retry_delay = retry_delay
 
     def acquire(self) -> bool:
-        """尝试获取锁，返回 True/False"""
+        """尝试获取锁，返回 True/False。Redis 不可用时返回 True（降级放行）"""
+        if rds is None:
+            return True  # Redis 不可用时降级放行
         for i in range(self.retry_times):
             # SET key value NX EX expire → 原子操作
-            if rds.set(self.lock_key, self.lock_value, nx=True, ex=self.expire):
-                return True
+            try:
+                if rds.set(self.lock_key, self.lock_value, nx=True, ex=self.expire):
+                    return True
+            except Exception:
+                return True  # Redis 异常时降级放行
             if i < self.retry_times - 1:
                 time.sleep(self.retry_delay)
         return False
 
     def release(self):
         """安全释放锁（Lua 脚本保证原子性）"""
+        if rds is None:
+            return
         try:
             rds.eval(self._UNLOCK_SCRIPT, 1, self.lock_key, self.lock_value)
         except Exception:

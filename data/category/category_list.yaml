@@ -1,0 +1,18 @@
+# category_list 测试用例
+testcases:
+- name: 正常获取分类列表
+  scenario: success
+  expected:
+    code: 200
+- name: 按父分类筛选顶级分类
+  scenario: success
+  params:
+    parent_id: 0
+  expected:
+    code: 200
+- name: 不存在的父分类ID
+  scenario: error
+  params:
+    parent_id: 99999
+  expected:
+    code: 200

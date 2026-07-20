@@ -7,7 +7,7 @@ import pytest
 import allure
 from pytest_assume.plugin import assume
 from service.user_service import UserService
-from common.db_handler import db
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -34,16 +34,7 @@ def test_user_info(login_token):
 @allure.title("修改昵称冒烟用例")
 def test_user_update(login_token):
     with allure.step("修改昵称"):
-        resp = UserService().get_info(token=login_token)
-        # 注意：update 接口在 service 里没封装，直接调用
-        from core.api_client import RequestsClient
-        from core import setting
-        client = RequestsClient()
-        client.url = f"{setting.BASE_URL}/api/user/update"
-        client.method = "put"
-        client.headers = {"sessionToken": login_token}
-        client.json = {"nickname": "冒烟测试"}
-        resp = client.send()
+        resp = UserService().update_info(nickname="冒烟测试", token=login_token)
         resp_json = resp.json()
 
     with allure.step("断言结果"):

@@ -4,25 +4,18 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import pytest, allure
 from pytest_assume.plugin import assume
-from core.api_client import RequestsClient
+from service.address_service import AddressService
 from utils.yaml_utils import read_yaml_testcases
-from core import setting
+from core.db_handler import db
 
 
 def _get_address_id(token):
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/address/list"
-    client.method = "get"
-    client.headers = {"sessionToken": token}
-    resp = client.send()
+    resp = AddressService().get_list(token=token)
     addrs = resp.json().get("data", {}).get("list", [])
     if addrs:
         return addrs[0]["id"]
-    client.url = f"{setting.BASE_URL}/api/address/add"
-    client.method = "post"
-    client.headers = {"sessionToken": token}
-    client.json = {"address": "测试地址", "contact": "测试", "phone": "13800138001"}
-    return client.send().json()["data"]["address_id"]
+    resp = AddressService().add(address="测试地址", contact="测试", phone="13800138001", token=token)
+    return resp.json()["data"]["address_id"]
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -38,12 +31,16 @@ def test_address_update(case, login_token):
     addr_id = case_data.get("id") or _get_address_id(login_token)
 
     with allure.step(f"修改地址 id={addr_id}"):
-        client = RequestsClient()
-        client.url = f"{setting.BASE_URL}/api/address/update"
-        client.method = "put"
-        client.headers = {"sessionToken": login_token}
-        client.json = {"id": addr_id, "contact": case_data.get("contact", "修改")}
-        resp = client.send()
+        resp = AddressService().update(addr_id=addr_id, contact=case_data.get("contact", "修改"), token=login_token)
 
     with allure.step("断言结果"):
-        assume(resp.json().get("code") == expected["code"])
+        resp_json = resp.json()
+        assume(resp_json.get("code") == expected["code"])
+
+        # DB 断言：验证 contact 已更新
+        if resp_json.get("code") == 200:
+            contact_val = case_data.get("contact", "修改")
+            db_addr = db.query("SELECT contact FROM address WHERE id=%s", args=(addr_id,), one=True)
+            assume(db_addr is not None, f"DB: 地址 id={addr_id} 应存在")
+            assume(db_addr.get("contact") == contact_val,
+                   f"DB: contact 应匹配, 期望={contact_val}, 实际={db_addr.get('contact')}")

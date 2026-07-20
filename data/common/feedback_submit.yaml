@@ -1,0 +1,50 @@
+# feedback_submit 测试用例 — 演示表单参数
+testcases:
+- name: 提交建议反馈
+  scenario: success
+  data:
+    contact: "13800138000"
+    content: "希望增加夜间模式功能，方便晚上浏览"
+    type: suggestion
+  expected:
+    code: 200
+- name: 提交Bug反馈
+  scenario: success
+  data:
+    contact: "test@example.com"
+    content: "支付页面在iOS设备上显示异常，按钮被遮挡"
+    type: bug
+  expected:
+    code: 200
+- name: 提交投诉反馈
+  scenario: success
+  data:
+    contact: "user_wechat_001"
+    content: "物流速度太慢，已经等了5天还没收到"
+    type: complaint
+  expected:
+    code: 200
+- name: 联系方式为空
+  scenario: error
+  data:
+    contact: ""
+    content: "测试反馈内容至少4个字"
+    type: suggestion
+  expected:
+    code: 400
+- name: 反馈内容过短
+  scenario: error
+  data:
+    contact: "13800138000"
+    content: "ab"
+    type: suggestion
+  expected:
+    code: 400
+- name: 无效的反馈类型
+  scenario: error
+  data:
+    contact: "13800138000"
+    content: "测试反馈内容，长度足够"
+    type: invalid_type
+  expected:
+    code: 400

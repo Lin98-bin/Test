@@ -2,10 +2,10 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from core.api_client import RequestsClient
+from service.user_service import UserService
 from utils.yaml_utils import read_yaml_testcases
+from core.db_handler import db
 from pytest_assume.plugin import assume
-from core import setting
 
 import pytest
 import allure
@@ -28,21 +28,11 @@ def test_login(case):
     allure.dynamic.title(f"用例：{case['name']}")
     expected = case['expected']
 
-    with allure.step("步骤1：构造登录请求"):
-        client = RequestsClient()
-        client.url = setting.BASE_URL + '/login'
-        client.method = "post"
-        client.headers = setting.COMMON_HEADERS.copy()
-        client.json = {
-            "username": case['username'],
-            "password": str(case['password'])
-        }
-
-    with allure.step("步骤2：发送请求"):
-        resp = client.send()
+    with allure.step("步骤1：发送登录请求"):
+        resp = UserService().login(username=case['username'], password=str(case['password']))
         resp_json = resp.json()
 
-    with allure.step("步骤3：断言结果"):
+    with allure.step("步骤2：断言结果"):
         assume(resp_json.get("code") == expected["code"],
                f"期望 code={expected['code']}，实际={resp_json.get('code')}")
         if "msg" in expected:
@@ -51,6 +41,10 @@ def test_login(case):
         if "error" in expected:
             assume(resp_json.get("error") == expected["error"],
                    f"期望 error={expected['error']}，实际={resp_json.get('error')}")
+        if expected["code"] == 200:
+            # DB assertion: verify user exists in database
+            user = db.query("SELECT id FROM user WHERE username=%s", args=(case['username'],), one=True)
+            assume(user is not None, f"用户 {case['username']} 应在数据库中存在")
 
 
 if __name__ == '__main__':

@@ -4,10 +4,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import pytest, allure
 from pytest_assume.plugin import assume
-from core.api_client import RequestsClient
+from service.address_service import AddressService
 from utils.yaml_utils import read_yaml_testcases
-from common.db_handler import db
-from core import setting
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -25,19 +24,11 @@ def test_address_delete(case, login_token):
     if addr_id and addr_id == 99999:
         pass
     else:
-        client = RequestsClient()
-        client.url = f"{setting.BASE_URL}/api/address/add"
-        client.method = "post"
-        client.headers = {"sessionToken": login_token}
-        client.json = {"address": "临时地址", "contact": "临", "phone": "13800138002"}
-        addr_id = client.send().json()["data"]["address_id"]
+        resp = AddressService().add(address="临时地址", contact="临", phone="13800138002", token=login_token)
+        addr_id = resp.json()["data"]["address_id"]
 
     with allure.step(f"删除地址 id={addr_id}"):
-        client = RequestsClient()
-        client.url = f"{setting.BASE_URL}/api/address/delete/{addr_id}"
-        client.method = "delete"
-        client.headers = {"sessionToken": login_token}
-        resp = client.send()
+        resp = AddressService().delete(addr_id=addr_id, token=login_token)
 
     with allure.step("断言结果"):
         assume(resp.json().get("code") == expected["code"])

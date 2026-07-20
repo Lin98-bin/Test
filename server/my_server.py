@@ -224,6 +224,59 @@ def logout():
     return jsonify({"code": 200, "msg": "ok"})
 
 
+@app.route('/api/user/avatar', methods=['POST'])
+def user_avatar():
+    """上传用户头像 — 演示文件上传参数用法（multipart/form-data）"""
+    u = require_auth()
+
+    # 检查是否有文件上传
+    if 'avatar' not in request.files:
+        return jsonify({"code": 400, "error": "avatar file required"})
+
+    file = request.files['avatar']
+
+    # 检查文件名是否为空
+    if file.filename == '' or file.filename is None:
+        return jsonify({"code": 400, "error": "no file selected"})
+
+    # 检查文件类型
+    allowed_exts = ('.png', '.jpg', '.jpeg', '.gif', '.webp')
+    filename = file.filename.lower()
+    if not any(filename.endswith(ext) for ext in allowed_exts):
+        return jsonify({"code": 400, "error": f"file type not allowed, only {', '.join(allowed_exts)}"})
+
+    # 检查文件大小（限制 2MB）
+    file.seek(0, os.SEEK_END)
+    file_size = file.tell()
+    file.seek(0)
+    max_size = 2 * 1024 * 1024  # 2MB
+    if file_size > max_size:
+        return jsonify({"code": 400, "error": f"file too large, max 2MB, got {file_size} bytes"})
+
+    # 生成唯一文件名并保存
+    import uuid as _uuid
+    ext = filename.rsplit('.', 1)[-1]
+    new_filename = f"avatar_{u[0]}_{_uuid.uuid4().hex[:8]}.{ext}"
+    upload_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads', 'avatars')
+    os.makedirs(upload_dir, exist_ok=True)
+    file_path = os.path.join(upload_dir, new_filename)
+    file.save(file_path)
+
+    # 更新数据库中的头像字段
+    avatar_url = f"/uploads/avatars/{new_filename}"
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("UPDATE user SET avatar=%s WHERE id=%s", (avatar_url, u[0]))
+    db.commit()
+    cursor.close(); db.close()
+
+    return jsonify({"code": 200, "msg": "avatar uploaded", "data": {
+        "avatar_url": avatar_url,
+        "file_name": new_filename,
+        "file_size": file_size
+    }})
+
+
 # ============================================
 # Prometheus 监控指标
 # ============================================
@@ -422,6 +475,61 @@ def goods_search():
         return jsonify({"code": 400, "error": "keyword required"})
     # 复用 goods_list
     return goods_list()
+
+
+@app.route('/api/goods/filter', methods=['GET'])
+def goods_filter():
+    """商品高级筛选 — 演示多查询参数用法（min_price, max_price, sort_by, order）"""
+    try:
+        min_price = request.args.get('min_price', 0, type=float)
+        max_price = request.args.get('max_price', 0, type=float)
+        sort_by = request.args.get('sort_by', 'id', type=str)     # price / sales / id
+        order = request.args.get('order', 'desc', type=str)       # asc / desc
+
+        # 参数校验
+        if min_price < 0 or max_price < 0:
+            return jsonify({"code": 400, "error": "price must be >= 0"})
+        if max_price > 0 and min_price > max_price:
+            return jsonify({"code": 400, "error": "min_price cannot exceed max_price"})
+        if sort_by not in ('id', 'price', 'sales'):
+            return jsonify({"code": 400, "error": "sort_by must be id, price or sales"})
+        if order not in ('asc', 'desc'):
+            return jsonify({"code": 400, "error": "order must be asc or desc"})
+
+        db = get_db()
+        cursor = db.cursor()
+        where = ["is_on_sale=1"]
+        params = []
+
+        if min_price > 0:
+            where.append("price >= %s")
+            params.append(min_price)
+        if max_price > 0:
+            where.append("price <= %s")
+            params.append(max_price)
+
+        wheresql = " WHERE " + " AND ".join(where) if where else ""
+        order_sql = f" ORDER BY {sort_by} {order}"
+
+        cursor.execute(f"SELECT id, name, price, member_price, stock, image, sales, category_id FROM goods{wheresql}{order_sql} LIMIT 50", params)
+        rows = cursor.fetchall()
+        cursor.execute(f"SELECT COUNT(*) FROM goods{wheresql}", params)
+        total = cursor.fetchone()[0]
+        cursor.close(); db.close()
+
+        goods = [{
+            "id": r[0], "name": r[1], "price": float(r[2]),
+            "member_price": float(r[3]) if r[3] else None,
+            "stock": r[4], "image": r[5] or '',
+            "sales": r[6] or 0, "category_id": r[7]
+        } for r in rows]
+
+        return jsonify({"code": 200, "msg": "ok", "data": {
+            "list": goods, "total": total,
+            "filters": {"min_price": min_price, "max_price": max_price, "sort_by": sort_by, "order": order}
+        }})
+    except Exception as e:
+        return jsonify({"code": 500, "error": str(e)})
 
 
 # ============================================
@@ -1296,6 +1404,101 @@ def review_my():
 
 
 # ============================================
+# 十一、用户反馈模块（演示表单参数）
+# ============================================
+@app.route('/api/feedback/submit', methods=['POST'])
+def feedback_submit():
+    """提交用户反馈 — 演示表单参数用法（application/x-www-form-urlencoded 或 multipart/form-data）"""
+    u = require_auth()
+
+    # 使用 request.form 获取表单参数（而非 request.get_json()）
+    contact = request.form.get('contact', '').strip()
+    content = request.form.get('content', '').strip()
+    fb_type = request.form.get('type', 'suggestion').strip()  # suggestion / bug / complaint / other
+
+    # 参数校验
+    if not contact:
+        return jsonify({"code": 400, "error": "contact is required"})
+    if not content:
+        return jsonify({"code": 400, "error": "content is required"})
+    if len(content) < 4:
+        return jsonify({"code": 400, "error": "content must be at least 4 characters"})
+    if fb_type not in ('suggestion', 'bug', 'complaint', 'other'):
+        return jsonify({"code": 400, "error": "type must be suggestion/bug/complaint/other"})
+
+    # 存入数据库
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(
+        "INSERT INTO feedback(user_id, type, contact, content, create_time) VALUES(%s,%s,%s,%s,NOW())",
+        (u[0], fb_type, contact, content)
+    )
+    db.commit()
+    fid = cursor.lastrowid
+    cursor.close(); db.close()
+
+    return jsonify({"code": 200, "msg": "feedback submitted", "data": {
+        "id": fid, "type": fb_type, "contact": contact
+    }})
+
+
+# ============================================
+# 十二、系统工具模块（演示多自定义 Header）
+# ============================================
+@app.route('/api/system/headers', methods=['GET'])
+def system_headers():
+    """回显请求头 — 演示多自定义 Header 参数用法
+
+    客户端可传入:
+        User-Agent   : 模拟 APP / 浏览器，避免服务端拦截
+        tenantId     : 租户 ID（后台多租户系统必备）
+        deviceId     : 设备标识（APP 接口必带）
+
+    服务端读取这些 Header 并回显，同时展示鉴权 token 的配合使用。
+    """
+    u = require_auth()  # sessionToken 鉴权
+
+    # 读取自定义 Headers（全都不是必填，缺失时给默认值）
+    user_agent = request.headers.get('User-Agent', '(not set)')
+    tenant_id = request.headers.get('tenantId', '(not set)')
+    device_id = request.headers.get('deviceId', '(not set)')
+
+    # 简单校验：tenantId 若传入必须为数字
+    if tenant_id != '(not set)':
+        if not tenant_id.isdigit():
+            return jsonify({"code": 400, "error": "tenantId must be a number"})
+
+    # 简单校验：deviceId 若传入长度至少 6 位
+    if device_id != '(not set)':
+        if len(device_id) < 6:
+            return jsonify({"code": 400, "error": "deviceId too short, min 6 chars"})
+
+    # 判断客户端类型
+    ua_lower = user_agent.lower()
+    if 'iphone' in ua_lower or 'android' in ua_lower:
+        client_type = 'APP'
+    elif 'mozilla' in ua_lower or 'chrome' in ua_lower:
+        client_type = 'Browser'
+    else:
+        client_type = 'Unknown'
+
+    return jsonify({"code": 200, "msg": "ok", "data": {
+        "user_info": {
+            "user_id": u[0],
+            "username": u[1],
+            "is_member": bool(u[4]),
+            "is_admin": bool(u[6])
+        },
+        "received_headers": {
+            "User-Agent": user_agent,
+            "tenantId": tenant_id,
+            "deviceId": device_id
+        },
+        "client_type": client_type
+    }})
+
+
+# ============================================
 # 十、兼容旧接口
 # ============================================
 @app.route('/register', methods=['POST'])
@@ -1333,6 +1536,12 @@ def goods_list_old(): return goods_list()
 
 @app.route('/api/logout', methods=['POST'])
 def logout_old(): return logout()
+
+
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """健康检查端点 — 供 Docker / K8s 探活"""
+    return jsonify({"code": 200, "msg": "ok", "data": {"status": "healthy"}})
 
 
 if __name__ == '__main__':

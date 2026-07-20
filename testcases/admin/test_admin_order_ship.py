@@ -9,27 +9,12 @@ from service.order_service import OrderService
 from core.api_client import RequestsClient
 from utils.yaml_utils import read_yaml_testcases
 from core import setting
-
-
-def _ensure_address(token):
-    c = RequestsClient()
-    c.url = f"{setting.BASE_URL}/api/address/list"
-    c.method = "get"
-    c.headers = {"sessionToken": token}
-    if not c.send().json().get("data", {}).get("list", []):
-        c.url = f"{setting.BASE_URL}/api/address/add"
-        c.method = "post"
-        c.headers = {"sessionToken": token}
-        c.json = {"address": "管理测试", "contact": "测", "phone": "13800138000"}
-        c.send()
-
+from core.db_handler import db
 
 def _new_paid_order(token):
-    _ensure_address(token)
     oid = OrderService().create(goods_id=1, quantity=1, token=token).json()["data"]["order_id"]
     OrderService().pay(oid, token=token)
     return oid
-
 
 @allure.feature("管理员模块")
 @allure.story("发货")
@@ -47,3 +32,11 @@ def test_admin_order_ship(case, login_token, admin_token):
     resp = AdminService().ship_order(oid, tracking=tracking, token=admin_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+
+    # DB 断言：验证订单状态已更新为 shipped 且 tracking_no 匹配
+    if resp_json.get("code") == 200:
+        db_order = db.query("SELECT status, tracking_no FROM orders WHERE id=%s", args=(oid,), one=True)
+        assume(db_order is not None, f"DB: 订单 id={oid} 应存在")
+        assume(db_order.get("status") == 'shipped', f"DB: status 应为 'shipped', 实际={db_order.get('status')}")
+        assume(db_order.get("tracking_no") == tracking,
+               f"DB: tracking_no 应匹配, 期望={tracking}, 实际={db_order.get('tracking_no')}")

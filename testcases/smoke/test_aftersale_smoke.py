@@ -8,14 +8,13 @@ import allure
 from pytest_assume.plugin import assume
 from service.aftersale_service import AfterSaleService
 from service.order_service import OrderService
-from utils.jsonpath_utils import JsonPathExtractor
-from common.db_handler import db
+from core.api_client import RequestsClient
+from core import setting
+from core.db_handler import db
 
 
 def _ensure_completed_order(token):
     """辅助：创建一个已完成订单"""
-    from core.api_client import RequestsClient
-    from core import setting
     client = RequestsClient()
     # 确保地址存在
     client.url = f"{setting.BASE_URL}/api/address/list"

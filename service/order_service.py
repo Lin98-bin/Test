@@ -61,3 +61,28 @@ class OrderService:
         self.client.method = "get"
         self.client.headers = {"sessionToken": token} if token else {}
         return self.client.send()
+
+    def get_list(self, status=None, token=None):
+        """获取订单列表"""
+        url = f"{setting.BASE_URL}/api/order/list"
+        if status:
+            url += f"?status={status}"
+        self.client.url = url
+        self.client.method = "get"
+        self.client.headers = {"sessionToken": token} if token else {}
+        return self.client.send()
+
+    def get_detail(self, order_id, token=None):
+        """获取订单详情"""
+        self.client.url = f"{setting.BASE_URL}/api/order/detail/{order_id}"
+        self.client.method = "get"
+        self.client.headers = {"sessionToken": token} if token else {}
+        return self.client.send()
+
+    def cancel(self, order_id, reason="", token=None):
+        """取消订单"""
+        self.client.url = f"{setting.BASE_URL}/api/order/cancel/{order_id}"
+        self.client.method = "put"
+        self.client.headers = {"sessionToken": token} if token else {}
+        self.client.json = {"reason": reason}
+        return self.client.send()

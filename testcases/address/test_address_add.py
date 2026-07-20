@@ -4,9 +4,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import pytest, allure
 from pytest_assume.plugin import assume
-from service.user_service import UserService
+from service.address_service import AddressService
 from utils.yaml_utils import read_yaml_testcases
-from common.db_handler import db
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -23,7 +23,7 @@ def test_add_address(case, login_token):
     expected = case['expected']
 
     with allure.step("发送新增地址请求"):
-        resp = UserService().add_address(address_detail=address, contact_name=contact, contact_phone=phone, token=login_token)
+        resp = AddressService().add(address=address, contact=contact, phone=phone, token=login_token)
         resp_json = resp.json()
 
     with allure.step("断言响应"):

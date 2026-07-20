@@ -9,13 +9,13 @@ from pytest_assume.plugin import assume
 from service.admin_service import AdminService
 from service.order_service import OrderService
 from service.aftersale_service import AfterSaleService
-from common.db_handler import db
+from core.api_client import RequestsClient
+from core import setting
+from core.db_handler import db
 
 
 def _create_paid_order(token):
     """辅助：创建一个已支付订单"""
-    from core.api_client import RequestsClient
-    from core import setting
     client = RequestsClient()
     client.url = f"{setting.BASE_URL}/api/address/list"
     client.method = "get"
@@ -96,9 +96,6 @@ def test_admin_pending_aftersale(admin_token):
 @allure.title("管理员处理售后冒烟用例")
 def test_admin_handle_aftersale(admin_token, login_token):
     # 准备：用户申请售后
-    from service.order_service import OrderService
-    from core.api_client import RequestsClient
-    from core import setting
     client = RequestsClient()
     client.url = f"{setting.BASE_URL}/api/address/list"
     client.method = "get"

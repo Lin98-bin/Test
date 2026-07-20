@@ -7,6 +7,7 @@ import pytest, allure
 from pytest_assume.plugin import assume
 from utils.yaml_utils import read_yaml_testcases
 from service.cart_service import CartService
+from core.db_handler import db
 
 def _get_cart_id(token):
     cart = CartService()
@@ -27,3 +28,10 @@ def test_cart_delete(case, login_token):
     resp = CartService().delete(cart_id, token=login_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+    if expected["code"] == 200:
+        row = db.query(
+            "SELECT * FROM cart WHERE id=%s",
+            args=(cart_id,),
+            one=True
+        )
+        assume(row is None, f"cart delete: DB row should not exist for id={cart_id}")

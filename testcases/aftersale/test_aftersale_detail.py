@@ -10,21 +10,9 @@ from service.aftersale_service import AfterSaleService
 from service.order_service import OrderService
 from core.api_client import RequestsClient
 from core import setting
-
-def _ensure_address(token):
-    c = RequestsClient()
-    c.url = f"{setting.BASE_URL}/api/address/list"
-    c.method = "get"
-    c.headers = {"sessionToken": token}
-    if not c.send().json().get("data", {}).get("list", []):
-        c.url = f"{setting.BASE_URL}/api/address/add"
-        c.method = "post"
-        c.headers = {"sessionToken": token}
-        c.json = {"address": "售后测试", "contact": "测", "phone": "13800138000"}
-        c.send()
+from core.db_handler import db
 
 def _completed_order(token, gid=1):
-    _ensure_address(token)
     oid = OrderService().create(goods_id=gid, quantity=1, token=token).json()["data"]["order_id"]
     OrderService().pay(oid, token=token)
     c = RequestsClient()
@@ -54,3 +42,11 @@ def test_aftersale_detail(case, login_token):
             resp = AfterSaleService().get_detail(aid, token=login_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+
+    # DB 断言：验证售后记录在数据库中存在
+    if resp_json.get("code") == 200:
+        as_data = resp_json.get("data", {})
+        as_id = as_data.get("id")
+        if as_id:
+            db_as = db.query("SELECT * FROM after_sale WHERE id=%s", args=(as_id,), one=True)
+            assume(db_as is not None, f"DB: after_sale 表中应存在 id={as_id} 的记录")

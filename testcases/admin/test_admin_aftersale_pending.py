@@ -6,6 +6,7 @@ import pytest, allure
 from pytest_assume.plugin import assume
 from service.admin_service import AdminService
 from utils.yaml_utils import read_yaml_testcases
+from core.db_handler import db
 
 
 @allure.feature("管理员模块")
@@ -18,3 +19,9 @@ def test_admin_aftersale_pending(case, admin_token):
     resp = AdminService().get_pending_aftersale(token=admin_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+
+    # DB 断言：验证待处理售后数量
+    if resp_json.get("code") == 200:
+        db_count = db.query("SELECT COUNT(*) AS cnt FROM after_sale WHERE status='pending'", one=True)
+        assume(db_count is not None, "DB: after_sale 表查询不应为空")
+        assume(db_count["cnt"] > 0, f"DB: pending 状态售后数量应大于0, 实际={db_count['cnt']}")

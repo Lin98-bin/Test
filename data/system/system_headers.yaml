@@ -1,0 +1,58 @@
+# system_headers 测试用例 — 演示多自定义 Header
+testcases:
+- name: 模拟APP请求-iPhone+租户+设备
+  scenario: success
+  headers:
+    user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) MyApp/3.2.1"
+    tenant_id: "1001"
+    device_id: "DEVICE_A1B2C3D4E5"
+  expected:
+    code: 200
+    client_type: APP
+
+- name: 模拟浏览器请求-Chrome
+  scenario: success
+  headers:
+    user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0"
+    tenant_id: "2002"
+    device_id: "BROWSER_FINGERPRINT_001"
+  expected:
+    code: 200
+    client_type: Browser
+
+- name: 模拟Android请求
+  scenario: success
+  headers:
+    user_agent: "Mozilla/5.0 (Linux; Android 14) MyApp/2.0.0"
+    tenant_id: "1003"
+    device_id: "ANDROID_DEVICE_XYZ"
+  expected:
+    code: 200
+    client_type: APP
+
+- name: 不传自定义Header-使用默认值
+  scenario: success
+  headers:
+    user_agent: null
+    tenant_id: null
+    device_id: null
+  expected:
+    code: 200
+
+- name: 错误-tenantId不是数字
+  scenario: error
+  headers:
+    user_agent: null
+    tenant_id: "abc_tenant"
+    device_id: null
+  expected:
+    code: 400
+
+- name: 错误-deviceId太短
+  scenario: error
+  headers:
+    user_agent: null
+    tenant_id: null
+    device_id: "D1"
+  expected:
+    code: 400

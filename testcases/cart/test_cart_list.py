@@ -7,6 +7,7 @@ import pytest, allure
 from pytest_assume.plugin import assume
 from utils.yaml_utils import read_yaml_testcases
 from service.cart_service import CartService
+from core.db_handler import db
 
 @allure.feature("cart模块")
 @pytest.mark.parametrize("case", read_yaml_testcases('cart/cart_list'))
@@ -18,3 +19,12 @@ def test_cart_list(case, login_token):
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
     assume("items" in resp_json.get("data", {}))
+    if expected["code"] == 200:
+        row = db.query(
+            "SELECT COUNT(*) AS cnt FROM cart WHERE user_id=(SELECT id FROM user WHERE username=%s)",
+            args=('test_0006',),
+            one=True
+        )
+        db_count = row["cnt"] if row else 0
+        api_count = len(resp_json.get("data", {}).get("items", []))
+        assume(db_count == api_count, f"cart list: count mismatch, DB={db_count}, API={api_count}")

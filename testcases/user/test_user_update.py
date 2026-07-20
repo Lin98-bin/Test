@@ -4,9 +4,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import pytest, allure
 from pytest_assume.plugin import assume
-from core.api_client import RequestsClient
+from service.user_service import UserService
 from utils.yaml_utils import read_yaml_testcases
-from core import setting
+from core.db_handler import db
 
 
 @allure.feature("用户模块")
@@ -17,11 +17,12 @@ def test_user_update(case, login_token):
     d = case.get('data', {})
     expected = case['expected']
 
-    client = RequestsClient()
-    client.url = f"{setting.BASE_URL}/api/user/update"
-    client.method = "put"
-    client.headers = {"sessionToken": login_token}
-    client.json = {"nickname": d.get("nickname", "测试")}
-    resp = client.send()
+    resp = UserService().update_info(nickname=d.get("nickname", "测试"), token=login_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+    if expected["code"] == 200:
+        # DB assertion: verify nickname updated in database
+        nickname = d.get("nickname", "测试")
+        user = db.query("SELECT nickname FROM user WHERE username='test_0006'", one=True)
+        assume(user is not None, "test_0006 应在数据库中存在")
+        assume(user["nickname"] == nickname, f"数据库nickname应为{nickname}，实际={user['nickname']}")

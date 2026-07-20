@@ -7,6 +7,7 @@ import pytest, allure
 from pytest_assume.plugin import assume
 from utils.yaml_utils import read_yaml_testcases
 from service.cart_service import CartService
+from core.db_handler import db
 
 def _get_cart_id(token):
     cart = CartService()
@@ -27,3 +28,12 @@ def test_cart_update(case, login_token):
     resp = CartService().update(cart_id, d.get("quantity", 3), token=login_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+    if expected["code"] == 200:
+        new_qty = d.get("quantity", 3)
+        row = db.query(
+            "SELECT quantity FROM cart WHERE id=%s",
+            args=(cart_id,),
+            one=True
+        )
+        assume(row is not None, "cart update: DB row should exist")
+        assume(row.get("quantity") == new_qty, f"cart update: quantity mismatch, expected {new_qty}, got {row.get('quantity')}")

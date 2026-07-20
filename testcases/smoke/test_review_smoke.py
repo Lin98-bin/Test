@@ -8,7 +8,9 @@ import allure
 from pytest_assume.plugin import assume
 from service.review_service import ReviewService
 from service.order_service import OrderService
-from common.db_handler import db
+from core.api_client import RequestsClient
+from core import setting
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -19,8 +21,6 @@ from common.db_handler import db
 @allure.title("发表评价冒烟用例")
 def test_review_add(login_token):
     """先创建一个已完成订单，再发表评价"""
-    from core.api_client import RequestsClient
-    from core import setting
     client = RequestsClient()
     # 确保地址
     client.url = f"{setting.BASE_URL}/api/address/list"

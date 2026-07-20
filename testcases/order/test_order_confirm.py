@@ -9,21 +9,9 @@ from utils.yaml_utils import read_yaml_testcases
 from core.api_client import RequestsClient
 from core import setting
 from service.order_service import OrderService
-
-def _ensure_address(token):
-    c = RequestsClient()
-    c.url = f"{setting.BASE_URL}/api/address/list"
-    c.method = "get"
-    c.headers = {"sessionToken": token}
-    if not c.send().json().get("data", {}).get("list", []):
-        c.url = f"{setting.BASE_URL}/api/address/add"
-        c.method = "post"
-        c.headers = {"sessionToken": token}
-        c.json = {"address": "订单测试", "contact": "测", "phone": "13800138000"}
-        c.send()
+from core.db_handler import db
 
 def _new_order(token, gid=1, qty=1):
-    _ensure_address(token)
     return OrderService().create(goods_id=gid, quantity=qty, token=token).json()["data"]["order_id"]
 
 def _new_paid_order(token):
@@ -45,3 +33,8 @@ def test_order_confirm(case, login_token):
     resp = c.send()
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
+    if expected["code"] == 200:
+        # DB assertion: verify order status changed to 'received'
+        status_row = db.query("SELECT status FROM orders WHERE id=%s", args=(oid,), one=True)
+        assume(status_row is not None, f"订单 {oid} 应在数据库中存在")
+        assume(status_row["status"] in ("received", "completed"), f"订单状态应为received/completed，实际={status_row['status']}")

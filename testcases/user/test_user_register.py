@@ -5,11 +5,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 import random
 import string
 
-from core.api_client import RequestsClient
+from service.user_service import UserService
 from utils.yaml_utils import read_yaml_testcases
 from pytest_assume.plugin import assume
-from common.db_handler import db
-from core import setting
+from core.db_handler import db
 
 import pytest
 import allure
@@ -39,22 +38,12 @@ def test_register(case):
         suffix = ''.join(random.choices(string.digits, k=4))
         username = f"{username}_{suffix}"
 
-    with allure.step("步骤1：构造请求"):
-        client = RequestsClient()
-        client.url = setting.BASE_URL + '/register'
-        client.method = "post"
-        client.headers = setting.COMMON_HEADERS.copy()
-        client.json = {
-            "username": username,
-            "password": str(case['password'])
-        }
-
-    with allure.step("步骤2：发送请求"):
-        resp = client.send()
+    with allure.step("步骤1：发送注册请求"):
+        resp = UserService().register(username=username, password=str(case['password']))
         resp_json = resp.json()
         print(f"接口返回: {resp_json}")
 
-    with allure.step("步骤3：断言结果"):
+    with allure.step("步骤2：断言结果"):
         assume(resp_json.get("code") == expected["code"],
                f"期望 code={expected['code']}，实际={resp_json.get('code')}")
         if "msg" in expected:
@@ -66,7 +55,7 @@ def test_register(case):
 
     # 成功场景：数据库断言用户确实写入了
     if is_success:
-        with allure.step("步骤4：数据库断言"):
+        with allure.step("步骤3：数据库断言"):
             sql = "select * from user where username = %s"
             user = db.query(sql, args=(username,), one=True)
             assume(user is not None, f"数据库未查到用户 {username}")

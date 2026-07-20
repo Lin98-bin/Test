@@ -7,6 +7,7 @@ import pytest
 import allure
 from pytest_assume.plugin import assume
 from service.goods_service import GoodsService
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -26,6 +27,12 @@ def test_goods_list():
         assume(len(data.get("list", [])) > 0, "商品列表不应为空")
         assume(data.get("total", 0) > 0)
 
+        # DB 断言：验证在售商品数量
+        if resp_json.get("code") == 200:
+            db_count = db.query("SELECT COUNT(*) AS cnt FROM goods WHERE is_on_sale=1", one=True)
+            assume(db_count is not None, "DB: goods 表查询不应为空")
+            assume(db_count["cnt"] > 0, f"DB: 在售商品数量应大于0, 实际={db_count['cnt']}")
+
 
 @allure.parent_suite("接口自动化测试-自己练习")
 @allure.suite("冒烟用例")
@@ -44,6 +51,13 @@ def test_goods_detail():
         assume(data.get("id") == 1)
         assume(len(data.get("name", "")) > 0)
 
+        # DB 断言：验证商品 id=1 在数据库中存在
+        if resp_json.get("code") == 200:
+            db_goods = db.query("SELECT * FROM goods WHERE id=1", one=True)
+            assume(db_goods is not None, "DB: 商品 id=1 应存在于 goods 表中")
+            assume(db_goods.get("name") == data.get("name"),
+                   f"DB: 商品名称应匹配, API返回={data.get('name')}, DB={db_goods.get('name')}")
+
 
 @allure.parent_suite("接口自动化测试-自己练习")
 @allure.suite("冒烟用例")
@@ -53,14 +67,7 @@ def test_goods_detail():
 @allure.title("商品搜索冒烟用例")
 def test_goods_search():
     with allure.step("搜索商品 iPhone"):
-        GoodsService().get_list()
-        # /api/goods/search 内部复用 goods_list, 传 keyword 参数
-        from core.api_client import RequestsClient
-        from core import setting
-        client = RequestsClient()
-        client.url = f"{setting.BASE_URL}/api/goods/search?keyword=iPhone"
-        client.method = "get"
-        resp = client.send()
+        resp = GoodsService().search(keyword="iPhone")
         resp_json = resp.json()
 
     with allure.step("断言结果"):

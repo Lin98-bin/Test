@@ -7,7 +7,7 @@ import pytest
 import allure
 from pytest_assume.plugin import assume
 from service.cart_service import CartService
-from common.db_handler import db
+from core.db_handler import db
 
 
 @allure.parent_suite("接口自动化测试-自己练习")
@@ -17,8 +17,9 @@ from common.db_handler import db
 @allure.story("加入购物车")
 @allure.title("加入购物车冒烟用例")
 def test_cart_add(login_token):
+    test_goods_id = 8  # 华为 MatePad Pro，避免与其他用例 goods_id 冲突
     with allure.step("加入购物车"):
-        resp = CartService().add(goods_id=1, quantity=1, token=login_token)
+        resp = CartService().add(goods_id=test_goods_id, quantity=1, token=login_token)
         resp_json = resp.json()
 
     with allure.step("断言结果"):
@@ -27,10 +28,10 @@ def test_cart_add(login_token):
     with allure.step("数据库断言：购物车记录已写入"):
         cart_item = db.query(
             "select * from cart where user_id = (select id from user where username = 'test_0006') and goods_id = %s order by id desc limit 1",
-            args=(1,), one=True
+            args=(test_goods_id,), one=True
         )
         assume(cart_item is not None, "数据库未查到购物车记录")
-        assume(cart_item["goods_id"] == 1, f"商品ID不一致")
+        assume(cart_item["goods_id"] == test_goods_id, f"商品ID不一致")
         assume(cart_item["quantity"] == 1, f"数量不一致: 期望=1, 实际={cart_item['quantity']}")
 
 

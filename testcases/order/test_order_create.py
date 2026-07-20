@@ -9,27 +9,7 @@ from utils.yaml_utils import read_yaml_testcases
 from service.order_service import OrderService
 from core.api_client import RequestsClient
 from core import setting
-
-def _ensure_address(token):
-    c = RequestsClient()
-    c.url = f"{setting.BASE_URL}/api/address/list"
-    c.method = "get"
-    c.headers = {"sessionToken": token}
-    if not c.send().json().get("data", {}).get("list", []):
-        c.url = f"{setting.BASE_URL}/api/address/add"
-        c.method = "post"
-        c.headers = {"sessionToken": token}
-        c.json = {"address": "订单测试", "contact": "测", "phone": "13800138000"}
-        c.send()
-
-def _new_order(token, gid=1, qty=1):
-    _ensure_address(token)
-    return OrderService().create(goods_id=gid, quantity=qty, token=token).json()["data"]["order_id"]
-
-def _new_paid_order(token):
-    oid = _new_order(token)
-    OrderService().pay(oid, token=token)
-    return oid
+from core.db_handler import db
 
 @allure.feature("order模块")
 @pytest.mark.parametrize("case", read_yaml_testcases('order/order_create'))
@@ -38,9 +18,17 @@ def test_order_create(case, login_token):
     d = case.get('data', {})
     expected = case['expected']
     
-    _ensure_address(login_token)
     resp = OrderService().create(goods_id=d.get('goods_id'), quantity=d.get('quantity', 1), token=login_token)
     resp_json = resp.json()
     assume(resp_json.get("code") == expected["code"])
     if expected["code"] == 200:
         assume("order_id" in resp_json.get("data", {}))
+        # DB assertion: verify order created in database
+        order_id = resp_json["data"]["order_id"]
+        order = db.query("SELECT * FROM orders WHERE id=%s", args=(order_id,), one=True)
+        assume(order is not None, f"订单 {order_id} 应在数据库中存在")
+        assume(order.get("status") == "pending", f"订单状态应为pending，实际={order.get('status')}")
+        goods_id = d.get('goods_id')
+        quantity = d.get('quantity', 1)
+        assume(str(order.get("goods_id")) == str(goods_id), f"goods_id应匹配，期望={goods_id}，实际={order.get('goods_id')}")
+        assume(order.get("quantity") == quantity, f"quantity应匹配，期望={quantity}，实际={order.get('quantity')}")

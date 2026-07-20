@@ -16,7 +16,7 @@ class GlobalContext:
     def clear(cls):
         cls._variables.clear()
 
-# 保持向后兼容（面试时可以提到这种平滑过渡的处理）
+# token
 class TokenStore(GlobalContext):
     @classmethod
     def set_token(cls, user, token):
@@ -35,3 +35,19 @@ class OrderStore(GlobalContext):
     @classmethod
     def get_order_id(cls, user):
         return cls.get(f"order_{user}")
+
+
+class GoodsStore(GlobalContext):
+    """商品数据存储器 — 演示 set / get / clear 跨文件传递"""
+    @classmethod
+    def set_selected(cls, user, goods_id, goods_name):
+        cls.set(f"goods_id_{user}", goods_id)
+        cls.set(f"goods_name_{user}", goods_name)
+
+    @classmethod
+    def get_selected_id(cls, user):
+        return cls.get(f"goods_id_{user}")
+
+    @classmethod
+    def get_selected_name(cls, user):
+        return cls.get(f"goods_name_{user}")

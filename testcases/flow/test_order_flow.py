@@ -7,11 +7,10 @@ from service.goods_service import GoodsService
 from service.order_service import OrderService
 from core.context import TokenStore, OrderStore, GlobalContext
 from utils.jsonpath_utils import JsonPathExtractor
-from common.db_handler import db
+from core.db_handler import db
 import pytest
 import allure
 from pytest_assume.plugin import assume
-import random
 
 @allure.parent_suite("接口自动化测试-自己练习")
 @allure.suite("beta核心用例")

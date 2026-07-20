@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.eggs
+dist
+build
+
+# Virtual Environment
+.venv
+venv
+env
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Test & Report
+.pytest_cache
+allure-results
+allure-report
+log/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config (keep out of image, mount via volume or env)
+# config/config.yaml contains secrets
+
+# Documentation
+*.md
+!README.md
